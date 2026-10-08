@@ -1,0 +1,2452 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PERCENT PRIVÉ | نادي النخبة</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="loyalty-prive.css">
+
+<style>
+/* ══════════════════════════════════════════════════════════
+   BASE STYLES (غير متضمنة في loyalty-prive.css)
+   ══════════════════════════════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Almarai',sans-serif;
+  background:#faf8f3;
+  color:#1a1a1a;
+  overflow-x:hidden;
+  line-height:1.85;
+  position:relative;
+}
+h1,h2,h3,h4,.english-text{font-family:'Playfair Display',serif}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+img{max-width:100%;display:block}
+input,select,textarea{font-family:inherit}
+.container{width:92%;max-width:1240px;margin:0 auto}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#ebe5d6}
+::-webkit-scrollbar-thumb{background:linear-gradient(#c9a961,#a8874a);border-radius:10px}
+
+/* Language toggles */
+html[data-lang="ar"] .lang-en{display:none !important}
+html[data-lang="en"] .lang-ar{display:none !important}
+
+/* Preloader */
+#preloader{
+  position:fixed;inset:0;z-index:9999;
+  background:radial-gradient(circle at 50% 45%,#1a1a1a 0%,#0a0a0a 70%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;
+  transition:opacity .8s ease,visibility .8s ease;
+}
+#preloader.hidden{opacity:0;visibility:hidden}
+.pre-logo{width:120px;height:120px;animation:preFloat 2.6s ease-in-out infinite}
+@keyframes preFloat{
+  0%,100%{transform:translateY(0) scale(1);filter:drop-shadow(0 0 14px rgba(201,169,97,.35))}
+  50%{transform:translateY(-12px) scale(1.04);filter:drop-shadow(0 0 28px rgba(201,169,97,.65))}
+}
+.pre-bar{width:190px;height:2px;background:rgba(201,169,97,.16);overflow:hidden;border-radius:2px}
+.pre-bar span{display:block;height:100%;width:40%;background:linear-gradient(90deg,transparent,#c9a961,transparent);animation:preSlide 1.2s ease-in-out infinite}
+@keyframes preSlide{0%{transform:translateX(-120%)}100%{transform:translateX(320%)}}
+.pre-text{font-family:'Playfair Display',serif;letter-spacing:8px;color:#c9a961;font-size:.8rem;opacity:.8}
+
+/* Progress bar */
+.scroll-progress{
+  position:fixed;top:0;inset-inline-start:0;height:3px;width:0;z-index:2500;
+  background:linear-gradient(90deg,#a8874a,#c9a961,#e8d4a2);
+  box-shadow:0 0 14px rgba(201,169,97,.9);
+  transition:width .1s linear;
+}
+
+/* Header */
+header{
+  position:fixed;top:0;inset-inline-start:0;width:100%;
+  padding:22px 0;z-index:1200;transition:all .4s cubic-bezier(.22,1,.36,1);
+  background:transparent;
+}
+header.scrolled{
+  padding:12px 0;
+  background:rgba(10,10,10,.92);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  box-shadow:0 8px 32px rgba(0,0,0,.3);
+  border-bottom:1px solid rgba(201,169,97,.18);
+}
+header.scrolled .brand-name{color:#c9a961}
+header.scrolled .nav-links a{color:#e0d9c8}
+header.scrolled .icon-btn{color:#c9a961;border-color:rgba(201,169,97,.3)}
+header.scrolled .lang-switch{color:#c9a961;border-color:#c9a961}
+.nav-container{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;transition:all .3s ease}
+.brand:hover{transform:translateY(-2px)}
+.brand-mark{width:46px;height:46px;flex-shrink:0;filter:drop-shadow(0 4px 12px rgba(201,169,97,.35));transition:all .3s ease}
+.brand:hover .brand-mark{transform:rotate(-8deg) scale(1.06)}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-name{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;letter-spacing:4px;color:#c9a961;transition:color .3s ease}
+.brand-sub{font-family:'Playfair Display',serif;font-size:.52rem;letter-spacing:5px;color:#a8874a;margin-top:3px}
+.nav-links{display:flex;gap:34px;align-items:center}
+.nav-links a{
+  font-weight:700;color:#c9a961;font-size:.93rem;position:relative;
+  transition:all .3s ease;padding:4px 0;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:0;inset-inline-start:0;width:0;height:2px;
+  background:linear-gradient(90deg,#c9a961,#e8d4a2);
+  transition:width .45s cubic-bezier(.22,1,.36,1);
+}
+.nav-links a:hover{color:#e8d4a2}
+.nav-links a:hover::after{width:100%}
+.nav-links a.active{color:#e8d4a2}
+.nav-links a.active::after{width:100%}
+.nav-icons{display:flex;gap:14px;align-items:center}
+.icon-btn{
+  width:42px;height:42px;border-radius:50%;border:1px solid rgba(201,169,97,.3);
+  background:transparent;color:#c9a961;cursor:pointer;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;position:relative;
+  transition:all .3s ease;
+}
+.icon-btn:hover{background:#c9a961;color:#0a0a0a;border-color:#c9a961;transform:translateY(-3px)}
+.cart-count{
+  position:absolute;top:-5px;inset-inline-end:-5px;min-width:20px;height:20px;
+  background:#c9a961;color:#0a0a0a;font-size:.7rem;font-weight:800;
+  border-radius:20px;display:flex;align-items:center;justify-content:center;padding:0 5px;
+  transform:scale(0);transition:transform .35s ease;
+}
+.cart-count.show{transform:scale(1)}
+.lang-switch{
+  background:transparent;border:1px solid #c9a961;color:#c9a961;
+  padding:8px 16px;cursor:pointer;font-weight:800;font-size:.78rem;
+  letter-spacing:1px;border-radius:30px;transition:all .3s ease;
+}
+.lang-switch:hover{background:#c9a961;color:#0a0a0a;transform:translateY(-2px)}
+.menu-toggle{display:none;font-size:1.4rem;cursor:pointer;color:#c9a961;width:42px;height:42px;align-items:center;justify-content:center}
+
+/* Footer */
+footer{
+  background:#050505;
+  padding:80px 0 28px;color:#e0d9c8;position:relative;
+}
+footer::before{
+  content:'';position:absolute;top:0;inset-inline-start:0;width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,169,97,.6),transparent);
+}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:46px;margin-bottom:56px}
+.footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.footer-brand svg{width:40px;height:40px}
+.footer-brand .brand-name{color:#c9a961}
+.footer-col h3{color:#c9a961;font-size:1.02rem;margin-bottom:22px;font-family:'Almarai',sans-serif;font-weight:800;letter-spacing:1px}
+.footer-col p,.footer-col a{color:#8a8478;margin-bottom:13px;display:block;transition:all .3s ease;font-size:.92rem}
+.footer-col a:hover{color:#c9a961;transform:translateX(-6px)}
+html[dir="ltr"] .footer-col a:hover{transform:translateX(6px)}
+.footer-col a i{width:16px;margin-inline-end:8px;color:#c9a961;font-size:.85rem}
+.social-icons{display:flex;gap:12px;margin-top:22px}
+.social-icons a{
+  width:44px;height:44px;border:1px solid rgba(201,169,97,.3);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:#c9a961;
+  transition:all .3s ease;margin:0;
+}
+.social-icons a:hover{
+  background:#c9a961;border-color:#c9a961;color:#0a0a0a;
+  transform:translateY(-6px) rotate(8deg) scale(1.06);
+}
+.footer-bottom{
+  text-align:center;padding-top:26px;font-size:.85rem;color:#6b6459;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+
+/* Toast */
+.toast{
+  position:fixed;bottom:32px;inset-inline-start:32px;z-index:2600;
+  display:flex;align-items:center;gap:12px;
+  padding:15px 24px;border-radius:12px;
+  background:#1a1a1a;color:#fff;
+  border:1px solid rgba(201,169,97,.5);
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+  transform:translateY(120px);opacity:0;
+  transition:all .45s cubic-bezier(.22,1,.36,1);
+  font-size:.9rem;font-weight:700;
+  max-width:calc(100vw - 40px);
+}
+.toast.show{transform:translateY(0);opacity:1}
+.toast i{color:#c9a961;font-size:1.05rem;flex-shrink:0}
+.toast.success{border-color:rgba(16,185,129,.6)}
+.toast.success i{color:#6ee7b7}
+.toast.error{border-color:rgba(239,68,68,.6)}
+.toast.error i{color:#fca5a5}
+
+/* To-top */
+.to-top{
+  position:fixed;bottom:28px;inset-inline-end:28px;
+  width:50px;height:50px;border-radius:50%;
+  background:#0a0a0a;color:#c9a961;
+  border:1px solid rgba(201,169,97,.4);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:1rem;
+  opacity:0;visibility:hidden;transform:translateY(20px);
+  z-index:1100;transition:all .3s ease;
+  box-shadow:0 14px 34px rgba(0,0,0,.3);
+}
+.to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+.to-top:hover{background:#c9a961;color:#0a0a0a;transform:translateY(-5px) scale(1.08)}
+
+/* Reveal */
+[data-reveal]{
+  opacity:0;transform:translateY(48px);
+  transition:opacity 1s cubic-bezier(.22,1,.36,1),transform 1s cubic-bezier(.22,1,.36,1);
+}
+[data-reveal].active{opacity:1;transform:translateY(0)}
+
+/* Rewards grid (from loyalty-prive.css context) */
+.prive-rewards-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px;
+}
+.prive-reward-card{
+  position:relative;
+  background:#fff;border-radius:20px;
+  border:1px solid rgba(10,10,10,.08);
+  padding:26px 22px 22px;
+  transition:all .45s cubic-bezier(.22,1,.36,1);
+  overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.prive-reward-card::before{
+  content:'';position:absolute;top:-60px;inset-inline-end:-60px;
+  width:160px;height:160px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,169,97,.14),transparent 68%);
+  transition:transform .6s ease;
+}
+.prive-reward-card:hover::before{transform:scale(1.4)}
+.prive-reward-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 28px 55px rgba(10,10,10,.14);
+  border-color:rgba(201,169,97,.45);
+}
+.prive-reward-icon{
+  width:58px;height:58px;border-radius:16px;
+  margin-bottom:18px;
+  background:linear-gradient(145deg,#16161a,#0a0a0a);
+  border:1px solid rgba(201,169,97,.4);
+  display:flex;align-items:center;justify-content:center;
+  color:#c9a961;font-size:1.4rem;
+  box-shadow:0 10px 24px rgba(10,10,10,.18);
+  transition:all .3s ease;
+  position:relative;z-index:2;
+}
+.prive-reward-card:hover .prive-reward-icon{transform:scale(1.08) rotate(-6deg)}
+.prive-reward-name{
+  font-size:1.05rem;color:#1a1a1a;
+  font-weight:800;font-family:'Almarai',sans-serif;
+  margin-bottom:6px;position:relative;z-index:2;
+}
+.prive-reward-desc{
+  font-size:.82rem;color:#6b6459;
+  margin-bottom:18px;line-height:1.7;
+  position:relative;z-index:2;flex:1;
+}
+.prive-reward-cost{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;border-radius:30px;
+  background:rgba(201,169,97,.12);
+  border:1px solid rgba(201,169,97,.4);
+  color:#a8874a;
+  font-weight:800;font-size:.8rem;
+  align-self:flex-start;position:relative;z-index:2;
+}
+.prive-reward-cost i{color:#c9a961;font-size:.75rem}
+.prive-reward-cost strong{font-family:'Playfair Display',serif;font-size:.95rem;color:#a8874a}
+
+/* Section wrapper */
+.prive-section{padding:100px 0}
+.prive-section.cream{background:#ebe5d6}
+.prive-section.white{background:#fff}
+.prive-section.ivory{background:#f5f1e8}
+
+/* FAQ */
+.prive-faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.prive-faq-item{
+  background:#fff;border-radius:16px;overflow:hidden;
+  border:1px solid rgba(10,10,10,.07);
+  transition:all .4s ease;
+}
+.prive-faq-item.open{border-color:rgba(201,169,97,.5);box-shadow:0 18px 40px rgba(10,10,10,.08)}
+.prive-faq-q{
+  width:100%;padding:20px 24px;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:transparent;border:none;text-align:start;
+  font-family:'Almarai',sans-serif;font-weight:800;font-size:.96rem;
+  color:#1a1a1a;transition:color .3s ease;
+}
+.prive-faq-q:hover{color:#a8874a}
+.prive-faq-item.open .prive-faq-q{color:#a8874a}
+.prive-faq-icon{
+  width:32px;height:32px;border-radius:50%;flex-shrink:0;
+  background:rgba(201,169,97,.12);
+  border:1px solid rgba(201,169,97,.35);
+  display:flex;align-items:center;justify-content:center;
+  color:#a8874a;font-size:.8rem;
+  transition:all .4s ease;
+}
+.prive-faq-item.open .prive-faq-icon{
+  background:#c9a961;color:#0a0a0a;
+  border-color:#c9a961;transform:rotate(135deg);
+}
+.prive-faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .5s ease,padding .5s ease;
+  padding:0 24px;
+}
+.prive-faq-item.open .prive-faq-a{max-height:400px;padding:0 24px 22px}
+.prive-faq-a p{color:#6b6459;font-size:.92rem;line-height:1.9}
+
+/* CTA section */
+.prive-cta{
+  padding:100px 0;
+  background:radial-gradient(circle at 20% 20%,#1a1a1a 0%,#0a0a0a 45%,#050505 100%);
+  color:#fff;text-align:center;
+  position:relative;overflow:hidden;
+}
+.prive-cta::before{
+  content:'';position:absolute;top:-160px;inset-inline-start:-120px;
+  width:480px;height:480px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,169,97,.22),transparent 68%);
+  animation:prive-drift 15s ease-in-out infinite;
+}
+.prive-cta-inner{position:relative;z-index:2;max-width:660px;margin:0 auto}
+.prive-cta h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.2vw,2.8rem);margin-bottom:14px;line-height:1.2;color:#fff}
+.prive-cta h2 em{color:#c9a961;font-style:normal}
+.prive-cta p{color:#a8a29b;font-size:1.02rem;margin-bottom:32px}
+.prive-cta-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.prive-btn-gold{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 32px;border-radius:12px;
+  background:linear-gradient(120deg,#c9a961,#e8d4a2);
+  color:#0a0a0a;font-weight:800;font-size:.95rem;
+  transition:all .3s ease;
+  box-shadow:0 10px 30px rgba(201,169,97,.3);
+  border:none;cursor:pointer;
+}
+.prive-btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(201,169,97,.42)}
+.prive-btn-ghost{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 32px;border-radius:12px;
+  background:transparent;color:#c9a961;
+  border:1.5px solid rgba(201,169,97,.5);
+  font-weight:800;font-size:.95rem;
+  transition:all .3s ease;
+}
+.prive-btn-ghost:hover{background:rgba(201,169,97,.1);border-color:#c9a961;transform:translateY(-3px)}
+
+/* Steps section */
+.prive-steps-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  position:relative;
+}
+.prive-steps-grid::before{
+  content:'';position:absolute;top:38px;
+  inset-inline-start:12%;width:76%;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(201,169,97,.4),transparent);
+  z-index:1;
+}
+.prive-step-card{
+  position:relative;text-align:center;
+  padding:32px 20px 26px;border-radius:20px;
+  background:#fff;border:1px solid rgba(10,10,10,.06);
+  transition:all .4s ease;z-index:2;
+}
+.prive-step-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(201,169,97,.5);
+  box-shadow:0 24px 50px rgba(10,10,10,.1);
+}
+.prive-step-num{
+  width:58px;height:58px;margin:0 auto 18px;
+  border-radius:50%;
+  background:linear-gradient(145deg,#1a1a1a,#0a0a0a);
+  border:2px solid rgba(201,169,97,.5);
+  display:flex;align-items:center;justify-content:center;
+  color:#c9a961;font-size:1.3rem;
+  box-shadow:0 12px 30px rgba(10,10,10,.2);
+  transition:transform .3s ease;
+}
+.prive-step-card:hover .prive-step-num{transform:scale(1.1) rotate(-8deg)}
+.prive-step-card h3{
+  font-size:1.05rem;color:#1a1a1a;
+  font-family:'Almarai',sans-serif;font-weight:800;
+  margin-bottom:8px;
+}
+.prive-step-card p{font-size:.86rem;color:#6b6459;line-height:1.7}
+
+/* Responsive */
+@media (max-width:1100px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:34px}
+  .prive-steps-grid{grid-template-columns:repeat(2,1fr)}
+  .prive-steps-grid::before{display:none}
+}
+@media (max-width:768px){
+  .menu-toggle{display:flex}
+  .nav-links{
+    position:fixed;top:0;inset-inline-end:-100%;width:82%;height:100vh;
+    background:#0a0a0a;flex-direction:column;justify-content:center;
+    gap:30px;transition:inset-inline-end .55s cubic-bezier(.22,1,.36,1);
+    box-shadow:-20px 0 60px rgba(0,0,0,.3);z-index:1300;
+  }
+  .nav-links.active{inset-inline-end:0}
+  .nav-links a{font-size:1.3rem;color:#c9a961}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .prive-steps-grid{grid-template-columns:1fr}
+  .prive-cta-buttons{flex-direction:column}
+  .prive-cta-buttons > *{width:100%;justify-content:center}
+  .to-top{bottom:18px;inset-inline-end:18px}
+  .toast{inset-inline-start:16px;inset-inline-end:16px;bottom:20px}
+}
+</style>
+<!-- PHASE 6.5 MOBILE START -->
+<style>
+/* ═══════════════════════════════════════════════════════════
+   PHASE 6.5 — Loyalty Page Mobile Enhancements
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Hero Section ─── */
+@media (max-width: 900px){
+  .prive-hero{
+    padding-top: calc(110px + var(--safe-top, 0px)) !important;
+    padding-bottom: 50px !important;
+    min-height: auto !important;
+  }
+
+  .prive-hero-grid{
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+    text-align: center !important;
+  }
+
+  .prive-hero-content{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .prive-badge{
+    padding: 8px 18px !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 3px !important;
+    margin-bottom: 18px !important;
+    gap: 8px !important;
+  }
+
+  .prive-hero h1{
+    font-size: clamp(2rem, 11vw, 2.8rem) !important;
+    letter-spacing: 2px !important;
+    line-height: 1.05 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .prive-tagline{
+    font-size: 0.95rem !important;
+    margin-bottom: 16px !important;
+    letter-spacing: 1px !important;
+  }
+
+  .prive-desc{
+    font-size: 0.92rem !important;
+    line-height: 1.75 !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
+    margin-bottom: 26px !important;
+  }
+
+  .prive-stats{
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin-top: 22px !important;
+  }
+
+  .prive-stat{
+    padding: 12px 8px !important;
+    border-radius: 12px !important;
+  }
+
+  .prive-stat strong{
+    font-size: 1.25rem !important;
+  }
+
+  .prive-stat small{
+    font-size: 0.6rem !important;
+    letter-spacing: 1px !important;
+    margin-top: 5px !important;
+  }
+}
+
+@media (max-width: 480px){
+  .prive-hero h1{
+    font-size: 2rem !important;
+  }
+
+  .prive-stats{
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ─── Login Card ─── */
+@media (max-width: 640px){
+  .prive-login-wrap{
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .prive-login{
+    padding: 26px 20px 22px !important;
+    border-radius: 20px !important;
+    animation: none !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+  }
+
+  .prive-login-icon{
+    width: 64px !important;
+    height: 64px !important;
+    font-size: 1.5rem !important;
+    margin-bottom: 16px !important;
+  }
+
+  .prive-login-icon::before{
+    inset: -14px !important;
+  }
+
+  .prive-login h2{
+    font-size: 1.2rem !important;
+    margin-bottom: 4px !important;
+  }
+
+  .prive-login .sub{
+    font-size: 0.78rem !important;
+    margin-bottom: 20px !important;
+  }
+
+  .prive-field input{
+    padding: 15px 20px 15px 70px !important;
+    font-size: 16px !important;
+    border-radius: 12px !important;
+    letter-spacing: 1px !important;
+  }
+
+  .prive-field .flag{
+    inset-inline-start: 16px !important;
+    font-size: 0.9rem !important;
+  }
+
+  .prive-submit{
+    padding: 15px !important;
+    font-size: 0.95rem !important;
+    border-radius: 12px !important;
+    min-height: 52px !important;
+  }
+
+  .prive-hint{
+    font-size: 0.7rem !important;
+    padding-top: 14px !important;
+    margin-top: 8px !important;
+  }
+}
+
+/* ─── Member Section ─── */
+@media (max-width: 900px){
+  .prive-member-section{
+    padding: 60px 0 40px !important;
+  }
+
+  .prive-member-card{
+    padding: 22px 18px !important;
+    border-radius: 20px !important;
+    margin-bottom: 26px !important;
+  }
+
+  .prive-member-grid{
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+    text-align: center !important;
+  }
+
+  .prive-member-left{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .prive-avatar-row{
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .prive-avatar{
+    width: 64px !important;
+    height: 64px !important;
+    font-size: 1.4rem !important;
+  }
+
+  .prive-member-name{
+    font-size: 1.15rem !important;
+    text-align: center !important;
+  }
+
+  .prive-member-phone{
+    font-size: 0.78rem !important;
+    text-align: center !important;
+  }
+
+  .prive-tier-badge{
+    font-size: 0.75rem !important;
+    padding: 8px 18px !important;
+    letter-spacing: 1.5px !important;
+  }
+
+  .prive-tier-progress{
+    width: 100% !important;
+    margin-top: 18px !important;
+    padding-top: 16px !important;
+  }
+
+  .prive-tier-head{
+    font-size: 0.7rem !important;
+    gap: 10px !important;
+  }
+
+  .prive-tier-head strong{
+    font-size: 0.78rem !important;
+  }
+
+  .prive-tier-bar{
+    height: 8px !important;
+  }
+
+  .prive-tier-foot{
+    font-size: 0.7rem !important;
+  }
+
+  .prive-points-wrap{
+    text-align: center !important;
+  }
+
+  .prive-points-label{
+    font-size: 0.65rem !important;
+    letter-spacing: 3px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .prive-points-value{
+    font-size: 2.5rem !important;
+  }
+
+  .prive-points-value small{
+    font-size: 0.85rem !important;
+  }
+
+  .prive-member-actions{
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin-top: 20px !important;
+    width: 100% !important;
+    justify-content: stretch !important;
+  }
+
+  .prive-action-btn{
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 14px 20px !important;
+    min-height: 48px !important;
+    font-size: 0.88rem !important;
+  }
+
+  .prive-mini-stats{
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+    margin-top: 22px !important;
+  }
+
+  .prive-mini-stat{
+    padding: 12px 8px !important;
+    border-radius: 12px !important;
+  }
+
+  .prive-mini-stat strong{
+    font-size: 1rem !important;
+  }
+
+  .prive-mini-stat small{
+    font-size: 0.62rem !important;
+    margin-top: 5px !important;
+    letter-spacing: 0.5px !important;
+  }
+}
+
+@media (max-width: 480px){
+  .prive-mini-stats{
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ─── Referral + Transactions Grid ─── */
+@media (max-width: 900px){
+  #memberPanelsGrid{
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-top: 22px !important;
+  }
+
+  /* These are inline-styled divs — target via attribute */
+  #memberPanelsGrid > div{
+    border-radius: 18px !important;
+    padding: 20px 18px !important;
+  }
+}
+
+/* Referral Code Display */
+@media (max-width: 640px){
+  #referralCodeDisplay{
+    font-size: 1.4rem !important;
+    letter-spacing: 3px !important;
+  }
+
+  #copyReferralBtn{
+    min-height: 52px !important;
+    font-size: 0.9rem !important;
+    padding: 14px !important;
+  }
+
+  #txList{
+    max-height: 400px !important;
+  }
+
+  #txReloadBtn{
+    min-height: 44px !important;
+    padding: 10px 16px !important;
+  }
+}
+
+/* ─── Tiers Section ─── */
+@media (max-width: 900px){
+  .prive-tiers-section{
+    padding: 60px 0 !important;
+  }
+
+  .prive-tiers-grid{
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .prive-tier-card{
+    padding: 22px 20px !important;
+    border-radius: 18px !important;
+  }
+
+  .prive-tier-icon{
+    width: 56px !important;
+    height: 56px !important;
+    font-size: 1.3rem !important;
+    margin-bottom: 14px !important;
+    border-radius: 14px !important;
+  }
+
+  .prive-tier-name{
+    font-size: 1.2rem !important;
+  }
+
+  .prive-tier-min{
+    font-size: 0.72rem !important;
+    margin-bottom: 16px !important;
+  }
+
+  .prive-tier-min strong{
+    font-size: 0.95rem !important;
+  }
+
+  .prive-tier-benefits{
+    gap: 8px !important;
+  }
+
+  .prive-tier-benefit{
+    font-size: 0.82rem !important;
+    gap: 8px !important;
+    line-height: 1.55 !important;
+  }
+
+  .prive-tier-benefit i{
+    margin-top: 6px !important;
+  }
+
+  .prive-tier-card.current::after{
+    top: 14px !important;
+    inset-inline-end: 14px !important;
+    font-size: 0.6rem !important;
+    padding: 4px 10px !important;
+  }
+}
+
+/* ─── How it Works (Steps) ─── */
+@media (max-width: 900px){
+  .prive-steps-grid{
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .prive-step-card{
+    padding: 22px 18px 20px !important;
+    border-radius: 16px !important;
+  }
+
+  .prive-step-num{
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 1.15rem !important;
+    margin-bottom: 14px !important;
+  }
+
+  .prive-step-card h3{
+    font-size: 1rem !important;
+    margin-bottom: 6px !important;
+  }
+
+  .prive-step-card p{
+    font-size: 0.82rem !important;
+    line-height: 1.65 !important;
+  }
+}
+
+/* ─── Rewards Section ─── */
+@media (max-width: 900px){
+  .prive-rewards-grid{
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .prive-reward-card{
+    padding: 18px 16px 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .prive-reward-icon{
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 1.15rem !important;
+    margin-bottom: 12px !important;
+    border-radius: 12px !important;
+  }
+
+  .prive-reward-name{
+    font-size: 0.9rem !important;
+    margin-bottom: 4px !important;
+    line-height: 1.3 !important;
+  }
+
+  .prive-reward-desc{
+    font-size: 0.72rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .prive-reward-cost{
+    padding: 6px 12px !important;
+    font-size: 0.72rem !important;
+    gap: 6px !important;
+  }
+
+  .prive-reward-cost strong{
+    font-size: 0.85rem !important;
+  }
+}
+
+@media (max-width: 480px){
+  .prive-rewards-grid{
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ─── Section Headers ─── */
+@media (max-width: 900px){
+  .prive-section-header{
+    margin-bottom: 40px !important;
+    padding-inline: 4px !important;
+  }
+
+  .prive-eyebrow{
+    font-size: 0.68rem !important;
+    letter-spacing: 3px !important;
+    margin-bottom: 14px !important;
+    gap: 10px !important;
+  }
+
+  .prive-eyebrow::before,
+  .prive-eyebrow::after{
+    width: 28px !important;
+  }
+
+  .prive-section-header h2{
+    font-size: clamp(1.5rem, 6vw, 2rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .prive-section-header p{
+    font-size: 0.88rem !important;
+    line-height: 1.7 !important;
+  }
+}
+
+/* ─── FAQ ─── */
+@media (max-width: 640px){
+  .prive-faq-item{
+    border-radius: 14px !important;
+  }
+
+  .prive-faq-q{
+    padding: 16px 18px !important;
+    font-size: 0.88rem !important;
+    gap: 12px !important;
+    min-height: 56px !important;
+    line-height: 1.5 !important;
+  }
+
+  .prive-faq-icon{
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 0.72rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .prive-faq-a{
+    padding: 0 18px !important;
+  }
+
+  .prive-faq-item.open .prive-faq-a{
+    padding: 0 18px 18px !important;
+  }
+
+  .prive-faq-a p{
+    font-size: 0.85rem !important;
+    line-height: 1.8 !important;
+  }
+}
+
+/* ─── CTA Section ─── */
+@media (max-width: 640px){
+  .prive-cta{
+    padding: 60px 0 !important;
+  }
+
+  .prive-cta h2{
+    font-size: 1.6rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .prive-cta p{
+    font-size: 0.9rem !important;
+    margin-bottom: 26px !important;
+    line-height: 1.7 !important;
+  }
+
+  .prive-cta-buttons{
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .prive-cta-buttons > *{
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 52px !important;
+    font-size: 0.92rem !important;
+  }
+}
+
+/* ─── Section Padding ─── */
+@media (max-width: 900px){
+  .prive-section{
+    padding: 60px 0 !important;
+  }
+}
+
+@media (max-width: 480px){
+  .prive-section{
+    padding: 50px 0 !important;
+  }
+}
+
+/* ─── Container ─── */
+@media (max-width: 640px){
+  .container{
+    width: 92% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* ─── Very Small Phones ─── */
+@media (max-width: 380px){
+  .prive-hero h1{
+    font-size: 1.75rem !important;
+  }
+
+  .prive-points-value{
+    font-size: 2rem !important;
+  }
+
+  .prive-login h2{
+    font-size: 1.1rem !important;
+  }
+
+  .prive-reward-card{
+    padding: 16px 14px !important;
+  }
+}
+
+/* ─── Landscape Phone ─── */
+@media (max-height: 500px) and (orientation: landscape){
+  .prive-hero{
+    padding-top: 90px !important;
+  }
+
+  .prive-login-wrap{
+    max-width: 380px !important;
+    margin-inline: auto !important;
+  }
+}
+</style>
+<!-- PHASE 6.5 MOBILE END -->
+<!-- PHASE 7.1 PWA START -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PERCENT">
+<meta name="mobile-web-app-capable" content="yes">
+<!-- PHASE 7.1 PWA END -->
+<!-- PHASE 7.2 SEO START -->
+<meta name="description" content="انضم إلى PERCENT PRIVÉ — نادي النخبة الحصري. اكسب PERC مع كل طلب واستبدلها بمكافآت فاخرة. مستويات متعددة من ESSENTIAL إلى PRIVÉ.">
+<meta name="keywords" content="نادي الولاء, PERCENT PRIVÉ, نقاط الولاء, مكافآت, عطور الأردن">
+<meta name="author" content="PERCENT PERFUME">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+
+<link rel="canonical" href="https://percent-perfume.com/loyalty.html">
+<link rel="alternate" hreflang="ar" href="https://percent-perfume.com/loyalty.html">
+<link rel="alternate" hreflang="en" href="https://percent-perfume.com/loyalty.html">
+<link rel="alternate" hreflang="x-default" href="https://percent-perfume.com/loyalty.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="PERCENT PRIVÉ | نادي النخبة الحصري">
+<meta property="og:description" content="انضم إلى PERCENT PRIVÉ — نادي النخبة الحصري. اكسب PERC مع كل طلب واستبدلها بمكافآت فاخرة. مستويات متعددة من ESSENTIAL إلى PRIVÉ.">
+<meta property="og:image" content="https://percent-perfume.com/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:url" content="https://percent-perfume.com/loyalty.html">
+<meta property="og:site_name" content="PERCENT PERFUME">
+<meta property="og:locale" content="ar_JO">
+<meta property="og:locale:alternate" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PERCENT PRIVÉ | نادي النخبة الحصري">
+<meta name="twitter:description" content="انضم إلى PERCENT PRIVÉ — نادي النخبة الحصري. اكسب PERC مع كل طلب واستبدلها بمكافآت فاخرة. مستويات متعددة من ESSENTIAL إلى PRIVÉ.">
+<meta name="twitter:image" content="https://percent-perfume.com/icon-512.png">
+<meta name="twitter:site" content="@percentperfume">
+<!-- PHASE 7.2 SEO END -->
+</head>
+<body>
+<!-- PHASE: PRELOADER FAILSAFE START -->
+<script>
+(function(){
+  "use strict";
+  function hidePreloader(){
+    var pre = document.getElementById("preloader");
+    if (pre) pre.classList.add("hidden");
+  }
+  /* Hide on load */
+  if (document.readyState === "complete"){
+    hidePreloader();
+  } else {
+    window.addEventListener("load", function(){ setTimeout(hidePreloader, 200); });
+  }
+  /* Guaranteed fail-safe: hide after 2.5 seconds NO MATTER WHAT */
+  setTimeout(hidePreloader, 2500);
+})();
+</script>
+<!-- PHASE: PRELOADER FAILSAFE END -->
+
+
+<!-- SVG Logo -->
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <linearGradient id="priveGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8d4a2"/>
+      <stop offset="28%" stop-color="#c9a961"/>
+      <stop offset="52%" stop-color="#f4e4bc"/>
+      <stop offset="78%" stop-color="#a8874a"/>
+      <stop offset="100%" stop-color="#6b5838"/>
+    </linearGradient>
+  </defs>
+  <symbol id="logo-mark" viewBox="0 0 220 220">
+    <g stroke="url(#priveGold)" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="95" y="10" width="30" height="17" rx="4"/>
+      <path d="M104 27v23M116 27v23"/>
+      <circle cx="110" cy="118" r="62"/>
+      <path d="M68 178 L152 58"/>
+      <circle cx="87" cy="96" r="15"/>
+      <circle cx="133" cy="140" r="15"/>
+      <path d="M60 70 C 24 96, 24 152, 62 180" stroke-width="5"/>
+    </g>
+    <g fill="url(#priveGold)">
+      <path d="M56 84 C 36 78, 24 62, 28 44 C 48 48, 60 64, 58 82 Z"/>
+      <path d="M44 124 C 22 122, 8 108, 6 88 C 28 88, 44 102, 46 120 Z"/>
+      <path d="M58 164 C 40 172, 20 166, 10 150 C 30 140, 50 144, 58 160 Z"/>
+    </g>
+  </symbol>
+</svg>
+
+<!-- Preloader -->
+<div id="preloader">
+  <svg class="pre-logo" role="img" aria-label="PERCENT PRIVÉ"><use href="#logo-mark"/></svg>
+  <div class="pre-bar"><span></span></div>
+  <div class="pre-text english-text">PERCENT PRIVÉ</div>
+</div>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Header -->
+<header id="header">
+  <div class="container nav-container">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" role="img" aria-label="PERCENT PERFUME"><use href="#logo-mark"/></svg>
+      <span class="brand-text">
+        <span class="brand-name">PERCENT</span>
+        <span class="brand-sub">PRIVÉ</span>
+      </span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
+      <a href="women.html"><span class="lang-ar">عطور نسائية</span><span class="lang-en">Women</span></a>
+      <a href="men.html"><span class="lang-ar">عطور رجالية</span><span class="lang-en">Men</span></a>
+      <a href="loyalty.html" class="active"><span class="lang-ar">نادي النخبة</span><span class="lang-en">Privé Club</span></a>
+      <a href="index.html#story"><span class="lang-ar">قصتنا</span><span class="lang-en">Our Story</span></a>
+    </nav>
+
+    <div class="nav-icons">
+      <button class="lang-switch" id="langBtn">EN</button>
+      <button class="icon-btn" id="searchBtn" aria-label="Search"><i class="fas fa-search"></i></button>
+      <a href="cart.html" class="icon-btn" aria-label="Cart">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
+      <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO — PERCENT PRIVÉ
+     ══════════════════════════════════════════════════════════ -->
+<section class="prive-hero">
+  <div class="prive-orb o1"></div>
+  <div class="prive-orb o2"></div>
+
+  <div class="container prive-hero-grid">
+
+    <div class="prive-hero-content">
+      <span class="prive-badge">
+        <i class="fas fa-crown"></i>
+        <span class="lang-ar">نادي النخبة الحصري</span>
+        <span class="lang-en">EXCLUSIVE ELITE CLUB</span>
+      </span>
+
+      <h1>
+        <span class="lang-ar">PERCENT</span>
+        <span class="accent">PRIVÉ</span>
+      </h1>
+
+      <p class="prive-tagline">
+        <span class="lang-ar">« حيث تُترجم ولاءك إلى ترف »</span>
+        <span class="lang-en">"Where Loyalty Becomes Luxury"</span>
+      </p>
+
+      <p class="prive-desc lang-ar">
+        انضم إلى الدائرة الأكثر حصرية. اكسب <strong style="color:#c9a961">PERC 💠</strong> مع كل طلب،
+        ارتقِ في المستويات، واستمتع بمكافآت لا تُمنح إلا للنخبة.
+      </p>
+      <p class="prive-desc lang-en">
+        Join the most exclusive circle. Earn <strong style="color:#c9a961">PERC 💠</strong> with every order,
+        rise through the tiers, and enjoy rewards reserved for the elite.
+      </p>
+
+      <div class="prive-stats">
+        <div class="prive-stat">
+          <strong id="statMembers">0</strong>
+          <small><span class="lang-ar">عضو نخبة</span><span class="lang-en">Members</span></small>
+        </div>
+        <div class="prive-stat">
+          <strong id="statTiers">4</strong>
+          <small><span class="lang-ar">مستويات</span><span class="lang-en">Tiers</span></small>
+        </div>
+        <div class="prive-stat">
+          <strong id="statRewards">9</strong>
+          <small><span class="lang-ar">مكافآت</span><span class="lang-en">Rewards</span></small>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGIN CARD -->
+    <div class="prive-login-wrap">
+      <div class="prive-login" id="loginCard">
+
+        <!-- STATE: LOGIN -->
+        <div id="stateLogin">
+          <div class="prive-login-icon">
+            <i class="fas fa-key"></i>
+          </div>
+          <h2>
+            <span class="lang-ar">تسجيل الدخول</span>
+            <span class="lang-en">Member Login</span>
+          </h2>
+          <p class="sub">
+            <span class="lang-ar">أدخل رقم هاتفك للوصول لنقاطك</span>
+            <span class="lang-en">Enter your phone to access your PERC</span>
+          </p>
+
+          <form id="loginForm">
+            <div class="prive-field">
+              <span class="flag">+962</span>
+              <input type="tel" id="loginPhone" placeholder="7X XXX XXXX" inputmode="numeric" maxlength="15" autocomplete="tel">
+            </div>
+            <div class="prive-error" id="loginError"></div>
+
+            <button type="submit" class="prive-submit" id="loginBtn">
+              <i class="fas fa-sign-in-alt"></i>
+              <span class="lang-ar">دخول</span>
+              <span class="lang-en">Enter</span>
+            </button>
+          </form>
+
+          <div class="prive-hint">
+            <i class="fas fa-info-circle"></i>
+            <span class="lang-ar">عضو جديد؟ سجّل برقمك مباشرة</span>
+            <span class="lang-en">New? Register with your phone</span>
+          </div>
+        </div>
+
+        <!-- STATE: REGISTER -->
+        <div id="stateRegister" style="display:none">
+          <div class="prive-login-icon">
+            <i class="fas fa-user-plus"></i>
+          </div>
+          <h2>
+            <span class="lang-ar">انضم للنخبة</span>
+            <span class="lang-en">Join the Elite</span>
+          </h2>
+          <p class="sub">
+            <span class="lang-ar">احصل على 100 PERC ترحيبية 🎉</span>
+            <span class="lang-en">Get 100 PERC welcome bonus 🎉</span>
+          </p>
+
+          <form id="registerForm">
+            <div class="prive-field" style="margin-bottom:12px">
+              <span class="flag"><i class="fas fa-user"></i></span>
+              <input type="text" id="regName" placeholder="الاسم الكامل" style="letter-spacing:0;font-weight:700;font-size:.95rem">
+            </div>
+            <div class="prive-field" style="margin-bottom:12px">
+              <span class="flag"><i class="fas fa-envelope"></i></span>
+              <input type="email" id="regEmail" placeholder="البريد (اختياري)" style="letter-spacing:0;font-weight:600;font-size:.9rem" autocomplete="email">
+            </div>
+            <div class="prive-field" style="margin-bottom:12px">
+              <span class="flag"><i class="fas fa-cake-candles"></i></span>
+              <input type="date" id="regBirthday" placeholder="تاريخ الميلاد" style="letter-spacing:0;font-weight:600;font-size:.9rem">
+            </div>
+            <div class="prive-field" style="margin-bottom:14px">
+              <span class="flag"><i class="fas fa-gift"></i></span>
+              <input type="text" id="regReferral" placeholder="كود إحالة (اختياري)" style="letter-spacing:2px;font-weight:700;font-size:.9rem;text-transform:uppercase">
+            </div>
+
+            <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;margin-bottom:12px;padding:11px;border-radius:10px;background:rgba(201,169,97,.06);border:1px solid rgba(201,169,97,.25)">
+              <input type="checkbox" id="regTerms" style="margin-top:3px;width:16px;height:16px;accent-color:#c9a961;cursor:pointer;flex-shrink:0">
+              <span style="font-size:.78rem;font-weight:700;color:#c9a961;line-height:1.6">
+                <span class="lang-ar">أوافق على <a href="legal/terms.html" target="_blank" style="color:#e8d4a2;text-decoration:underline">الشروط</a> و <a href="legal/privacy.html" target="_blank" style="color:#e8d4a2;text-decoration:underline">الخصوصية</a> <span style="color:#ef4444">*</span></span>
+                <span class="lang-en">I agree to <a href="legal/terms.html" target="_blank" style="color:#e8d4a2;text-decoration:underline">Terms</a> & <a href="legal/privacy.html" target="_blank" style="color:#e8d4a2;text-decoration:underline">Privacy</a> <span style="color:#ef4444">*</span></span>
+              </span>
+            </label>
+
+            <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;margin-bottom:12px;padding:11px;border-radius:10px;background:rgba(201,169,97,.06);border:1px solid rgba(201,169,97,.25)">
+              <input type="checkbox" id="regAgeConfirm" style="margin-top:3px;width:16px;height:16px;accent-color:#c9a961;cursor:pointer;flex-shrink:0">
+              <span style="font-size:.78rem;font-weight:700;color:#c9a961;line-height:1.6">
+                <span class="lang-ar">أؤكد أنني أبلغ 18 عاماً أو أكثر <span style="color:#ef4444">*</span></span>
+                <span class="lang-en">I confirm I'm 18 years or older <span style="color:#ef4444">*</span></span>
+              </span>
+            </label>
+
+            <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;margin-bottom:14px;padding:11px;border-radius:10px;background:rgba(201,169,97,.06);border:1px solid rgba(201,169,97,.25)">
+              <input type="checkbox" id="regMarketing" style="margin-top:3px;width:16px;height:16px;accent-color:#c9a961;cursor:pointer;flex-shrink:0">
+              <span style="font-size:.78rem;font-weight:700;color:#c9a961;line-height:1.6">
+                <span class="lang-ar">أرغب باستلام العروض والمكافآت (اختياري)</span>
+                <span class="lang-en">Send me offers and rewards (optional)</span>
+              </span>
+            </label>
+
+            <div class="prive-error" id="registerError"></div>
+
+            <button type="submit" class="prive-submit" id="registerBtn">
+              <i class="fas fa-crown"></i>
+              <span class="lang-ar">انضم الآن</span>
+              <span class="lang-en">Join Now</span>
+            </button>
+
+            <button type="button" class="prive-hint" id="backToLogin" style="width:100%;background:none;border:none;cursor:pointer;padding-top:14px">
+              <i class="fas fa-arrow-right"></i>
+              <span class="lang-ar">عودة لتسجيل الدخول</span>
+              <span class="lang-en">Back to login</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     MEMBER DASHBOARD
+     ══════════════════════════════════════════════════════════ -->
+<section class="prive-member-section" id="memberSection">
+  <div class="container">
+
+    <div class="prive-section-header" data-reveal>
+      <div class="prive-eyebrow">
+        <span class="lang-ar">مرحباً بعودتك</span>
+        <span class="lang-en">Welcome Back</span>
+      </div>
+      <h2>
+        <span class="id" id="welcomeName" style="color:#c9a961">—</span>
+      </h2>
+    </div>
+
+    <!-- Member Card -->
+    <div class="prive-member-card">
+      <div class="prive-member-grid">
+
+        <div class="prive-member-left">
+          <div class="prive-avatar-row">
+            <div class="prive-avatar" id="memberAvatar">P</div>
+            <div class="prive-member-info">
+              <div class="prive-member-name" id="memberName">—</div>
+              <div class="prive-member-phone" id="memberPhone" dir="ltr">—</div>
+            </div>
+          </div>
+
+          <div class="prive-tier-badge" id="memberTierBadge">
+            <i class="fas fa-seedling"></i>
+            <span id="memberTierName">—</span>
+          </div>
+
+          <div class="prive-tier-progress" id="tierProgressWrap">
+            <div class="prive-tier-head">
+              <span>
+                <span class="lang-ar">التالي:</span>
+                <span class="lang-en">Next:</span>
+                <strong id="nextTierName">—</strong>
+              </span>
+              <strong id="tierPercent">0%</strong>
+            </div>
+            <div class="prive-tier-bar">
+              <span id="tierProgressBar"></span>
+            </div>
+            <div class="prive-tier-foot">
+              <span id="tierProgressRemaining">—</span>
+              <span id="tierProgressTotal">—</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="prive-member-right">
+          <div class="prive-points-wrap">
+            <div class="prive-points-label">
+              <span class="lang-ar">رصيدك</span>
+              <span class="lang-en">BALANCE</span>
+            </div>
+            <div class="prive-points-value">
+              <span id="memberPoints">0</span>
+              <small>PERC</small>
+            </div>
+          </div>
+
+          <div class="prive-member-actions">
+            <button class="prive-action-btn" id="refreshMemberBtn">
+              <i class="fas fa-sync-alt"></i>
+              <span class="lang-ar">تحديث</span>
+              <span class="lang-en">Refresh</span>
+            </button>
+            <button class="prive-action-btn" id="logoutBtn">
+              <i class="fas fa-right-from-bracket"></i>
+              <span class="lang-ar">خروج</span>
+              <span class="lang-en">Logout</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Mini stats -->
+      <div class="prive-mini-stats">
+        <div class="prive-mini-stat">
+          <strong id="statLifetime">0</strong>
+          <small>
+            <span class="lang-ar">إجمالي النقاط</span>
+            <span class="lang-en">Lifetime PERC</span>
+          </small>
+        </div>
+        <div class="prive-mini-stat">
+          <strong id="statOrders">0</strong>
+          <small>
+            <span class="lang-ar">عدد الطلبات</span>
+            <span class="lang-en">Orders</span>
+          </small>
+        </div>
+        <div class="prive-mini-stat">
+          <strong id="statSpent">0</strong>
+          <small>
+            <span class="lang-ar">إجمالي الشراء</span>
+            <span class="lang-en">Total Spent</span>
+          </small>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Referral + Transactions -->
+    <div class="prive-section white" style="padding:0;background:transparent">
+      <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:22px;margin-top:32px" id="memberPanelsGrid">
+
+        <!-- Referral Card -->
+        <div style="background:#fff;border-radius:22px;border:1px solid rgba(10,10,10,.08);padding:26px;box-shadow:0 20px 50px rgba(10,10,10,.06)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+            <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(145deg,#1a1a1a,#0a0a0a);border:1px solid rgba(201,169,97,.4);display:flex;align-items:center;justify-content:center;color:#c9a961">
+              <i class="fas fa-user-plus"></i>
+            </div>
+            <div>
+              <strong style="display:block;color:#1a1a1a;font-weight:800;font-size:1rem">
+                <span class="lang-ar">كود الإحالة</span>
+                <span class="lang-en">Referral Code</span>
+              </strong>
+              <small style="color:#6b6459;font-size:.76rem;font-weight:700">
+                <span class="lang-ar">دع صديقاً → اكسبا معاً</span>
+                <span class="lang-en">Invite a friend → earn together</span>
+              </small>
+            </div>
+          </div>
+
+          <div style="background:linear-gradient(140deg,#faf8f3,#f0eadd);border:1px dashed rgba(201,169,97,.5);border-radius:14px;padding:18px;text-align:center;margin-bottom:16px">
+            <div style="font-size:.7rem;color:#6b6459;letter-spacing:3px;font-weight:800;margin-bottom:6px">YOUR CODE</div>
+            <div id="referralCodeDisplay" style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:800;color:#a8874a;letter-spacing:4px;direction:ltr">—</div>
+          </div>
+
+          <button id="copyReferralBtn" style="width:100%;padding:12px;border-radius:12px;background:#0a0a0a;color:#c9a961;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;border:none">
+            <i class="fas fa-copy"></i>
+            <span class="lang-ar">نسخ الكود</span>
+            <span class="lang-en">Copy Code</span>
+          </button>
+
+          <div style="margin-top:16px;padding-top:14px;border-top:1px dashed rgba(10,10,10,.1);font-size:.78rem;color:#6b6459;font-weight:700;text-align:center">
+            <span class="lang-ar">🎁 صديقك: 100 PERC · أنت: 200 PERC</span>
+            <span class="lang-en">🎁 Friend: 100 PERC · You: 200 PERC</span>
+          </div>
+        </div>
+
+        <!-- Transactions Card -->
+        <div style="background:#fff;border-radius:22px;border:1px solid rgba(10,10,10,.08);padding:26px;box-shadow:0 20px 50px rgba(10,10,10,.06)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px">
+            <div style="display:flex;align-items:center;gap:12px" id="txHeaderWrap">
+              <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(145deg,#1a1a1a,#0a0a0a);border:1px solid rgba(201,169,97,.4);display:flex;align-items:center;justify-content:center;color:#c9a961">
+                <i class="fas fa-clock-rotate-left"></i>
+              </div>
+              <div>
+                <strong style="display:block;color:#1a1a1a;font-weight:800;font-size:1rem">
+                  <span class="lang-ar">سجل النقاط</span>
+                  <span class="lang-en">PERC History</span>
+                </strong>
+                <small style="color:#6b6459;font-size:.76rem;font-weight:700" id="txCountLabel"></small>
+              </div>
+            </div>
+            <button type="button" class="prive-action-btn" id="txReloadBtn" style="padding:8px 14px;font-size:.78rem" title="تحديث السجل">
+              <i class="fas fa-sync-alt"></i>
+            </button>
+          </div>
+
+          <div id="txList" style="display:flex;flex-direction:column;gap:8px;max-height:380px;overflow-y:auto"></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ══════════════════════════════════════════════════════════
+     TIERS SECTION
+     ══════════════════════════════════════════════════════════ -->
+<section class="prive-tiers-section" id="tiersSection">
+  <div class="container">
+
+    <div class="prive-section-header" data-reveal>
+      <div class="prive-eyebrow">
+        <span class="lang-ar">مستويات النخبة</span>
+        <span class="lang-en">Privé Tiers</span>
+      </div>
+      <h2>
+        <span class="lang-ar">ارتقِ إلى <span class="accent">قمتك</span></span>
+        <span class="lang-en">Rise to <span class="accent">Your Peak</span></span>
+      </h2>
+      <p>
+        <span class="lang-ar">كل مستوى يفتح لك عالماً جديداً من الامتيازات الحصرية.</span>
+        <span class="lang-en">Every tier unlocks a new world of exclusive privileges.</span>
+      </p>
+    </div>
+
+    <div class="prive-tiers-grid" id="tiersGrid"></div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     HOW IT WORKS
+     ══════════════════════════════════════════════════════════ -->
+<section class="prive-section cream">
+  <div class="container">
+
+    <div class="prive-section-header" data-reveal>
+      <div class="prive-eyebrow">
+        <span class="lang-ar">كيف يعمل</span>
+        <span class="lang-en">How It Works</span>
+      </div>
+      <h2>
+        <span class="lang-ar">أربع خطوات <span class="accent">فقط</span></span>
+        <span class="lang-en">Just <span class="accent">Four Steps</span></span>
+      </h2>
+    </div>
+
+    <div class="prive-steps-grid">
+      <div class="prive-step-card" data-reveal>
+        <div class="prive-step-num"><i class="fas fa-user-plus"></i></div>
+        <h3><span class="lang-ar">سجّل برقمك</span><span class="lang-en">Sign Up Free</span></h3>
+        <p><span class="lang-ar">أدخل رقمك واسمك فقط — بدون تعقيد.</span><span class="lang-en">Enter your phone and name — simple.</span></p>
+      </div>
+      <div class="prive-step-card" data-reveal style="transition-delay:.1s">
+        <div class="prive-step-num"><i class="fas fa-shopping-bag"></i></div>
+        <h3><span class="lang-ar">تسوّق عطورك</span><span class="lang-en">Shop Scents</span></h3>
+        <p><span class="lang-ar">اطلب أي عطر من المتجر.</span><span class="lang-en">Order any perfume from our store.</span></p>
+      </div>
+      <div class="prive-step-card" data-reveal style="transition-delay:.2s">
+        <div class="prive-step-num"><i class="fas fa-coins"></i></div>
+        <h3><span class="lang-ar">اكسب PERC</span><span class="lang-en">Earn PERC</span></h3>
+        <p><span class="lang-ar">1 JOD = 1 PERC تلقائياً.</span><span class="lang-en">1 JOD = 1 PERC automatically.</span></p>
+      </div>
+      <div class="prive-step-card" data-reveal style="transition-delay:.3s">
+        <div class="prive-step-num"><i class="fas fa-gift"></i></div>
+        <h3><span class="lang-ar">استبدل مكافآتك</span><span class="lang-en">Redeem Rewards</span></h3>
+        <p><span class="lang-ar">اختر من قائمة المكافآت الفاخرة.</span><span class="lang-en">Choose from our luxury rewards.</span></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     REWARDS SECTION
+     ══════════════════════════════════════════════════════════ -->
+<section class="prive-section white" id="rewardsSection">
+  <div class="container">
+
+    <div class="prive-section-header" data-reveal>
+      <div class="prive-eyebrow">
+        <span class="lang-ar">مكافآت حصرية</span>
+        <span class="lang-en">Exclusive Rewards</span>
+      </div>
+      <h2>
+        <span class="lang-ar">استبدل <span class="accent">PERC</span> بمكافآت</span>
+        <span class="lang-en">Redeem <span class="accent">PERC</span></span>
+      </h2>
+      <p>
+        <span class="lang-ar">9 مكافآت فاخرة تناسب كل ذوق.</span>
+        <span class="lang-en">9 luxury rewards for every taste.</span>
+      </p>
+    </div>
+
+    <div class="prive-rewards-grid" id="rewardsGrid"></div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     FAQ
+     ══════════════════════════════════════════════════════════ -->
+<section class="prive-section ivory">
+  <div class="container">
+
+    <div class="prive-section-header" data-reveal>
+      <div class="prive-eyebrow">
+        <span class="lang-ar">الأسئلة الشائعة</span>
+        <span class="lang-en">F.A.Q</span>
+      </div>
+      <h2>
+        <span class="lang-ar">كل ما تحتاج <span class="accent">معرفته</span></span>
+        <span class="lang-en">Everything You <span class="accent">Need</span></span>
+      </h2>
+    </div>
+
+    <div class="prive-faq-list" data-reveal>
+
+      <div class="prive-faq-item">
+        <button class="prive-faq-q">
+          <span><span class="lang-ar">هل الانضمام مجاني؟</span><span class="lang-en">Is joining free?</span></span>
+          <span class="prive-faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="prive-faq-a">
+          <p><span class="lang-ar">نعم، مجاني تماماً. سجّل برقمك واحصل على 100 PERC ترحيبية فوراً.</span><span class="lang-en">Yes, completely free. Register with your phone and get 100 welcome PERC instantly.</span></p>
+        </div>
+      </div>
+
+      <div class="prive-faq-item">
+        <button class="prive-faq-q">
+          <span><span class="lang-ar">كيف أكسب PERC؟</span><span class="lang-en">How do I earn PERC?</span></span>
+          <span class="prive-faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="prive-faq-a">
+          <p><span class="lang-ar">مع كل طلب مكتمل: 1 JOD = 1 PERC. مثلاً: طلب بـ 150 JOD = 150 PERC. أيضاً عند عيد ميلادك (500 PERC) وعند إحالة صديق (200 PERC).</span><span class="lang-en">With every completed order: 1 JOD = 1 PERC. E.g. 150 JOD order = 150 PERC. Plus 500 PERC on your birthday and 200 PERC for referring a friend.</span></p>
+        </div>
+      </div>
+
+      <div class="prive-faq-item">
+        <button class="prive-faq-q">
+          <span><span class="lang-ar">متى تُضاف النقاط لطلبي؟</span><span class="lang-en">When are PERC added?</span></span>
+          <span class="prive-faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="prive-faq-a">
+          <p><span class="lang-ar">تُضاف PERC تلقائياً عند تغيير حالة الطلب إلى "تم التسليم" — بدون أي خطوة إضافية منك.</span><span class="lang-en">PERC are added automatically when your order status changes to "Delivered" — no extra step needed.</span></p>
+        </div>
+      </div>
+
+      <div class="prive-faq-item">
+        <button class="prive-faq-q">
+          <span><span class="lang-ar">كيف أستبدل PERC؟</span><span class="lang-en">How do I redeem?</span></span>
+          <span class="prive-faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="prive-faq-a">
+          <p><span class="lang-ar">عند إتمام أي طلب من صفحة السلة، يمكنك تفعيل خيار "استخدم نقاطك" — وستُخصم تلقائياً بقيمة 100 PERC = 1 JOD.</span><span class="lang-en">At checkout, enable "Use my points" — automatically applied at 100 PERC = 1 JOD.</span></p>
+        </div>
+      </div>
+
+      <div class="prive-faq-item">
+        <button class="prive-faq-q">
+          <span><span class="lang-ar">هل تنتهي صلاحية PERC؟</span><span class="lang-en">Do PERC expire?</span></span>
+          <span class="prive-faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="prive-faq-a">
+          <p><span class="lang-ar">لا تنتهي أبداً طالما حسابك نشط. ننصحك باستخدامها للاستمتاع بمكافآتك.</span><span class="lang-en">Never — as long as your account is active. We recommend using them to enjoy your rewards.</span></p>
+        </div>
+      </div>
+
+      <div class="prive-faq-item">
+        <button class="prive-faq-q">
+          <span><span class="lang-ar">كيف يعمل نظام الإحالة؟</span><span class="lang-en">How does referrals work?</span></span>
+          <span class="prive-faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="prive-faq-a">
+          <p><span class="lang-ar">شارك كود الإحالة الخاص بك. عند تسجيل صديق باستخدام كودك: صديقك يحصل على 100 PERC، وأنت على 200 PERC.</span><span class="lang-en">Share your referral code. When a friend registers using it: your friend gets 100 PERC, you get 200 PERC.</span></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     CTA
+     ══════════════════════════════════════════════════════════ -->
+<section class="prive-cta">
+  <div class="container prive-cta-inner" data-reveal>
+    <h2>
+      <span class="lang-ar">جاهز لتصبح <em>نخبة؟</em></span>
+      <span class="lang-en">Ready to become <em>Elite?</em></span>
+    </h2>
+    <p>
+      <span class="lang-ar">انضم الآن مجاناً واحصل على 100 PERC ترحيبية فوراً.</span>
+      <span class="lang-en">Join free now and get 100 welcome PERC instantly.</span>
+    </p>
+    <div class="prive-cta-buttons">
+      <button class="prive-btn-gold" id="ctaJoinBtn">
+        <i class="fas fa-crown"></i>
+        <span class="lang-ar">انضم للنادي</span>
+        <span class="lang-en">Join the Club</span>
+      </button>
+      <a href="index.html#bestsellers" class="prive-btn-ghost">
+        <i class="fas fa-sparkles"></i>
+        <span class="lang-ar">اكتشف العطور</span>
+        <span class="lang-en">Explore Perfumes</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-col">
+        <div class="footer-brand">
+          <svg role="img" aria-label="PERCENT PRIVÉ"><use href="#logo-mark"/></svg>
+          <span class="brand-text">
+            <span class="brand-name">PERCENT</span>
+            <span class="brand-sub">PRIVÉ</span>
+          </span>
+        </div>
+        <p class="lang-ar">عطور فاخرة تروي تفاصيلك. جودة عالية وأسعار منافسة.</p>
+        <p class="lang-en">Luxury perfumes that tell your story.</p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/percent._.perfume" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook" onclick="return false;"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="TikTok" onclick="return false;"><i class="fab fa-tiktok"></i></a>
+          <a href="#" aria-label="WhatsApp" onclick="return false;"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3><span class="lang-ar">روابط سريعة</span><span class="lang-en">Quick Links</span></h3>
+        <a href="index.html"><i class="fas fa-chevron-left"></i><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
+        <a href="women.html"><i class="fas fa-chevron-left"></i><span class="lang-ar">عطور نسائية</span><span class="lang-en">Women</span></a>
+        <a href="men.html"><i class="fas fa-chevron-left"></i><span class="lang-ar">عطور رجالية</span><span class="lang-en">Men</span></a>
+        <a href="cart.html"><i class="fas fa-chevron-left"></i><span class="lang-ar">سلة التسوق</span><span class="lang-en">Cart</span></a>
+      </div>
+
+      <div class="footer-col">
+        <h3><span class="lang-ar">النادي</span><span class="lang-en">The Club</span></h3>
+        <a href="#tiersSection"><i class="fas fa-chevron-left"></i><span class="lang-ar">المستويات</span><span class="lang-en">Tiers</span></a>
+        <a href="#rewardsSection"><i class="fas fa-chevron-left"></i><span class="lang-ar">المكافآت</span><span class="lang-en">Rewards</span></a>
+        <a href="#loginCard"><i class="fas fa-chevron-left"></i><span class="lang-ar">تسجيل الدخول</span><span class="lang-en">Login</span></a>
+      </div>
+
+      <div class="footer-col">
+        <h3><span class="lang-ar">تواصل معنا</span><span class="lang-en">Contact</span></h3>
+        <p><i class="fas fa-map-marker-alt"></i><span class="lang-ar">عمّان، الأردن</span><span class="lang-en">Amman, Jordan</span></p>
+        <p><i class="fas fa-phone"></i><span dir="ltr">+962 7 9000 0000</span></p>
+        <p><i class="fas fa-envelope"></i><span dir="ltr">prive@percent-perfume.com</span></p>
+        <p><i class="fas fa-clock"></i><span class="lang-ar">يومياً 10ص - 10م</span><span class="lang-en">Daily 10AM - 10PM</span></p>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> PERCENT PRIVÉ.
+        <span class="lang-ar">جميع الحقوق محفوظة.</span>
+        <span class="lang-en">All rights reserved.</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastText"></span></div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="cart.js"></script>
+<script src="loyalty.js"></script>
+<script>
+(function(){
+  'use strict';
+
+  const $  = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+  const html = document.documentElement;
+  const Loyalty = window.PercentLoyalty;
+
+  let lang = 'ar';
+
+  /* ── Preloader ── */
+  window.addEventListener('load', () => {
+    setTimeout(() => $('#preloader').classList.add('hidden'), 500);
+  });
+  setTimeout(() => $('#preloader').classList.add('hidden'), 3000);
+
+  /* ── Header scroll + progress ── */
+  const header = $('#header');
+  const progress = $('#scrollProgress');
+  const toTop = $('#toTop');
+  function onScroll(){
+    const y = window.scrollY;
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+    header.classList.toggle('scrolled', y > 40);
+    toTop.classList.toggle('show', y > 600);
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+  toTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+  /* ── Mobile menu ── */
+  const menuToggle = $('#menuToggle');
+  const navLinks = $('#navLinks');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    const i = menuToggle.querySelector('i');
+    const open = navLinks.classList.contains('active');
+    i.classList.toggle('fa-bars', !open);
+    i.classList.toggle('fa-times', open);
+  });
+  $$('.nav-links a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    const i = menuToggle.querySelector('i');
+    i.classList.remove('fa-times'); i.classList.add('fa-bars');
+  }));
+
+  /* ── Reveal ── */
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('active');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.12, rootMargin:'0px 0px -50px 0px' });
+  $$('[data-reveal]').forEach(el => revealObs.observe(el));
+
+  /* ── Toast ── */
+  let toastTimer = null;
+  function showToast(msg, icon, type){
+    const toast = $('#toast');
+    $('#toastText').textContent = msg;
+    const i = toast.querySelector('i');
+    i.className = 'fas ' + (icon || 'fa-check-circle');
+    toast.classList.remove('success', 'error');
+    if (type) toast.classList.add(type);
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
+  }
+
+  /* ── Language ── */
+  const langBtn = $('#langBtn');
+  function applyLang(){
+    html.dataset.lang = lang;
+    html.lang = lang;
+    html.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+    langBtn.textContent = (lang === 'ar') ? 'EN' : 'AR';
+    renderAll();
+  }
+  langBtn.addEventListener('click', () => {
+    lang = (lang === 'ar') ? 'en' : 'ar';
+    applyLang();
+  });
+
+  /* ── Text ── */
+  const TXT = {
+    ar: {
+      invalidPhone:'رقم هاتف غير صحيح — مثال: 0790000000',
+      memberNotFound:'هذا الرقم غير مسجّل',
+      blocked:'هذا الحساب موقوف',
+      welcomeBack:(n) => `أهلاً بك، ${n}!`,
+      welcomeNew:(n) => `مرحباً بك في النخبة، ${n}!`,
+      registerName:'يرجى إدخال الاسم',
+      logoutDone:'تم تسجيل الخروج',
+      refreshed:'تم تحديث بياناتك',
+      referralCopied:'تم نسخ كود الإحالة',
+      referralCopyFailed:'تعذر النسخ',
+      termsRequired:'يجب الموافقة على الشروط',
+      ageRequired:'يجب تأكيد أنك تبلغ 18+'
+    },
+    en: {
+      invalidPhone:'Invalid phone — e.g. 0790000000',
+      memberNotFound:'This phone is not registered',
+      blocked:'Account blocked',
+      welcomeBack:(n) => `Welcome back, ${n}!`,
+      welcomeNew:(n) => `Welcome to the Elite, ${n}!`,
+      registerName:'Please enter your name',
+      logoutDone:'Logged out',
+      refreshed:'Your data is up to date',
+      referralCopied:'Referral code copied',
+      referralCopyFailed:'Copy failed',
+      termsRequired:'You must accept terms',
+      ageRequired:'You must confirm you are 18+'
+    }
+  };
+  const T = (k, ...args) => {
+    const v = TXT[lang][k];
+    return typeof v === 'function' ? v(...args) : v;
+  };
+
+  /* ══════════════════════════════════════════════════════════
+     LOGIN / REGISTER
+     ══════════════════════════════════════════════════════════ */
+  const stateLogin = $('#stateLogin');
+  const stateRegister = $('#stateRegister');
+  const loginForm = $('#loginForm');
+  const loginPhone = $('#loginPhone');
+  const loginError = $('#loginError');
+  const loginBtn = $('#loginBtn');
+  const registerForm = $('#registerForm');
+  const regName = $('#regName');
+  const regEmail = $('#regEmail');
+  const regBirthday = $('#regBirthday');
+  const regReferral = $('#regReferral');
+  const registerError = $('#registerError');
+  const registerBtn = $('#registerBtn');
+  const backToLogin = $('#backToLogin');
+  let pendingPhone = '';
+
+  function showError(el, msg){
+    el.textContent = msg;
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 4000);
+  }
+
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const phone = loginPhone.value.trim();
+    if (!Loyalty.isValidPhone(phone)){
+      showError(loginError, T('invalidPhone'));
+      return;
+    }
+
+    loginBtn.disabled = true;
+    loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+    setTimeout(async () => {
+      const member = Loyalty.getMember(phone);
+
+      if (!member){
+        pendingPhone = phone;
+        stateLogin.style.display = 'none';
+        stateRegister.style.display = '';
+        regName.value = '';
+        regEmail.value = '';
+        regBirthday.value = '';
+        regReferral.value = '';
+        setTimeout(() => regName.focus(), 200);
+        loginBtn.disabled = false;
+        loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> <span class="lang-ar">دخول</span><span class="lang-en">Enter</span>';
+        return;
+      }
+
+      const res = Loyalty.login(phone);
+      if (!res.ok){
+        showError(loginError, res.reason === 'blocked' ? T('blocked') : T('memberNotFound'));
+        loginBtn.disabled = false;
+        loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> <span class="lang-ar">دخول</span><span class="lang-en">Enter</span>';
+        return;
+      }
+
+      // ⚡ FIX: Load transactions for this member
+      try {
+        await Loyalty.fetchTransactions(phone);
+      } catch(e){ console.warn('[Loyalty] fetchTransactions error:', e); }
+      renderMember();
+
+      showToast(T('welcomeBack', res.member.name), 'fa-crown', 'success');
+      loginPhone.value = '';
+      loginBtn.disabled = false;
+      loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> <span class="lang-ar">دخول</span><span class="lang-en">Enter</span>';
+
+      setTimeout(() => {
+        $('#memberSection').scrollIntoView({ behavior:'smooth', block:'start' });
+      }, 400);
+    }, 500);
+  });
+
+  registerForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = regName.value.trim();
+    if (!name || name.length < 2){
+      showError(registerError, T('registerName'));
+      return;
+    }
+    if (!$('#regTerms').checked){
+      showError(registerError, T('termsRequired'));
+      return;
+    }
+    if (!$('#regAgeConfirm').checked){
+      showError(registerError, T('ageRequired'));
+      return;
+    }
+
+    registerBtn.disabled = true;
+    registerBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+    const res = await Loyalty.createMember(pendingPhone, {
+      name,
+      email: regEmail.value.trim(),
+      birthday: regBirthday.value,
+      marketingConsent: $('#regMarketing').checked,
+      termsConsent: true,
+      referredBy: regReferral.value.trim().toUpperCase()
+    });
+
+    if (!res.ok){
+      var reasons = {
+      'invalid_phone': T('invalidPhone'),
+      'invalid_name': lang === 'ar' ? 'الاسم غير صحيح' : 'Invalid name',
+      'exists': lang === 'ar' ? 'هذا الرقم مسجل بالفعل' : 'Already registered',
+      'network': lang === 'ar' ? 'خطأ في الشبكة' : 'Network error'
+    };
+    showError(registerError, reasons[res.reason] || (lang === 'ar' ? 'حدث خطأ: ' + res.reason : 'Error: ' + res.reason));
+      registerBtn.disabled = false;
+      registerBtn.innerHTML = '<i class="fas fa-crown"></i> <span class="lang-ar">انضم الآن</span><span class="lang-en">Join Now</span>';
+      return;
+    }
+
+    const login = await Loyalty.login(pendingPhone);
+    if (login.ok){
+      showToast(T('welcomeNew', res.member.name), 'fa-crown', 'success');
+      loginPhone.value = '';
+      registerBtn.disabled = false;
+      registerBtn.innerHTML = '<i class="fas fa-crown"></i> <span class="lang-ar">انضم الآن</span><span class="lang-en">Join Now</span>';
+      setTimeout(() => {
+        $('#memberSection').scrollIntoView({ behavior:'smooth', block:'start' });
+      }, 400);
+    }
+  });
+
+  backToLogin.addEventListener('click', () => {
+    stateRegister.style.display = 'none';
+    stateLogin.style.display = '';
+    loginPhone.value = '';
+    loginError.classList.remove('show');
+  });
+
+  loginPhone.addEventListener('input', (e) => {
+    let v = e.target.value.replace(/[^\d+]/g, '');
+    e.target.value = v;
+  });
+
+  /* ── Logout ── */
+  $('#logoutBtn').addEventListener('click', () => {
+    if (!confirm(lang === 'ar' ? 'تسجيل الخروج من حسابك؟' : 'Log out of your account?')) return;
+    Loyalty.logout();
+    showToast(T('logoutDone'), 'fa-right-from-bracket');
+    stateRegister.style.display = 'none';
+    stateLogin.style.display = '';
+  });
+
+  /* ── Refresh ── */
+  $('#refreshMemberBtn').addEventListener('click', async (e) => {
+    const btn = e.currentTarget;
+    const icon = btn.querySelector('i');
+    icon.style.transition = 'transform .6s ease';
+    icon.style.transform = 'rotate(360deg)';
+
+    const member = Loyalty.currentMember();
+    if (member){
+      try {
+        await Loyalty.fetchMembers();
+        await Loyalty.fetchTransactions(member.phone);
+      } catch(err){ console.warn('[Refresh] error:', err); }
+    }
+    renderMember();
+
+    setTimeout(() => { icon.style.transform = ''; }, 650);
+    showToast(T('refreshed'), 'fa-check-circle', 'success');
+  });
+
+  /* ── CTA Join ── */
+  $('#ctaJoinBtn').addEventListener('click', () => {
+    if (Loyalty.isLoggedIn()){
+      $('#memberSection').scrollIntoView({ behavior:'smooth', block:'start' });
+    } else {
+      $('#loginCard').scrollIntoView({ behavior:'smooth', block:'center' });
+      setTimeout(() => loginPhone.focus(), 600);
+    }
+  });
+
+  /* ── Copy Referral ── */
+  $('#copyReferralBtn').addEventListener('click', async () => {
+    const code = $('#referralCodeDisplay').textContent;
+    if (!code || code === '—') return;
+    try {
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(code);
+        showToast(T('referralCopied'), 'fa-check-circle', 'success');
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = code;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+        showToast(T('referralCopied'), 'fa-check-circle', 'success');
+      }
+    } catch(e){
+      showToast(T('referralCopyFailed'), 'fa-times-circle', 'error');
+    }
+  });
+
+  /* ── Transactions reload ── */
+  (function initTxReload(){
+    const btn = document.getElementById('txReloadBtn');
+    if (!btn) return;
+    btn.addEventListener('click', async function(){
+      const member = Loyalty.currentMember();
+      if (!member) return;
+      const icon = btn.querySelector('i');
+      if (icon){
+        icon.style.transition = 'transform .6s ease';
+        icon.style.transform = 'rotate(360deg)';
+      }
+      try {
+        await Loyalty.fetchTransactions(member.phone);
+      } catch(e){ console.warn('[TxReload] error:', e); }
+      renderMember();
+      setTimeout(() => { if (icon) icon.style.transform = ''; }, 650);
+      showToast(lang === 'ar' ? 'تم تحديث السجل' : 'History refreshed', 'fa-check-circle', 'success');
+    });
+  })();
+
+  /* ── FAQ ── */
+  $$('.prive-faq-item').forEach(item => {
+    const q = item.querySelector('.prive-faq-q');
+    q.addEventListener('click', () => {
+      const open = item.classList.contains('open');
+      $$('.prive-faq-item').forEach(i => i.classList.remove('open'));
+      if (!open) item.classList.add('open');
+    });
+  });
+  if ($$('.prive-faq-item')[0]) $$('.prive-faq-item')[0].classList.add('open');
+
+  /* ── Search (demo) ── */
+  $('#searchBtn').addEventListener('click', () => {
+    showToast(lang === 'ar' ? 'البحث قيد التطوير' : 'Search coming soon', 'fa-magnifying-glass');
+  });
+
+  /* ══════════════════════════════════════════════════════════
+     RENDER
+     ══════════════════════════════════════════════════════════ */
+  function getInitials(name){
+    if (!name) return 'P';
+    const parts = name.trim().split(/\s+/);
+    if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
+    return (parts[0].charAt(0) + parts[1].charAt(0)).toUpperCase();
+  }
+
+  function formatDate(iso){
+    if (!iso) return '—';
+    const d = new Date(iso);
+    const pad = n => String(n).padStart(2, '0');
+    return `${d.getFullYear()}/${pad(d.getMonth()+1)}/${pad(d.getDate())}`;
+  }
+
+  function timeAgo(iso){
+    const diff = Date.now() - new Date(iso).getTime();
+    const mins = Math.floor(diff / 60000);
+    if (mins < 60) return lang === 'ar' ? 'منذ قليل' : 'Just now';
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return lang === 'ar' ? `منذ ${hrs} ساعة` : `${hrs}h ago`;
+    const days = Math.floor(hrs / 24);
+    if (days < 30) return lang === 'ar' ? `منذ ${days} يوم` : `${days}d ago`;
+    return formatDate(iso);
+  }
+
+  function renderHeroStats(){
+    const stats = Loyalty.getStats();
+    const el = $('#statMembers');
+    const target = stats.totalMembers;
+    const start = performance.now();
+    const dur = 1200;
+    function tick(now){
+      const p = Math.min((now - start) / dur, 1);
+      el.textContent = Math.floor(p * target);
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(tick);
+
+    $('#statTiers').textContent = Loyalty.TIERS.length;
+    $('#statRewards').textContent = Loyalty.REWARDS.length;
+  }
+
+  function renderTiers(){
+    const currentMember = Loyalty.currentMember();
+    const currentTierId = currentMember ? currentMember.tier : null;
+
+    $('#tiersGrid').innerHTML = Loyalty.TIERS.map(t => {
+      const isCurrent = currentTierId === t.id;
+      const name = lang === 'ar' ? t.nameAr : t.nameEn;
+      const benefits = lang === 'ar' ? t.benefitsAr : t.benefitsEn;
+      const minTxt = t.minPoints === 0
+        ? (lang === 'ar' ? 'البداية' : 'Starter')
+        : t.minPoints.toLocaleString('en-US');
+
+      return '<div class="prive-tier-card ' + (isCurrent ? 'current' : '') + '" style="--tier-color:' + t.color + ';--tier-bg:' + t.bg + '">' +
+        '<div class="prive-tier-icon"><i class="fas ' + t.icon + '"></i></div>' +
+        '<h3 class="prive-tier-name">' + name + '</h3>' +
+        '<p class="prive-tier-min">' +
+          '<span class="lang-ar">من</span><span class="lang-en">From</span>' +
+          ' <strong>' + minTxt + '</strong>' +
+          (t.minPoints > 0 ? ' <span class="lang-ar">PERC</span><span class="lang-en">PERC</span>' : '') +
+        '</p>' +
+        '<div class="prive-tier-benefits">' +
+          benefits.map(b => '<div class="prive-tier-benefit"><i class="fas fa-check"></i><span>' + b + '</span></div>').join('') +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  function renderRewards(){
+    const member = Loyalty.currentMember();
+    const points = member ? member.points : 0;
+
+    $('#rewardsGrid').innerHTML = Loyalty.REWARDS.map(r => {
+      const name = lang === 'ar' ? r.nameAr : r.nameEn;
+      const desc = lang === 'ar' ? r.descAr : r.descEn;
+      const canAfford = points >= r.pointsCost;
+      const style = canAfford
+        ? 'border-color:rgba(201,169,97,.6);background:linear-gradient(140deg,#fffaf0,#fdf5e0)'
+        : '';
+      return '<div class="prive-reward-card" style="' + style + '">' +
+        '<div class="prive-reward-icon"' + (canAfford ? '' : ' style="filter:grayscale(.6);opacity:.7"') + '><i class="fas ' + r.icon + '"></i></div>' +
+        '<h3 class="prive-reward-name">' + name + '</h3>' +
+        '<p class="prive-reward-desc">' + desc + '</p>' +
+        '<div class="prive-reward-cost">' +
+          '<i class="fas fa-coins"></i>' +
+          '<strong>' + r.pointsCost.toLocaleString('en-US') + '</strong>' +
+          '<span>PERC</span>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  function renderMember(){
+    const member = Loyalty.currentMember();
+    const section = $('#memberSection');
+
+    if (!member){
+      section.classList.remove('show');
+      return;
+    }
+    section.classList.add('show');
+
+    $('#welcomeName').textContent = member.name;
+    $('#memberAvatar').textContent = getInitials(member.name);
+    $('#memberName').textContent = member.name;
+    $('#memberPhone').textContent = member.phone;
+    $('#memberPoints').textContent = (member.points || 0).toLocaleString('en-US');
+    $('#statLifetime').textContent = (member.lifetimePoints || 0).toLocaleString('en-US');
+    $('#statOrders').textContent = member.orderCount || 0;
+    $('#statSpent').textContent = (member.totalSpent || 0).toFixed(2) + ' JOD';
+
+    const tier = Loyalty.getTierId(member.points);
+    $('#memberTierName').textContent = lang === 'ar' ? tier.nameAr : tier.nameEn;
+    const badge = $('#memberTierBadge');
+    badge.querySelector('i').className = 'fas ' + tier.icon;
+
+    const prog = Loyalty.getTierProgress(member.points);
+    const wrap = $('#tierProgressWrap');
+    if (prog.next){
+      wrap.style.display = '';
+      $('#nextTierName').textContent = lang === 'ar' ? prog.next.nameAr : prog.next.nameEn;
+      $('#tierPercent').textContent = Math.floor(prog.percent) + '%';
+      setTimeout(() => {
+        $('#tierProgressBar').style.width = prog.percent + '%';
+      }, 200);
+      $('#tierProgressRemaining').innerHTML = lang === 'ar'
+        ? 'باقي <strong style="color:#c9a961">' + prog.remaining + '</strong> PERC'
+        : '<strong style="color:#c9a961">' + prog.remaining + '</strong> PERC to go';
+      $('#tierProgressTotal').textContent = prog.current.minPoints + ' → ' + prog.next.minPoints;
+    } else {
+      wrap.style.display = 'none';
+    }
+
+    // Referral code
+    $('#referralCodeDisplay').textContent = member.referralCode || '—';
+
+    // Transactions
+    const tx = Loyalty.getTransactions(member.phone);
+    $('#txCountLabel').textContent = tx.length + ' ' + (lang === 'ar' ? 'معاملة' : 'transactions');
+
+    const txList = $('#txList');
+    if (!tx.length){
+      txList.innerHTML = '<div style="text-align:center;padding:40px 20px;color:#6b6459">' +
+        '<i class="fas fa-clock-rotate-left" style="font-size:2.4rem;color:#c9a961;opacity:.4;display:block;margin-bottom:12px"></i>' +
+        '<strong style="display:block;color:#1a1a1a;font-weight:800;margin-bottom:4px">' +
+          (lang === 'ar' ? 'لا توجد معاملات بعد' : 'No transactions yet') +
+        '</strong>' +
+        '<small>' + (lang === 'ar' ? 'ستظهر هنا بعد أول طلب مكتمل' : 'Will appear here after first order') + '</small>' +
+      '</div>';
+    } else {
+      txList.innerHTML = tx.slice(0, 20).map(t => {
+        const isEarn = t.amount > 0;
+        const icon = isEarn ? 'fa-plus' : 'fa-minus';
+        const color = isEarn ? '#059669' : '#dc2626';
+        const reasonLabel = getReasonLabel(t.reason);
+        return '<div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(10,10,10,.05)">' +
+          '<div style="width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;background:' + (isEarn ? 'rgba(5,150,105,.12)' : 'rgba(220,38,38,.10)') + ';color:' + color + '">' +
+            '<i class="fas ' + icon + '"></i>' +
+          '</div>' +
+          '<div style="flex:1;min-width:0">' +
+            '<strong style="display:block;font-size:.88rem;color:#1a1a1a;font-weight:800;margin-bottom:2px">' + reasonLabel + '</strong>' +
+            '<small style="font-size:.72rem;color:#6b6459;font-weight:700">' + timeAgo(t.date) + (t.note ? ' · ' + t.note : '') + '</small>' +
+          '</div>' +
+          '<div style="font-family:\'Playfair Display\',serif;font-weight:800;font-size:1rem;color:' + color + '">' +
+            (isEarn ? '+' : '') + t.amount +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+  }
+
+  function getReasonLabel(reason){
+    const labels = {
+      ar: {
+        welcome_bonus: 'مكافأة ترحيبية',
+        admin_add: 'إضافة من الإدارة',
+        admin_set: 'تعديل إداري',
+        admin_remove: 'خصم إداري',
+        order_completed: 'طلب مكتمل',
+        birthday_bonus: 'مكافأة عيد ميلاد',
+        referral_bonus: 'مكافأة إحالة',
+        redemption: 'استبدال مكافأة',
+        order_discount: 'خصم من النقاط'
+      },
+      en: {
+        welcome_bonus: 'Welcome bonus',
+        admin_add: 'Admin credit',
+        admin_set: 'Admin adjustment',
+        admin_remove: 'Admin debit',
+        order_completed: 'Completed order',
+        birthday_bonus: 'Birthday bonus',
+        referral_bonus: 'Referral bonus',
+        redemption: 'Reward redemption',
+        order_discount: 'Points discount'
+      }
+    };
+    return labels[lang][reason] || reason;
+  }
+
+  function renderAll(){
+    renderHeroStats();
+    renderTiers();
+    renderRewards();
+    renderMember();
+    updateCartBadge();
+  }
+
+  function updateCartBadge(){
+    const Cart = window.PercentCart;
+    if (!Cart) return;
+    const count = Cart.getCount();
+    const badge = $('#cartCount');
+    if (badge){
+      badge.textContent = count;
+      badge.classList.toggle('show', count > 0);
+    }
+  }
+
+  Loyalty.onChange(() => {
+    renderMember();
+    renderTiers();
+    renderRewards();
+  });
+
+  if (window.PercentCart){
+    window.PercentCart.onChange(updateCartBadge);
+  }
+
+  applyLang();
+  $('#year').textContent = new Date().getFullYear();
+
+  // ⚡ Wire the reload button
+  (function wireTxReload(){
+    const btn = document.getElementById('txReloadBtn');
+    if (!btn) return;
+    if (btn.dataset.bound === '1') return;
+    btn.dataset.bound = '1';
+    btn.addEventListener('click', async function(){
+      const member = Loyalty.currentMember();
+      if (!member || !member.phone) return;
+      const icon = btn.querySelector('i');
+      if (icon){
+        icon.style.transition = 'transform .6s ease';
+        icon.style.transform = 'rotate(360deg)';
+      }
+      btn.disabled = true;
+      try {
+        await Loyalty.fetchTransactions(member.phone);
+        renderMember();
+        showToast(lang === 'ar' ? 'تم تحديث السجل' : 'History refreshed', 'fa-check-circle', 'success');
+      } catch(e){
+        console.warn('[TxReload] error:', e);
+        showToast(lang === 'ar' ? 'فشل التحديث' : 'Refresh failed', 'fa-times-circle', 'error');
+      }
+      btn.disabled = false;
+      setTimeout(() => { if (icon) icon.style.transform = ''; }, 650);
+    });
+  })();
+
+  // ⚡ AUTO-LOAD: If already logged in, fetch fresh data on page boot
+  (async function bootLoggedInUser(){
+    if (!Loyalty.isLoggedIn()) return;
+
+    const wrap = document.querySelector('.prive-login-wrap');
+    if (wrap){
+      wrap.style.transition = 'opacity .5s ease';
+      wrap.style.opacity = '.35';
+      wrap.style.pointerEvents = 'none';
+    }
+
+    const member = Loyalty.currentMember();
+    if (member && member.phone){
+      try {
+        // ⚡ Ensure we have the latest transactions
+        await Loyalty.fetchTransactions(member.phone);
+        // ⚡ Re-render member card with the loaded data
+        renderMember();
+        console.log('[Boot] Transactions loaded:', Loyalty.getTransactions(member.phone).length);
+      } catch(e){
+        console.warn('[Boot] fetchTransactions failed:', e);
+      }
+    }
+  })();
+
+})();
+</script>
+<script src="cookie-banner.js" defer></script>
+<!-- PHASE 7.1 SW START -->
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function() {
+    navigator.serviceWorker.register("service-worker.js").then(function(reg){
+      console.log("[PWA] Service Worker registered");
+    }).catch(function(err){
+      console.warn("[PWA] SW registration failed:", err);
+    });
+  });
+}
+</script>
+<!-- PHASE 7.1 SW END -->
+</body>
+</html>
