@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شروط الخدمة | PERCENT PERFUME</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<style>
+:root{
+  --navy:#0a0a0a;--navy-deep:#050505;
+  --gold:#c9a961;--gold-light:#e8d4a2;--gold-deep:#a8874a;
+  --bg:#faf8f3;--text:#12172a;--muted:#6b6459;--border:#e5e7eb;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Almarai',sans-serif;background:var(--bg);color:var(--text);line-height:1.9}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle at 12% 8%,rgba(212,175,55,.10),transparent 42%),
+             radial-gradient(circle at 88% 78%,rgba(10,17,40,.06),transparent 46%)}
+h1,h2,h3{font-family:'Playfair Display',serif;color:var(--navy)}
+a{color:var(--gold-deep);text-decoration:none;transition:color .3s}
+a:hover{color:var(--gold)}
+.container{width:92%;max-width:880px;margin:0 auto}
+header{position:sticky;top:0;z-index:100;background:rgba(253,251,247,.92);backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(212,175,55,.2);padding:16px 0}
+.nav-bar{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;letter-spacing:3px;color:var(--navy)}
+.brand-sub{font-family:'Playfair Display',serif;font-size:.5rem;letter-spacing:4px;color:var(--gold);margin-top:2px;display:block}
+.back-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:30px;
+  background:var(--navy);color:var(--gold);font-weight:800;font-size:.82rem;transition:all .3s}
+.back-btn:hover{background:#1a1a1a;transform:translateX(-4px);color:var(--gold)}
+main{padding:60px 0 100px}
+.page-head{text-align:center;margin-bottom:50px}
+.page-head .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--gold);
+  font-size:.78rem;font-weight:800;letter-spacing:4px;margin-bottom:14px;text-transform:uppercase}
+.page-head .eyebrow::before,.page-head .eyebrow::after{content:'';width:30px;height:1px;background:var(--gold)}
+.page-head h1{font-size:clamp(2rem,5vw,3rem);margin-bottom:14px;letter-spacing:2px}
+.page-head p{color:var(--muted);font-size:.95rem;max-width:560px;margin:0 auto}
+.legal-card{background:#faf8f3;border-radius:24px;padding:50px 46px;border:1px solid var(--border);
+  box-shadow:0 20px 50px rgba(10,17,40,.06);position:relative}
+.legal-card::before{content:'';position:absolute;top:0;inset-inline-start:0;width:100%;height:4px;
+  border-radius:24px 24px 0 0;background:linear-gradient(90deg,var(--gold-deep),var(--gold-light),var(--gold-deep))}
+.meta-info{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  padding:14px 18px;border-radius:12px;background:rgba(212,175,55,.06);
+  border:1px dashed rgba(212,175,55,.35);margin-bottom:34px;font-size:.82rem;font-weight:700}
+.meta-info span{color:var(--muted)}
+.meta-info strong{color:var(--gold-deep)}
+.legal-card h2{font-size:1.35rem;margin:38px 0 16px;padding-inline-start:16px;
+  border-inline-start:3px solid var(--gold);display:flex;align-items:center;gap:10px}
+.legal-card h2:first-of-type{margin-top:0}
+.legal-card h2 i{color:var(--gold);font-size:1rem}
+.legal-card h3{font-size:1.05rem;margin:22px 0 10px;color:var(--navy);font-family:'Almarai',sans-serif;font-weight:800}
+.legal-card p{color:#374151;font-size:.94rem;margin-bottom:14px}
+.legal-card ul,.legal-card ol{margin:0 0 18px;padding-inline-start:26px}
+.legal-card li{color:#374151;font-size:.94rem;margin-bottom:8px;line-height:1.85}
+.legal-card li strong{color:var(--navy);font-weight:800}
+.legal-card a{font-weight:700;border-bottom:1px dashed var(--gold)}
+.highlight-box{padding:18px 22px;border-radius:14px;background:linear-gradient(140deg,#f5f1e8,#ebe5d6);
+  border:1px solid rgba(212,175,55,.4);margin:20px 0}
+.highlight-box strong{display:block;color:var(--gold-deep);margin-bottom:6px;font-weight:800}
+.highlight-box p{margin:0;font-size:.9rem}
+.warn-box{padding:18px 22px;border-radius:14px;background:linear-gradient(140deg,#fef2f2,#fee2e2);
+  border:1px solid rgba(239,68,68,.35);margin:20px 0}
+.warn-box strong{display:block;color:#b91c1c;margin-bottom:6px;font-weight:800}
+.warn-box p{margin:0;font-size:.9rem;color:#7f1d1d}
+.contact-box{margin-top:40px;padding:24px;border-radius:16px;background:linear-gradient(140deg,var(--navy),#1a1a1a);
+  color:#faf8f3;text-align:center}
+.contact-box h3{color:var(--gold);font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:10px}
+.contact-box p{color:#a8a29b;font-size:.9rem;margin-bottom:16px}
+.contact-box a{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:10px;
+  background:linear-gradient(120deg,var(--gold),var(--gold-light));color:var(--navy);
+  font-weight:800;font-size:.85rem;border:none;transition:all .3s}
+.contact-box a:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(212,175,55,.4);color:var(--navy)}
+footer{padding:40px 0;text-align:center;border-top:1px solid var(--border);margin-top:60px;color:var(--muted);font-size:.82rem}
+footer a{color:var(--gold-deep);font-weight:700}
+@media (max-width:768px){.legal-card{padding:30px 22px;border-radius:18px}main{padding:40px 0 60px}.page-head{margin-bottom:34px}.meta-info{flex-direction:column;gap:6px}}
+</style>
+<link rel="stylesheet" href="../mobile.css">
+<!-- PHASE 7.2 SEO START -->
+<meta name="description" content="شروط الخدمة وأحكام الاستخدام لموقع PERCENT PERFUME.">
+<meta name="keywords" content="شروط الخدمة, PERCENT PERFUME">
+<meta name="author" content="PERCENT PERFUME">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+
+<link rel="canonical" href="https://percent-perfume.com/legal/terms.html">
+<link rel="alternate" hreflang="ar" href="https://percent-perfume.com/legal/terms.html">
+<link rel="alternate" hreflang="en" href="https://percent-perfume.com/legal/terms.html">
+<link rel="alternate" hreflang="x-default" href="https://percent-perfume.com/legal/terms.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="شروط الخدمة | PERCENT PERFUME">
+<meta property="og:description" content="شروط الخدمة وأحكام الاستخدام لموقع PERCENT PERFUME.">
+<meta property="og:image" content="https://percent-perfume.com/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:url" content="https://percent-perfume.com/legal/terms.html">
+<meta property="og:site_name" content="PERCENT PERFUME">
+<meta property="og:locale" content="ar_JO">
+<meta property="og:locale:alternate" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="شروط الخدمة | PERCENT PERFUME">
+<meta name="twitter:description" content="شروط الخدمة وأحكام الاستخدام لموقع PERCENT PERFUME.">
+<meta name="twitter:image" content="https://percent-perfume.com/icon-512.png">
+<meta name="twitter:site" content="@percentperfume">
+<!-- PHASE 7.2 SEO END -->
+</head>
+<body>
+<header>
+  <div class="container nav-bar">
+    <a href="../index.html" class="brand">
+      <div>
+        <div class="brand-name">PERCENT</div>
+        <span class="brand-sub">PERFUME</span>
+      </div>
+    </a>
+    <a href="../index.html" class="back-btn">
+      <i class="fas fa-arrow-right"></i>
+      <span>الرئيسية</span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-head">
+      <div class="eyebrow">LEGAL</div>
+      <h1>شروط الخدمة</h1>
+      <p>يرجى قراءة هذه الشروط بعناية قبل استخدام موقعنا أو إجراء أي عملية شراء.</p>
+    </div>
+
+    <div class="legal-card">
+      <div class="meta-info">
+        <span>آخر تحديث: <strong>1 أكتوبر 2025</strong></span>
+        <span>النسخة: <strong>1.0</strong></span>
+        <span>ينطبق على: <strong>percent-perfume.com</strong></span>
+      </div>
+
+      <h2><i class="fas fa-handshake"></i> 1. القبول بالشروط</h2>
+      <p>مرحباً بك في PERCENT PERFUME. باستخدامك لهذا الموقع أو إجراء أي عملية شراء، فإنك توافق على الالتزام بهذه الشروط والأحكام ("الشروط"). إذا كنت لا توافق على أي جزء من هذه الشروط، يُرجى عدم استخدام الموقع.</p>
+      <p>نحتفظ بالحق في تعديل هذه الشروط في أي وقت. الاستخدام المستمر للموقع بعد أي تعديل يعني موافقتك على الشروط المحدّثة.</p>
+
+      <h2><i class="fas fa-store"></i> 2. تعريفات</h2>
+      <ul>
+        <li><strong>"نحن"، "لنا"، "المتجر":</strong> يشير إلى PERCENT PERFUME.</li>
+        <li><strong>"أنت"، "العميل":</strong> أي شخص يستخدم الموقع أو يشتري منتجاتنا.</li>
+        <li><strong>"المنتجات":</strong> العطور ومستحضرات التجميل المعروضة على الموقع.</li>
+        <li><strong>"الطلب":</strong> طلب شراء منتج أو أكثر من خلال الموقع.</li>
+      </ul>
+
+      <h2><i class="fas fa-cart-shopping"></i> 3. الطلبات والدفع</h2>
+      <h3>3.1 إجراء الطلب:</h3>
+      <ul>
+        <li>يجب أن تكون بعمر 18 عاماً على الأقل لإجراء طلب.</li>
+        <li>يجب تقديم معلومات دقيقة وكاملة (الاسم، الهاتف، العنوان).</li>
+        <li>استلام تأكيد الطلب لا يعني قبوله النهائي — قد نرفض أي طلب لأسباب مشروعة.</li>
+      </ul>
+
+      <h3>3.2 طرق الدفع المتاحة:</h3>
+      <ul>
+        <li><strong>الدفع عند الاستلام (COD):</strong> دفع نقداً عند وصول الطلب.</li>
+        <li><strong>التحويل البنكي / CliQ:</strong> تحويل المبلغ ورفع صورة الإيصال.</li>
+      </ul>
+
+      <h3>3.3 الأسعار:</h3>
+      <ul>
+        <li>جميع الأسعار بالدينار الأردني (JOD) وتشمل الضرائب المطبقة.</li>
+        <li>نحتفظ بالحق في تعديل الأسعار دون إشعار مسبق.</li>
+        <li>السعر المعروض عند إتمام الطلب هو السعر النهائي الملزم.</li>
+      </ul>
+
+      <div class="highlight-box">
+        <strong><i class="fas fa-check-circle"></i> لا رسوم خفية</strong>
+        <p>السعر المعروض في صفحة إتمام الطلب هو السعر النهائي. لا نضيف أي رسوم غير مذكورة بوضوح.</p>
+      </div>
+
+      <h2><i class="fas fa-truck-fast"></i> 4. التوصيل والشحن</h2>
+      <ul>
+        <li>نوصل لجميع محافظات المملكة الأردنية.</li>
+        <li>مدة التوصيل التقديرية: 1-4 أيام عمل حسب المحافظة.</li>
+        <li>قد تتأخر بعض الطلبات لأسباب خارجة عن إرادتنا (ظروف جوية، إجازات رسمية).</li>
+        <li>رسوم التوصيل تُحسب وتُعرض بوضوح في صفحة إتمام الطلب.</li>
+      </ul>
+
+      <h2><i class="fas fa-rotate-left"></i> 5. الإرجاع والاستبدال</h2>
+      <p>تفاصيل كاملة في <a href="refund.html">سياسة الاسترداد</a>. الملخص:</p>
+      <ul>
+        <li>يحق لك طلب الإرجاع خلال <strong>14 يوماً</strong> من استلام الطلب.</li>
+        <li>يجب أن يكون المنتج في حالته الأصلية وغير مستخدم.</li>
+        <li>المنتجات المفتوحة أو المستخدمة غير قابلة للإرجاع لأسباب صحية.</li>
+        <li>تكاليف الإرجاع على العميل إلا إذا كان الخطأ من طرفنا.</li>
+      </ul>
+
+      <h2><i class="fas fa-crown"></i> 6. نادي الولاء (PERCENT CLUB)</h2>
+      <ul>
+        <li>الانضمام مجاني تماماً.</li>
+        <li>النقاط تُكتسب عند إتمام الطلبات.</li>
+        <li>النقاط قابلة للاستبدال وفق المكافآت المتاحة.</li>
+        <li>نحتفظ بالحق في تعديل برنامج الولاء أو إيقافه بإشعار مسبق.</li>
+        <li>لا يمكن تحويل النقاط إلى نقود أو بيعها أو مشاركتها.</li>
+        <li>يحق لنا إلغاء عضوية أي مستخدم يساء استخدام البرنامج.</li>
+      </ul>
+
+      <h2><i class="fas fa-user-shield"></i> 7. حساب المستخدم</h2>
+      <ul>
+        <li>أنت مسؤول عن الحفاظ على سرية بيانات الدخول الخاصة بك.</li>
+        <li>يُمنع استخدام الموقع لأي غرض غير قانوني.</li>
+        <li>يُمنع محاولة اختراق الموقع أو إيذاء البنية التحتية.</li>
+        <li>يُمنع إنشاء حسابات وهمية أو استخدام معلومات مزيفة.</li>
+      </ul>
+
+      <h2><i class="fas fa-copyright"></i> 8. حقوق الملكية الفكرية</h2>
+      <p>جميع المحتويات على الموقع (النصوص، الصور، الشعارات، التصاميم، الأيقونات) مملوكة لـ PERCENT PERFUME ومحمية بموجب قوانين حقوق النشر والعلامات التجارية.</p>
+      <p>يُمنع:</p>
+      <ul>
+        <li>نسخ أو توزيع أي محتوى دون إذن كتابي مسبق.</li>
+        <li>استخدام علامتنا التجارية أو شعارنا دون ترخيص.</li>
+        <li>إعادة بيع منتجاتنا دون اتفاق مسبق.</li>
+      </ul>
+
+      <h2><i class="fas fa-exclamation-triangle"></i> 9. حدود المسؤولية</h2>
+      <div class="warn-box">
+        <strong>تنبيه مهم</strong>
+        <p>لا نتحمل المسؤولية عن أي أضرار غير مباشرة أو عرضية أو تبعية ناتجة عن استخدام الموقع أو المنتجات، بما في ذلك (على سبيل المثال لا الحصر): تأخر التوصيل لأسباب خارجة عن سيطرتنا، أو ردود فعل تحسسية تجاه المنتجات.</p>
+      </div>
+      <p>مسؤوليتنا الإجمالية محدودة بقيمة الطلب المعني.</p>
+
+      <h2><i class="fas fa-ban"></i> 10. إلغاء الطلبات</h2>
+      <ul>
+        <li>يمكنك إلغاء الطلب قبل شحنه عبر التواصل معنا.</li>
+        <li>بعد الشحن، لا يمكن الإلغاء — يُطبّق بدلاً من ذلك <a href="refund.html">سياسة الاسترداد</a>.</li>
+        <li>نحتفظ بالحق في إلغاء أي طلب إذا كنا نشتبه في وجود احتيال.</li>
+      </ul>
+
+      <h2><i class="fas fa-scale-balanced"></i> 11. القانون المطبق</h2>
+      <p>تخضع هذه الشروط وتُفسّر وفقاً لقوانين المملكة الأردنية الهاشمية. أي نزاع يُحل عبر المحاكم الأردنية المختصة.</p>
+
+      <h2><i class="fas fa-bell"></i> 12. الإشعارات</h2>
+      <p>قد نرسل لك إشعارات حول الطلبات، التحديثات، والعروض عبر:</p>
+      <ul>
+        <li>البريد الإلكتروني المسجّل.</li>
+        <li>رقم الهاتف (رسائل نصية أو واتساب).</li>
+        <li>الإشعارات داخل الموقع.</li>
+      </ul>
+      <p>يمكنك إلغاء الاشتراك في الرسائل التسويقية في أي وقت.</p>
+
+      <h2><i class="fas fa-circle-check"></i> 13. أحكام عامة</h2>
+      <ul>
+        <li>إذا كان أي شرط غير قابل للتنفيذ، تبقى باقي الشروط سارية المفعول.</li>
+        <li>عدم ممارستنا لأي حق لا يعني التنازل عنه.</li>
+        <li>هذه الشروط تُشكل الاتفاقية الكاملة بينك وبين المتجر.</li>
+      </ul>
+
+      <h2><i class="fas fa-envelope"></i> 14. الاتصال بنا</h2>
+      <p>لأي استفسار حول هذه الشروط، تواصل معنا:</p>
+
+      <div class="contact-box">
+        <h3>هل لديك استفسار؟</h3>
+        <p>فريقنا جاهز للمساعدة في أي وقت</p>
+        <a href="../customer-service.html">
+          <i class="fas fa-headset"></i>
+          تواصل معنا
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> PERCENT PERFUME. جميع الحقوق محفوظة.</p>
+    <p style="margin-top:8px">
+      <a href="privacy.html">سياسة الخصوصية</a> ·
+      <a href="refund.html">سياسة الاسترداد</a> ·
+      <a href="cookies.html">سياسة الكوكيز</a>
+    </p>
+  </div>
+</footer>
+
+<script src="../cookie-banner.js" defer></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
