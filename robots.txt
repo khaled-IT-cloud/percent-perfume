@@ -1,0 +1,88 @@
+# ============================================================
+# PERCENT PERFUME — robots.txt
+# https://percent-perfume.com
+# ============================================================
+
+# ─── All crawlers (default) ───
+User-agent: *
+Allow: /
+
+# ─── Do NOT index sensitive/admin pages ───
+Disallow: /admin.html
+Disallow: /cart.html
+Disallow: /unsubscribe.html
+Disallow: /legal/
+Disallow: /supabase/
+Disallow: /_backups/
+Disallow: /_private/
+Disallow: /*.json$
+Disallow: /*.psd$
+
+# ─── Search results (if applicable) ───
+Disallow: /*?q=
+Disallow: /*?s=
+Disallow: /*?ref=
+Disallow: /*?utm_
+
+# ─── Allow these important files ───
+Allow: /mobile.css
+Allow: /loyalty-prive.css
+Allow: /icon-*.png
+Allow: /favicon.svg
+Allow: /manifest.json
+
+# ─── Crawl delay ───
+Crawl-delay: 1
+
+# ═══════════════════════════════════════════════════════════
+# SPECIFIC SEARCH ENGINES
+# ═══════════════════════════════════════════════════════════
+
+# Google
+User-agent: Googlebot
+Allow: /
+Disallow: /admin.html
+Disallow: /cart.html
+Disallow: /_backups/
+Disallow: /_private/
+
+# Google Images
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /admin.html
+Disallow: /cart.html
+Crawl-delay: 2
+
+# Facebook
+User-agent: facebookexternalhit
+Allow: /
+
+# WhatsApp
+User-agent: WhatsApp
+Allow: /
+
+# Twitter
+User-agent: Twitterbot
+Allow: /
+
+# ─── Block scrapers/SEO tools ───
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# ═══════════════════════════════════════════════════════════
+# SITEMAPS
+# ═══════════════════════════════════════════════════════════
+Sitemap: https://percent-perfume.com/sitemap.xml

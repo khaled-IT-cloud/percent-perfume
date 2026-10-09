@@ -1,0 +1,15 @@
+/* TEAM */
+  Business: PERCENT PERFUME
+  Location: Amman, Jordan
+  Email: info@percent-perfume.com
+  Instagram: @percent._.perfume
+
+/* SITE */
+  Language: Arabic, English
+  Doctype: HTML5
+  Framework: Vanilla JS + Supabase
+  Hosting: Netlify
+  Domain: percent-perfume.com
+
+/* THANKS */
+  To all our loyal customers who make this journey possible.

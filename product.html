@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تفاصيل المنتج | PERCENT PERFUME</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<style>
+:root{
+  --bg:#faf8f3;--bg-2:#f5f1e8;--card:#ffffff;
+  --black:#0a0a0a;--black-2:#16161a;--black-deep:#050505;
+  --champagne:#c9a961;--champagne-lt:#e8d4a2;--champagne-dk:#a8874a;
+  --ivory:#f5f1e8;--ivory-2:#faf8f3;--cream:#ebe5d6;
+  --text:#1a1a1a;--text-muted:#6b6459;--text-dim:#8a8478;
+  --border:rgba(10,10,10,.08);--border-gold:rgba(201,169,97,.28);
+  --success:#2d7a4f;--danger:#b91c1c;--warning:#b45309;
+  --ease:cubic-bezier(.22,1,.36,1);--t:all .3s var(--ease);
+  --shadow-sm:0 2px 8px rgba(10,10,10,.05);
+  --shadow-md:0 8px 24px rgba(10,10,10,.08);
+  --shadow-lg:0 20px 50px rgba(10,10,10,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Almarai',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 12% 8%, rgba(201,169,97,.08), transparent 42%),radial-gradient(circle at 88% 78%, rgba(10,10,10,.03), transparent 46%)}
+h1,h2,h3,h4,.english-text{font-family:'Playfair Display',serif}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+img{max-width:100%;display:block}
+input,textarea{font-family:inherit}
+.container{width:92%;max-width:1240px;margin:0 auto}
+::selection{background:var(--champagne);color:var(--black)}
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--champagne),var(--champagne-dk));border-radius:10px}
+html[data-lang="ar"] .lang-en{display:none !important}
+html[data-lang="en"] .lang-ar{display:none !important}
+.gold-text{background:linear-gradient(100deg,#a8874a 0%,#c9a961 22%,#e8d4a2 45%,#c9a961 68%,#a8874a 100%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:220% center}}
+
+/* ─── Preloader ─── */
+#preloader{position:fixed;inset:0;z-index:9999;background:radial-gradient(circle at 50% 45%,#1a1a1a 0%,#050505 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .8s ease,visibility .8s ease}
+#preloader.hidden{opacity:0;visibility:hidden}
+.pre-logo{width:120px;height:120px;animation:preFloat 2.6s ease-in-out infinite}
+@keyframes preFloat{0%,100%{transform:translateY(0) scale(1);filter:drop-shadow(0 0 14px rgba(201,169,97,.35))}50%{transform:translateY(-12px) scale(1.04);filter:drop-shadow(0 0 28px rgba(201,169,97,.65))}}
+.pre-bar{width:190px;height:2px;background:rgba(201,169,97,.16);overflow:hidden;border-radius:2px}
+.pre-bar span{display:block;height:100%;width:40%;background:linear-gradient(90deg,transparent,#c9a961,transparent);animation:preSlide 1.2s ease-in-out infinite}
+@keyframes preSlide{0%{transform:translateX(-120%)}100%{transform:translateX(320%)}}
+.pre-text{font-family:'Playfair Display',serif;letter-spacing:8px;color:#c9a961;font-size:.8rem;opacity:.8}
+.scroll-progress{position:fixed;top:0;inset-inline-start:0;height:3px;width:0;z-index:2500;background:linear-gradient(90deg,#a8874a,#c9a961,#e8d4a2);box-shadow:0 0 14px rgba(201,169,97,.9);transition:width .1s linear}
+
+/* ─── Header ─── */
+header{position:fixed;top:0;inset-inline-start:0;width:100%;padding:22px 0;z-index:1200;transition:var(--t);background:transparent}
+header.scrolled{padding:12px 0;background:rgba(250,248,243,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 8px 32px rgba(10,10,10,.07);border-bottom:1px solid var(--border-gold)}
+.nav-container{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;transition:var(--t)}
+.brand:hover{transform:translateY(-2px)}
+.brand-mark{width:46px;height:46px;flex-shrink:0;filter:drop-shadow(0 4px 12px rgba(201,169,97,.35));transition:var(--t)}
+.brand:hover .brand-mark{transform:rotate(-8deg) scale(1.06)}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-name{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;letter-spacing:4px;color:var(--black)}
+.brand-sub{font-family:'Playfair Display',serif;font-size:.52rem;letter-spacing:5px;color:var(--champagne);margin-top:3px}
+.nav-links{display:flex;gap:34px;align-items:center}
+.nav-links a{font-weight:700;color:var(--black);font-size:.93rem;position:relative;transition:var(--t);padding:4px 0}
+.nav-links a::after{content:'';position:absolute;bottom:0;inset-inline-start:0;width:0;height:2px;background:linear-gradient(90deg,var(--champagne),var(--champagne-lt));transition:width .45s var(--ease)}
+.nav-links a:hover{color:var(--champagne)}
+.nav-links a:hover::after{width:100%}
+.nav-icons{display:flex;gap:14px;align-items:center}
+.icon-btn{width:42px;height:42px;border-radius:50%;border:1px solid rgba(10,10,10,.12);background:transparent;color:var(--black);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;position:relative;transition:var(--t)}
+.icon-btn:hover{background:var(--black);color:var(--champagne);border-color:var(--black);transform:translateY(-3px)}
+.cart-count{position:absolute;top:-5px;inset-inline-end:-5px;min-width:20px;height:20px;background:var(--champagne);color:var(--black);font-size:.7rem;font-weight:800;border-radius:20px;display:flex;align-items:center;justify-content:center;padding:0 5px;transform:scale(0);transition:transform .35s var(--ease)}
+.cart-count.show{transform:scale(1)}
+.cart-count.pop{animation:pop .45s var(--ease)}
+@keyframes pop{0%{transform:scale(1)}45%{transform:scale(1.5)}100%{transform:scale(1)}}
+.lang-switch{background:transparent;border:1px solid var(--black);color:var(--black);padding:8px 16px;cursor:pointer;font-weight:800;font-size:.78rem;letter-spacing:1px;border-radius:30px;transition:var(--t)}
+.lang-switch:hover{background:var(--black);color:var(--champagne);transform:translateY(-2px)}
+.menu-toggle{display:none;font-size:1.4rem;cursor:pointer;color:var(--black);width:42px;height:42px;align-items:center;justify-content:center}
+
+/* ─── Hero ─── */
+.product-page{padding:130px 0 60px;position:relative}
+.breadcrumb{display:inline-flex;align-items:center;gap:12px;font-size:.8rem;color:var(--text-muted);font-weight:700;margin-bottom:26px;letter-spacing:1px;padding:8px 22px;border-radius:40px;background:rgba(255,255,255,.75);border:1px solid var(--border-gold);backdrop-filter:blur(8px);flex-wrap:wrap}
+.breadcrumb a{transition:var(--t)}
+.breadcrumb a:hover{color:var(--champagne)}
+.breadcrumb i{font-size:.6rem;color:var(--champagne)}
+.breadcrumb .current{color:var(--champagne-dk);font-weight:800}
+
+.product-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:flex-start}
+
+/* Gallery */
+.gallery{position:sticky;top:100px}
+.gallery-main{position:relative;aspect-ratio:1;border-radius:22px;overflow:hidden;background:linear-gradient(155deg,var(--cream),var(--ivory-2));border:1px solid var(--border-gold);box-shadow:var(--shadow-md);display:flex;align-items:center;justify-content:center}
+.gallery-main svg.placeholder{width:180px;height:180px;opacity:.35;position:absolute}
+.gallery-main img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;opacity:0;transition:opacity .4s ease}
+.gallery-main img.active{opacity:1}
+.gallery-tag{position:absolute;top:18px;inset-inline-start:18px;z-index:5;padding:6px 16px;border-radius:30px;font-size:.72rem;font-weight:800;letter-spacing:1px;background:var(--black);color:var(--champagne)}
+.gallery-tag.sale{background:linear-gradient(120deg,#c0392b,#b91c1c);color:#fff}
+.gallery-tag.best{background:linear-gradient(120deg,var(--champagne),var(--champagne-lt));color:var(--black)}
+.gallery-tag.new{background:var(--black);color:var(--champagne)}
+.gallery-tag.luxe{background:linear-gradient(120deg,#4a3560,#2d1e3d);color:var(--champagne-lt)}
+
+.gallery-dots{position:absolute;bottom:16px;inset-inline-start:50%;transform:translateX(-50%);z-index:5;display:flex;gap:6px;padding:6px 12px;background:rgba(10,10,10,.55);backdrop-filter:blur(8px);border-radius:20px;border:1px solid rgba(201,169,97,.35)}
+.gallery-dots .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer;transition:var(--t);border:none;padding:0}
+.gallery-dots .dot:hover{background:rgba(255,255,255,.85)}
+.gallery-dots .dot.active{background:var(--champagne);width:22px;border-radius:10px}
+
+.gallery-thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:10px;margin-top:16px}
+.gallery-thumb{aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--cream);border:2px solid var(--border);cursor:pointer;transition:var(--t);position:relative}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover}
+.gallery-thumb:hover{border-color:var(--champagne-lt);transform:translateY(-2px)}
+.gallery-thumb.active{border-color:var(--champagne);box-shadow:0 0 0 3px rgba(201,169,97,.2)}
+
+/* Info */
+.product-info{padding-top:20px}
+.product-brand{font-size:.78rem;color:var(--champagne-dk);font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px}
+.product-name-ar{font-family:'Almarai',sans-serif;font-size:2rem;color:var(--black);font-weight:800;line-height:1.2;margin-bottom:6px}
+.product-name-en{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--text-muted);font-style:italic;margin-bottom:20px}
+.product-rating{display:flex;align-items:center;gap:12px;margin-bottom:22px;padding:12px 18px;background:var(--ivory-2);border-radius:12px;border:1px solid var(--border)}
+.product-rating .stars{color:var(--champagne);font-size:.95rem;letter-spacing:2px}
+.product-rating strong{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--champagne-dk)}
+.product-rating small{font-size:.78rem;color:var(--text-muted);font-weight:700}
+.product-rating a{color:var(--champagne-dk);text-decoration:underline;font-weight:800;cursor:pointer;margin-inline-start:auto}
+
+.product-price-box{display:flex;align-items:baseline;gap:14px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px dashed var(--border-gold)}
+.price-current{font-family:'Playfair Display',serif;font-size:2.6rem;color:var(--champagne-dk);font-weight:800;line-height:1}
+.price-current small{font-size:1rem;color:var(--text-muted);margin-inline-start:6px;font-family:'Almarai',sans-serif;font-weight:700}
+.price-old{font-size:1.1rem;color:#b8b2a5;text-decoration:line-through;font-weight:700}
+.price-discount{background:var(--danger);color:#fff;padding:4px 10px;border-radius:6px;font-size:.72rem;font-weight:800;letter-spacing:.5px}
+
+.product-notes{margin-bottom:22px}
+.product-notes h4{font-size:.78rem;color:var(--text-muted);font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.product-notes h4 i{color:var(--champagne)}
+.notes-list{display:flex;flex-wrap:wrap;gap:8px}
+.note-pill{padding:6px 14px;border-radius:20px;background:rgba(201,169,97,.12);color:var(--champagne-dk);font-size:.78rem;font-weight:800;border:1px solid var(--border-gold)}
+
+.product-desc{font-size:.95rem;color:var(--text);line-height:1.9;margin-bottom:24px}
+.product-desc p{margin-bottom:10px}
+
+.qty-add-row{display:flex;gap:12px;margin-bottom:16px;align-items:stretch}
+.qty-selector{display:flex;align-items:center;background:var(--ivory-2);border:1.5px solid var(--border);border-radius:12px;padding:4px;flex-shrink:0}
+.qty-selector button{width:40px;height:40px;border-radius:8px;background:transparent;color:var(--black);font-size:1rem;font-weight:800;display:flex;align-items:center;justify-content:center;transition:var(--t)}
+.qty-selector button:hover:not(:disabled){background:var(--black);color:var(--champagne)}
+.qty-selector button:disabled{opacity:.3;cursor:not-allowed}
+.qty-selector input{width:52px;text-align:center;background:transparent;border:none;font-size:1.05rem;font-weight:800;color:var(--black);outline:none}
+.add-to-cart-main{flex:1;padding:14px 24px;border-radius:12px;background:linear-gradient(120deg,var(--black),var(--black-2));color:var(--champagne);font-weight:800;font-size:1rem;display:flex;align-items:center;justify-content:center;gap:10px;transition:var(--t);box-shadow:0 6px 18px rgba(10,10,10,.2)}
+.add-to-cart-main:hover{background:linear-gradient(120deg,var(--champagne),var(--champagne-lt));color:var(--black);transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,169,97,.4)}
+.add-to-cart-main.added{background:linear-gradient(120deg,var(--success),#1f6b3d);color:#fff}
+
+.wishlist-btn{width:56px;height:56px;border-radius:12px;background:var(--ivory-2);border:1.5px solid var(--border);color:var(--text-muted);display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:var(--t);flex-shrink:0}
+.wishlist-btn:hover{border-color:var(--danger);color:var(--danger);transform:translateY(-2px)}
+.wishlist-btn.active{background:var(--danger);border-color:var(--danger);color:#fff}
+
+.share-row{display:flex;gap:8px;align-items:center;font-size:.82rem;color:var(--text-muted);font-weight:700;margin-bottom:24px}
+.share-row span{margin-inline-end:6px}
+.share-row button{width:36px;height:36px;border-radius:50%;background:var(--ivory-2);border:1px solid var(--border);color:var(--text-muted);display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:var(--t)}
+.share-row button:hover{background:var(--black);color:var(--champagne);border-color:var(--black);transform:translateY(-2px)}
+
+.trust-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:16px;background:var(--ivory-2);border-radius:14px;border:1px solid var(--border)}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:.78rem;color:var(--text-muted);font-weight:700}
+.trust-item i{width:32px;height:32px;border-radius:50%;background:rgba(201,169,97,.12);border:1px solid var(--border-gold);color:var(--champagne);display:flex;align-items:center;justify-content:center;font-size:.82rem;flex-shrink:0}
+
+/* ─── Tabs ─── */
+.tabs-section{padding:60px 0 40px}
+.tabs-nav{display:flex;gap:6px;border-bottom:2px solid var(--border);margin-bottom:30px;overflow-x:auto;padding-bottom:0}
+.tab-btn{padding:14px 24px;color:var(--text-muted);font-weight:800;font-size:.9rem;border-bottom:3px solid transparent;transition:var(--t);white-space:nowrap;display:inline-flex;align-items:center;gap:8px;background:transparent;cursor:pointer}
+.tab-btn i{font-size:.85rem;color:var(--champagne)}
+.tab-btn:hover{color:var(--black)}
+.tab-btn.active{color:var(--champagne-dk);border-bottom-color:var(--champagne)}
+.tab-panel{display:none;animation:fadeIn .3s ease}
+.tab-panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.tab-content{background:var(--card);border-radius:18px;padding:28px;border:1px solid var(--border);box-shadow:var(--shadow-sm);line-height:1.9;font-size:.95rem;color:var(--text)}
+.tab-content h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--black);margin-bottom:14px}
+.tab-content p{margin-bottom:12px}
+
+/* Reviews inline */
+.review-summary{display:grid;grid-template-columns:200px 1fr;gap:30px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.review-big-score{text-align:center}
+.review-big-score strong{display:block;font-family:'Playfair Display',serif;font-size:3rem;color:var(--champagne-dk);line-height:1}
+.review-big-score .stars{color:var(--champagne);font-size:1rem;letter-spacing:3px;margin:8px 0 4px}
+.review-big-score small{color:var(--text-muted);font-size:.8rem;font-weight:700}
+.review-bars{display:flex;flex-direction:column;gap:6px;justify-content:center}
+.review-bar-row{display:flex;align-items:center;gap:10px;font-size:.82rem}
+.review-bar-row span:first-child{min-width:44px;color:var(--text-muted);font-weight:800}
+.review-bar-row .bar{flex:1;height:10px;background:var(--ivory-2);border-radius:10px;overflow:hidden}
+.review-bar-row .bar span{display:block;height:100%;background:linear-gradient(90deg,var(--champagne),var(--champagne-dk));border-radius:10px;transition:width .8s var(--ease)}
+.review-bar-row small{min-width:32px;text-align:end;font-weight:800;color:var(--text-muted)}
+.reviews-list{display:flex;flex-direction:column;gap:14px}
+.review-item{padding:18px;background:var(--ivory-2);border:1px solid var(--border);border-radius:14px}
+.review-item-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+.review-item-author{font-weight:800;color:var(--black);font-size:.9rem;display:flex;align-items:center;gap:8px}
+.verified-badge{display:inline-flex;align-items:center;gap:4px;font-size:.68rem;font-weight:800;color:var(--success);padding:2px 8px;border-radius:20px;background:rgba(45,122,79,.12)}
+.review-item-stars{color:var(--champagne);letter-spacing:1.5px;font-size:.85rem}
+.review-item-date{font-size:.72rem;color:var(--text-muted);font-weight:700;margin-top:4px}
+.review-item-title{font-weight:800;color:var(--black);font-size:.95rem;margin:6px 0}
+.review-item-comment{font-size:.88rem;color:var(--text);line-height:1.7}
+.review-item-reply{margin-top:12px;padding:12px 14px;background:linear-gradient(140deg,#fff9ec,#fdf3dd);border:1px solid var(--border-gold);border-radius:10px;font-size:.82rem}
+.review-item-reply strong{color:var(--champagne-dk);display:block;margin-bottom:4px;font-weight:800}
+.reviews-empty{padding:40px 20px;text-align:center;color:var(--text-muted)}
+.reviews-empty i{font-size:2.4rem;color:rgba(201,169,97,.4);display:block;margin-bottom:12px}
+.reviews-loading{padding:40px 20px;text-align:center;color:var(--text-muted)}
+.reviews-loading i{font-size:1.6rem;color:var(--champagne);display:block;margin-bottom:10px;animation:spin 1.2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Related */
+.related-section{padding:60px 0 100px}
+.section-header{text-align:center;margin-bottom:40px}
+.section-header .eyebrow{display:inline-flex;align-items:center;gap:12px;color:var(--champagne);font-size:.78rem;font-weight:800;letter-spacing:4px;margin-bottom:14px;text-transform:uppercase}
+.section-header .eyebrow::before,.section-header .eyebrow::after{content:'';width:30px;height:1px;background:var(--champagne)}
+.section-header h2{font-size:clamp(1.6rem,3.5vw,2.2rem);color:var(--black);margin-bottom:8px}
+.section-header p{color:var(--text-muted);font-size:.95rem}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px}
+.product-card{position:relative;background:var(--card);border-radius:20px;padding:18px;border:1px solid var(--border);transition:var(--t);display:flex;flex-direction:column;text-align:center;cursor:pointer}
+.product-card:hover{border-color:var(--border-gold);box-shadow:var(--shadow-md);transform:translateY(-4px)}
+.product-card .product-media{position:relative;height:230px;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,var(--cream),var(--ivory-2));margin-bottom:14px;display:flex;align-items:center;justify-content:center}
+.product-card .product-media svg.placeholder{width:80px;height:80px;opacity:.4;position:absolute}
+.product-card .product-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;transition:transform .8s var(--ease)}
+.product-card:hover .product-media img{transform:scale(1.06)}
+.product-card .product-tag{position:absolute;top:10px;inset-inline-start:10px;z-index:5;padding:4px 12px;border-radius:20px;font-size:.65rem;font-weight:800;background:var(--black);color:var(--champagne)}
+.product-card .product-cat{font-size:.68rem;color:var(--champagne-dk);font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.product-card .product-title-ar{font-size:1rem;color:var(--black);font-weight:800;margin-bottom:4px;line-height:1.4}
+.product-card .product-title-en{font-family:'Playfair Display',serif;font-size:.78rem;color:var(--text-muted);font-style:italic;margin-bottom:10px}
+.product-card .product-price-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:auto}
+.product-card .price-now{color:var(--champagne-dk);font-size:1.15rem;font-weight:800;font-family:'Playfair Display',serif}
+.product-card .price-old{font-size:.8rem;color:#b8b2a5;text-decoration:line-through}
+
+/* Not found */
+.not-found{padding:160px 0 100px;text-align:center}
+.not-found i{font-size:4rem;color:var(--champagne);display:block;margin-bottom:24px;opacity:.5}
+.not-found h1{font-size:2rem;color:var(--black);margin-bottom:12px}
+.not-found p{color:var(--text-muted);margin-bottom:30px}
+.not-found .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:12px;background:var(--black);color:var(--champagne);font-weight:800;font-size:.9rem;transition:var(--t)}
+.not-found .btn:hover{background:var(--black-2);transform:translateY(-2px)}
+
+/* Footer */
+footer{background:var(--black-deep);padding:70px 0 26px;color:#fff;position:relative}
+footer::before{content:'';position:absolute;top:0;inset-inline-start:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,97,.6),transparent)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:46px;margin-bottom:50px}
+.footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.footer-brand svg{width:40px;height:40px}
+.footer-brand .brand-name{color:var(--champagne)}
+.footer-col h3{color:var(--champagne);font-size:1rem;margin-bottom:20px;font-family:'Almarai',sans-serif;font-weight:800;letter-spacing:1px}
+.footer-col p,.footer-col a{color:#8a8478;margin-bottom:12px;display:block;transition:var(--t);font-size:.9rem}
+.footer-col a:hover{color:var(--champagne);transform:translateX(-6px)}
+html[dir="ltr"] .footer-col a:hover{transform:translateX(6px)}
+.footer-col a i{width:16px;margin-inline-end:8px;color:var(--champagne);font-size:.85rem}
+.social-icons{display:flex;gap:12px;margin-top:20px}
+.social-icons a{width:42px;height:42px;border:1px solid rgba(138,132,120,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#8a8478;transition:var(--t);margin:0}
+.social-icons a:hover{background:var(--champagne);border-color:var(--champagne);color:var(--black);transform:translateY(-6px) rotate(8deg) scale(1.06)}
+.footer-bottom{text-align:center;padding-top:22px;font-size:.84rem;color:#6a6357;border-top:1px solid rgba(255,255,255,.06)}
+
+/* Cart drawer (reuse from cart-ui) */
+.overlay{position:fixed;inset:0;background:rgba(5,5,5,.6);backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:var(--t);z-index:1400}
+.overlay.show{opacity:1;visibility:visible}
+.cart-drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,92vw);z-index:1500;background:var(--bg);display:flex;flex-direction:column;transform:translateX(105%);transition:transform .55s var(--ease);box-shadow:-30px 0 70px rgba(0,0,0,.3)}
+html[dir="ltr"] .cart-drawer{right:auto;left:0;transform:translateX(-105%)}
+html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
+.cart-drawer.open{transform:translateX(0)}
+.cart-head{padding:22px 26px;display:flex;align-items:center;justify-content:space-between;background:var(--black);color:#fff}
+.cart-head h3{font-size:1.1rem;color:var(--champagne);font-family:'Almarai',sans-serif;font-weight:800}
+.cart-head button{background:transparent;border:none;color:#fff;font-size:1.1rem;cursor:pointer;transition:var(--t)}
+.cart-head button:hover{color:var(--champagne);transform:rotate(90deg)}
+.cart-body{flex:1;overflow-y:auto;padding:20px 24px}
+.cart-empty{text-align:center;padding:60px 10px;color:var(--text-muted)}
+.cart-empty i{font-size:3rem;color:rgba(201,169,97,.4);margin-bottom:18px;display:block}
+.cart-item{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--border);animation:slideIn .4s var(--ease)}
+@keyframes slideIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+.cart-item-thumb{width:60px;height:60px;border-radius:12px;flex-shrink:0;background:linear-gradient(150deg,var(--black),#1a1a1a);display:flex;align-items:center;justify-content:center;color:var(--champagne);overflow:hidden;position:relative}
+.cart-item-thumb img{width:100%;height:100%;object-fit:cover;border-radius:12px;position:relative;z-index:2}
+.cart-item-info{flex:1;min-width:0}
+.cart-item-info strong{display:block;font-size:.9rem;color:var(--black)}
+.cart-item-info span{font-size:.82rem;color:var(--champagne-dk);font-weight:800}
+.qty-ctrl{display:flex;align-items:center;gap:8px;margin-top:6px}
+.qty-ctrl button{width:24px;height:24px;border-radius:6px;border:1px solid var(--border);background:transparent;cursor:pointer;color:var(--black);font-weight:800;line-height:1;transition:var(--t)}
+.qty-ctrl button:hover{background:var(--black);color:var(--champagne);border-color:var(--black)}
+.qty-ctrl button:disabled{opacity:.4;cursor:not-allowed}
+.qty-ctrl span{font-size:.85rem;font-weight:800;min-width:18px;text-align:center}
+.cart-remove{background:transparent;border:none;color:#c8c2b5;cursor:pointer;transition:var(--t);font-size:.9rem}
+.cart-remove:hover{color:#e05252;transform:scale(1.15)}
+.cart-foot{padding:20px 24px;border-top:1px solid var(--border);background:var(--card)}
+.cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-weight:800;color:var(--black)}
+.cart-total strong{color:var(--champagne-dk);font-size:1.2rem}
+.cart-foot .btn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;border-radius:12px;background:linear-gradient(120deg,var(--champagne),var(--champagne-lt));color:var(--black);font-weight:800;font-size:.95rem;cursor:pointer;border:none;transition:var(--t)}
+.cart-foot .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(201,169,97,.4)}
+.view-full-cart{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:10px;padding:12px;border-radius:10px;background:transparent;border:1px dashed var(--border-gold);color:var(--champagne-dk);font-weight:800;font-size:.85rem;transition:var(--t)}
+.view-full-cart:hover{background:rgba(201,169,97,.08);border-style:solid;transform:translateY(-2px)}
+
+/* Toast */
+.toast{position:fixed;bottom:32px;inset-inline-start:32px;z-index:2600;display:flex;align-items:center;gap:12px;padding:15px 24px;border-radius:12px;background:var(--black);color:#fff;border:1px solid rgba(201,169,97,.45);box-shadow:0 20px 50px rgba(0,0,0,.35);transform:translateY(120px);opacity:0;transition:var(--t);font-size:.9rem;font-weight:700;max-width:calc(100vw - 40px)}
+.toast.show{transform:translateY(0);opacity:1}
+.toast i{color:var(--champagne);font-size:1.1rem;flex-shrink:0}
+.toast.error{border-color:rgba(185,28,28,.6)}
+.toast.error i{color:#fca5a5}
+.toast.success{border-color:rgba(45,122,79,.6)}
+.toast.success i{color:#7ddba0}
+
+/* Mobile sticky add-to-cart */
+.mobile-sticky{display:none}
+
+/* Responsive */
+@media (max-width:900px){
+  .product-hero{grid-template-columns:1fr;gap:30px}
+  .gallery{position:relative;top:0}
+  .product-name-ar{font-size:1.5rem}
+  .price-current{font-size:2rem}
+  .review-summary{grid-template-columns:1fr;gap:18px}
+  .review-big-score strong{font-size:2.4rem}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .tabs-section{padding:40px 0 30px}
+  .related-section{padding:40px 0 80px}
+}
+@media (max-width:640px){
+  header{padding:14px 0}
+  .menu-toggle{display:flex}
+  .nav-links{position:fixed;top:0;inset-inline-end:-100%;width:82%;height:100vh;background:var(--bg);flex-direction:column;justify-content:center;gap:26px;transition:inset-inline-end .55s var(--ease);box-shadow:-20px 0 60px rgba(0,0,0,.15);z-index:1300}
+  .nav-links.active{inset-inline-end:0}
+  .nav-links a{font-size:1.2rem}
+  .product-page{padding:110px 0 40px}
+  .product-name-ar{font-size:1.35rem}
+  .product-name-en{font-size:1rem}
+  .price-current{font-size:1.8rem}
+  .gallery-thumbs{grid-template-columns:repeat(4,1fr)}
+  .qty-add-row{flex-wrap:wrap}
+  .qty-selector{width:100%;justify-content:space-between}
+  .qty-selector input{flex:1}
+  .add-to-cart-main{width:100%}
+  .wishlist-btn{width:100%;height:52px}
+  .trust-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .tabs-nav{gap:0}
+  .tab-btn{padding:12px 14px;font-size:.82rem}
+  .tab-content{padding:20px 18px}
+  .container{width:94%}
+  .products-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .product-card .product-media{height:170px}
+  .product-card .product-title-ar{font-size:.88rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+</style>
+<!-- PHASE 6.2 MOBILE START -->
+<style>
+/* ═══════════════════════════════════════════════════════════
+   PHASE 6.2 — Product Page Mobile Enhancements
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Gallery Mobile ─── */
+@media (max-width: 768px){
+  .gallery-main{
+    aspect-ratio: 1 !important;
+    border-radius: 16px !important;
+    touch-action: pan-y !important;
+  }
+
+  .gallery-main img{
+    transition: opacity 0.35s ease, transform 0.35s ease !important;
+  }
+
+  .gallery-thumbs{
+    display: flex !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 8px 0 !important;
+    scrollbar-width: thin;
+    grid-template-columns: none !important;
+  }
+
+  .gallery-thumb{
+    flex: 0 0 64px !important;
+    width: 64px !important;
+    height: 64px !important;
+    aspect-ratio: 1 !important;
+    border-radius: 10px !important;
+    border-width: 2px !important;
+  }
+
+  .gallery-dots{
+    bottom: 12px !important;
+    padding: 8px 14px !important;
+    gap: 8px !important;
+  }
+
+  .gallery-dots .dot{
+    width: 9px !important;
+    height: 9px !important;
+  }
+
+  .gallery-dots .dot.active{
+    width: 26px !important;
+  }
+}
+
+/* ─── Product Info ─── */
+@media (max-width: 768px){
+  .product-info{
+    padding-top: 8px !important;
+  }
+
+  .product-brand{
+    font-size: 0.72rem !important;
+    letter-spacing: 2.5px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .product-name-ar{
+    font-size: 1.4rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .product-name-en{
+    font-size: 0.9rem !important;
+    margin-bottom: 14px !important;
+  }
+
+  .product-rating{
+    padding: 10px 14px !important;
+    gap: 8px !important;
+    margin-bottom: 16px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .product-rating .stars{
+    font-size: 0.85rem !important;
+  }
+
+  .product-rating strong{
+    font-size: 1.1rem !important;
+  }
+
+  .product-rating a{
+    margin-inline-start: 0 !important;
+    font-size: 0.78rem !important;
+    padding: 6px 0 !important;
+  }
+
+  .product-price-box{
+    margin-bottom: 18px !important;
+    padding-bottom: 18px !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+
+  .price-current{
+    font-size: 2rem !important;
+  }
+
+  .price-old{
+    font-size: 0.95rem !important;
+  }
+
+  .notes-list{
+    gap: 6px !important;
+  }
+
+  .note-pill{
+    padding: 5px 12px !important;
+    font-size: 0.72rem !important;
+  }
+
+  .product-desc{
+    font-size: 0.9rem !important;
+    line-height: 1.8 !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Hide the inline qty-add-row on mobile — replaced by sticky bar */
+  .qty-add-row{
+    display: none !important;
+  }
+
+  /* Add bottom padding so sticky bar does not overlap content */
+  .product-info{
+    padding-bottom: 100px !important;
+  }
+
+  .trust-row{
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    padding: 12px !important;
+    margin-bottom: 40px !important;
+  }
+
+  .trust-item{
+    font-size: 0.72rem !important;
+    gap: 8px !important;
+  }
+
+  .trust-item i{
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* ─── Sticky Add-to-Cart Bar ─── */
+.sticky-cart-bar{
+  position: fixed !important;
+  inset-inline-start: 0 !important;
+  inset-inline-end: 0 !important;
+  bottom: 0 !important;
+  z-index: 9997 !important;
+  background: rgba(250, 248, 243, 0.98) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-top: 1px solid rgba(201, 169, 97, 0.3) !important;
+  box-shadow: 0 -10px 30px rgba(10, 10, 10, 0.08) !important;
+  padding: 12px 16px !important;
+  padding-bottom: calc(12px + var(--safe-bottom, 0px)) !important;
+  display: none !important;
+  align-items: center !important;
+  gap: 12px !important;
+  transform: translateY(100%) !important;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.sticky-cart-bar.visible{
+  transform: translateY(0) !important;
+}
+
+@media (max-width: 768px){
+  .sticky-cart-bar{
+    display: flex !important;
+  }
+}
+
+.sticky-price{
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  flex-shrink: 0 !important;
+}
+
+.sticky-price small{
+  font-size: 0.65rem !important;
+  color: #6b6459 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+}
+
+.sticky-price strong{
+  font-family: "Playfair Display", serif !important;
+  font-size: 1.15rem !important;
+  color: #a8874a !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+}
+
+.sticky-qty{
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  background: #f5f1e8 !important;
+  border-radius: 10px !important;
+  padding: 4px !important;
+  border: 1px solid rgba(10, 10, 10, 0.1) !important;
+  flex-shrink: 0 !important;
+}
+
+.sticky-qty button{
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 7px !important;
+  background: transparent !important;
+  border: none !important;
+  color: #0a0a0a !important;
+  font-size: 0.85rem !important;
+  font-weight: 800 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: background 0.2s ease !important;
+  padding: 0 !important;
+}
+
+.sticky-qty button:hover:not(:disabled){
+  background: #0a0a0a !important;
+  color: #c9a961 !important;
+}
+
+.sticky-qty button:disabled{
+  opacity: 0.35 !important;
+  cursor: not-allowed !important;
+}
+
+.sticky-qty span{
+  min-width: 26px !important;
+  text-align: center !important;
+  font-weight: 800 !important;
+  color: #0a0a0a !important;
+  font-size: 0.92rem !important;
+}
+
+.sticky-add-btn{
+  flex: 1 !important;
+  min-height: 48px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(120deg, #0a0a0a, #16161a) !important;
+  color: #c9a961 !important;
+  border: none !important;
+  font-weight: 800 !important;
+  font-size: 0.95rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 6px 18px rgba(10, 10, 10, 0.2) !important;
+  font-family: inherit !important;
+  padding: 0 16px !important;
+}
+
+.sticky-add-btn:hover{
+  background: linear-gradient(120deg, #c9a961, #e8d4a2) !important;
+  color: #0a0a0a !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 24px rgba(201, 169, 97, 0.4) !important;
+}
+
+.sticky-add-btn.added{
+  background: linear-gradient(120deg, #2d7a4f, #1f6b3d) !important;
+  color: #fff !important;
+}
+
+.sticky-add-btn i{
+  font-size: 1rem !important;
+}
+
+/* ─── Tabs Mobile ─── */
+@media (max-width: 768px){
+  .tabs-section{
+    padding: 30px 0 20px !important;
+  }
+
+  .tabs-nav{
+    display: flex !important;
+    gap: 4px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 20px !important;
+    scrollbar-width: none;
+  }
+
+  .tabs-nav::-webkit-scrollbar{
+    display: none !important;
+  }
+
+  .tab-btn{
+    flex-shrink: 0 !important;
+    padding: 12px 16px !important;
+    font-size: 0.82rem !important;
+    min-height: 44px !important;
+    white-space: nowrap !important;
+  }
+
+  .tab-btn i{
+    font-size: 0.78rem !important;
+  }
+
+  .tab-content{
+    padding: 18px 16px !important;
+    border-radius: 14px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Reviews */
+  .review-summary{
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding-bottom: 18px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .review-big-score strong{
+    font-size: 2.6rem !important;
+  }
+
+  .review-item{
+    padding: 14px !important;
+    border-radius: 12px !important;
+  }
+
+  .review-item-head{
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+  }
+
+  .review-item-comment{
+    font-size: 0.86rem !important;
+    line-height: 1.7 !important;
+  }
+}
+
+/* ─── Related Products Mobile ─── */
+@media (max-width: 768px){
+  .related-section{
+    padding: 30px 0 120px !important;
+  }
+
+  .products-grid{
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .product-card{
+    padding: 10px !important;
+  }
+
+  .product-card .product-media{
+    height: 150px !important;
+  }
+}
+
+/* ─── Share Row ─── */
+@media (max-width: 768px){
+  .share-row{
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    font-size: 0.78rem !important;
+  }
+
+  .share-row button{
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+/* ─── Very Small Phones ─── */
+@media (max-width: 380px){
+  .product-name-ar{
+    font-size: 1.25rem !important;
+  }
+
+  .price-current{
+    font-size: 1.75rem !important;
+  }
+
+  .sticky-add-btn{
+    font-size: 0.88rem !important;
+    padding: 0 12px !important;
+  }
+
+  .sticky-price strong{
+    font-size: 1rem !important;
+  }
+}
+</style>
+<!-- PHASE 6.2 MOBILE END -->
+<!-- PHASE 7.1 PWA START -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PERCENT">
+<meta name="mobile-web-app-capable" content="yes">
+<!-- PHASE 7.1 PWA END -->
+<!-- PHASE 7.2 SEO START -->
+<meta name="description" content="اكتشف تفاصيل المنتج — الأسعار، النوتات العطرية، التقييمات، ومنتجات مشابهة من PERCENT PERFUME.">
+<meta name="keywords" content="تفاصيل منتج, عطر, PERCENT PERFUME">
+<meta name="author" content="PERCENT PERFUME">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+
+<link rel="canonical" href="https://percent-perfume.com/product.html">
+<link rel="alternate" hreflang="ar" href="https://percent-perfume.com/product.html">
+<link rel="alternate" hreflang="en" href="https://percent-perfume.com/product.html">
+<link rel="alternate" hreflang="x-default" href="https://percent-perfume.com/product.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="product">
+<meta property="og:title" content="تفاصيل المنتج | PERCENT PERFUME">
+<meta property="og:description" content="اكتشف تفاصيل المنتج — الأسعار، النوتات العطرية، التقييمات، ومنتجات مشابهة من PERCENT PERFUME.">
+<meta property="og:image" content="https://percent-perfume.com/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:url" content="https://percent-perfume.com/product.html">
+<meta property="og:site_name" content="PERCENT PERFUME">
+<meta property="og:locale" content="ar_JO">
+<meta property="og:locale:alternate" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="تفاصيل المنتج | PERCENT PERFUME">
+<meta name="twitter:description" content="اكتشف تفاصيل المنتج — الأسعار، النوتات العطرية، التقييمات، ومنتجات مشابهة من PERCENT PERFUME.">
+<meta name="twitter:image" content="https://percent-perfume.com/icon-512.png">
+<meta name="twitter:site" content="@percentperfume">
+<!-- PHASE 7.2 SEO END -->
+<link rel="stylesheet" href="mobile-app.css">
+</head>
+<body>
+<!-- PHASE: PRELOADER FAILSAFE START -->
+<script>
+(function(){
+  "use strict";
+  function hidePreloader(){
+    var pre = document.getElementById("preloader");
+    if (pre) pre.classList.add("hidden");
+  }
+  /* Hide on load */
+  if (document.readyState === "complete"){
+    hidePreloader();
+  } else {
+    window.addEventListener("load", function(){ setTimeout(hidePreloader, 200); });
+  }
+  /* Guaranteed fail-safe: hide after 2.5 seconds NO MATTER WHAT */
+  setTimeout(hidePreloader, 2500);
+})();
+</script>
+<!-- PHASE: PRELOADER FAILSAFE END -->
+
+
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f4e4bc"/><stop offset="28%" stop-color="#c9a961"/>
+      <stop offset="52%" stop-color="#e8d4a2"/><stop offset="78%" stop-color="#a8874a"/>
+      <stop offset="100%" stop-color="#6b5838"/>
+    </linearGradient>
+  </defs>
+  <symbol id="logo-mark" viewBox="0 0 220 220">
+    <g stroke="url(#goldGrad)" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="95" y="10" width="30" height="17" rx="4"/><path d="M104 27v23M116 27v23"/>
+      <circle cx="110" cy="118" r="62"/><path d="M68 178 L152 58"/>
+      <circle cx="87" cy="96" r="15"/><circle cx="133" cy="140" r="15"/>
+      <path d="M60 70 C 24 96, 24 152, 62 180" stroke-width="5"/>
+    </g>
+    <g fill="url(#goldGrad)">
+      <path d="M56 84 C 36 78, 24 62, 28 44 C 48 48, 60 64, 58 82 Z"/>
+      <path d="M44 124 C 22 122, 8 108, 6 88 C 28 88, 44 102, 46 120 Z"/>
+      <path d="M58 164 C 40 172, 20 166, 10 150 C 30 140, 50 144, 58 160 Z"/>
+      <path d="M170 38 l5 15 15 5 -15 5 -5 15 -5-15 -15-5 15-5 z"/>
+    </g>
+  </symbol>
+</svg>
+
+<div id="preloader">
+  <svg class="pre-logo" role="img" aria-label="PERCENT PERFUME"><use href="#logo-mark"/></svg>
+  <div class="pre-bar"><span></span></div>
+  <div class="pre-text english-text">PERCENT PERFUME</div>
+</div>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header id="header">
+  <div class="container nav-container">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" role="img" aria-label="PERCENT PERFUME"><use href="#logo-mark"/></svg>
+      <span class="brand-text">
+        <span class="brand-name">PERCENT</span>
+        <span class="brand-sub">PERFUME</span>
+      </span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html#home"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
+      <a href="women.html"><span class="lang-ar">عطور نسائية</span><span class="lang-en">Women</span></a>
+      <a href="men.html"><span class="lang-ar">عطور رجالية</span><span class="lang-en">Men</span></a>
+      <a href="loyalty.html"><span class="lang-ar">نظام الولاء</span><span class="lang-en">Loyalty</span></a>
+      <a href="index.html#story"><span class="lang-ar">قصتنا</span><span class="lang-en">Our Story</span></a>
+    </nav>
+    <div class="nav-icons">
+      <button class="lang-switch" id="langBtn">EN</button>
+      <button class="icon-btn" id="searchBtn" aria-label="Search"><i class="fas fa-search"></i></button>
+      <button class="icon-btn" id="cartBtn" aria-label="Cart">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+    </div>
+  </div>
+</header>
+
+<main id="mainContent">
+  <div id="loadingState" style="text-align:center;padding:200px 20px">
+    <i class="fas fa-spinner fa-spin" style="font-size:2.5rem;color:var(--champagne)"></i>
+    <p style="margin-top:20px;color:var(--text-muted);font-weight:700">جارٍ تحميل المنتج...</p>
+  </div>
+
+  <div id="notFound" style="display:none" class="not-found">
+    <i class="fas fa-bottle-droplet"></i>
+    <h1><span class="lang-ar">المنتج غير موجود</span><span class="lang-en">Product not found</span></h1>
+    <p><span class="lang-ar">ربما تم حذف هذا المنتج أو الرابط غير صحيح.</span><span class="lang-en">This product may have been removed or the link is invalid.</span></p>
+    <a href="index.html" class="btn"><i class="fas fa-home"></i><span class="lang-ar">العودة للرئيسية</span><span class="lang-en">Back to Home</span></a>
+  </div>
+
+  <div id="productContent" style="display:none">
+    <section class="product-page">
+      <div class="container">
+        <nav class="breadcrumb">
+          <a href="index.html"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
+          <i class="fas fa-chevron-left"></i>
+          <a id="breadCategoryLink" href="#"><span id="breadCategoryText"><span class="lang-ar">القسم</span><span class="lang-en">Category</span></span></a>
+          <i class="fas fa-chevron-left"></i>
+          <span class="current" id="breadProductName">—</span>
+        </nav>
+
+        <div class="product-hero">
+          <div class="gallery">
+            <div class="gallery-main" id="galleryMain">
+              <svg class="placeholder" role="img" aria-label="PERCENT"><use href="#logo-mark"/></svg>
+              <span class="gallery-tag" id="galleryTag" style="display:none"></span>
+            </div>
+            <div class="gallery-thumbs" id="galleryThumbs"></div>
+          </div>
+
+          <div class="product-info">
+            <div class="product-brand" id="productBrand">—</div>
+            <h1 class="product-name-ar" id="productNameAr">—</h1>
+            <p class="product-name-en" id="productNameEn">—</p>
+
+            <div class="product-rating">
+              <span class="stars" id="productStars">★★★★★</span>
+              <strong id="productRatingAvg">0.0</strong>
+              <small id="productRatingCount">(0 تقييم)</small>
+              <a id="jumpToReviews"><span class="lang-ar">قراءة التقييمات</span><span class="lang-en">Read reviews</span></a>
+            </div>
+
+            <div class="product-price-box">
+              <span class="price-current" id="productPrice">— <small>JOD</small></span>
+              <span class="price-old" id="productOldPrice" style="display:none"></span>
+              <span class="price-discount" id="productDiscount" style="display:none"></span>
+            </div>
+
+            <div class="product-notes" id="productNotesWrap" style="display:none">
+              <h4><i class="fas fa-leaf"></i> <span class="lang-ar">النوتات العطرية</span><span class="lang-en">Fragrance Notes</span></h4>
+              <div class="notes-list" id="productNotesList"></div>
+            </div>
+
+            <div class="product-desc" id="productDesc"></div>
+
+            <div class="qty-add-row">
+              <div class="qty-selector">
+                <button type="button" id="qtyMinus"><i class="fas fa-minus"></i></button>
+                <input type="number" id="qtyInput" value="1" min="1" max="99">
+                <button type="button" id="qtyPlus"><i class="fas fa-plus"></i></button>
+              </div>
+              <button type="button" class="add-to-cart-main" id="addToCartMain">
+                <i class="fas fa-bag-shopping"></i>
+                <span class="lang-ar">أضف إلى السلة</span>
+                <span class="lang-en">Add to Cart</span>
+              </button>
+              <button type="button" class="wishlist-btn" id="wishlistBtn" title="المفضلة">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+
+            <div class="share-row">
+              <span class="lang-ar">شارك:</span><span class="lang-en">Share:</span>
+              <button type="button" id="shareWhatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+              <button type="button" id="shareFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></button>
+              <button type="button" id="shareTwitter" title="X"><i class="fab fa-twitter"></i></button>
+              <button type="button" id="shareCopy" title="Copy link"><i class="fas fa-link"></i></button>
+            </div>
+
+            <div class="trust-row">
+              <div class="trust-item"><i class="fas fa-truck-fast"></i><span class="lang-ar">شحن سريع</span><span class="lang-en">Fast shipping</span></div>
+              <div class="trust-item"><i class="fas fa-shield-halved"></i><span class="lang-ar">دفع آمن</span><span class="lang-en">Secure payment</span></div>
+              <div class="trust-item"><i class="fas fa-headset"></i><span class="lang-ar">دعم 24/7</span><span class="lang-en">24/7 support</span></div>
+              <div class="trust-item"><i class="fas fa-rotate-left"></i><span class="lang-ar">إرجاع 14 يوم</span><span class="lang-en">14-day returns</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tabs-section">
+      <div class="container">
+        <div class="tabs-nav">
+          <button class="tab-btn active" data-tab="desc"><i class="fas fa-align-right"></i><span class="lang-ar">الوصف</span><span class="lang-en">Description</span></button>
+          <button class="tab-btn" data-tab="notes"><i class="fas fa-leaf"></i><span class="lang-ar">النوتات</span><span class="lang-en">Notes</span></button>
+          <button class="tab-btn" data-tab="reviews"><i class="fas fa-star"></i><span class="lang-ar">التقييمات</span><span class="lang-en">Reviews</span></button>
+          <button class="tab-btn" data-tab="shipping"><i class="fas fa-truck"></i><span class="lang-ar">الشحن والإرجاع</span><span class="lang-en">Shipping & Returns</span></button>
+        </div>
+
+        <div class="tab-panel active" data-panel="desc">
+          <div class="tab-content" id="tabDesc"></div>
+        </div>
+        <div class="tab-panel" data-panel="notes">
+          <div class="tab-content" id="tabNotes"></div>
+        </div>
+        <div class="tab-panel" data-panel="reviews">
+          <div class="tab-content" id="tabReviews">
+            <div class="reviews-loading"><i class="fas fa-spinner"></i> جارٍ تحميل التقييمات...</div>
+          </div>
+        </div>
+        <div class="tab-panel" data-panel="shipping">
+          <div class="tab-content">
+            <h3><span class="lang-ar">سياسة الشحن والتوصيل</span><span class="lang-en">Shipping & Delivery</span></h3>
+            <p><strong><span class="lang-ar">داخل الأردن:</span><span class="lang-en">Within Jordan:</span></strong> <span class="lang-ar">التوصيل خلال 1-4 أيام عمل لجميع المحافظات.</span><span class="lang-en">Delivery within 1-4 business days to all governorates.</span></p>
+            <p><strong><span class="lang-ar">الدفع:</span><span class="lang-en">Payment:</span></strong> <span class="lang-ar">كاش عند الاستلام أو تحويل بنكي / CliQ.</span><span class="lang-en">Cash on delivery or bank transfer / CliQ.</span></p>
+            <h3 style="margin-top:20px"><span class="lang-ar">سياسة الإرجاع</span><span class="lang-en">Return Policy</span></h3>
+            <p><span class="lang-ar">يمكنك إرجاع المنتج خلال 14 يوماً من الاستلام بشرط أن يكون في حالته الأصلية غير مستخدم.</span><span class="lang-en">You can return the product within 14 days of receipt if it is unused and in its original condition.</span></p>
+            <p><a href="legal/refund.html" style="color:var(--champagne-dk);font-weight:800;text-decoration:underline"><span class="lang-ar">اقرأ السياسة الكاملة</span><span class="lang-en">Read full policy</span></a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="related-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow"><span class="lang-ar">قد يعجبك أيضاً</span><span class="lang-en">You may also like</span></div>
+          <h2><span class="lang-ar">منتجات مشابهة</span><span class="lang-en">Related Products</span></h2>
+          <p><span class="lang-ar">اخترنا لك مجموعة من العطور التي قد تناسب ذوقك.</span><span class="lang-en">Hand-picked fragrances for your taste.</span></p>
+        </div>
+        <div class="products-grid" id="relatedGrid"></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <svg role="img" aria-label="PERCENT PERFUME"><use href="#logo-mark"/></svg>
+          <span class="brand-text"><span class="brand-name">PERCENT</span><span class="brand-sub">PERFUME</span></span>
+        </div>
+        <p class="lang-ar">عطور فاخرة تروي تفاصيلك. جودة عالية وأسعار منافسة.</p>
+        <p class="lang-en">Luxury perfumes that tell your story.</p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/percent._.perfume" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook" onclick="return false;"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="TikTok" onclick="return false;"><i class="fab fa-tiktok"></i></a>
+          <a href="#" aria-label="WhatsApp" onclick="return false;"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3><span class="lang-ar">روابط سريعة</span><span class="lang-en">Quick Links</span></h3>
+        <a href="index.html"><i class="fas fa-chevron-left"></i><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
+        <a href="women.html"><i class="fas fa-chevron-left"></i><span class="lang-ar">عطور نسائية</span><span class="lang-en">Women</span></a>
+        <a href="men.html"><i class="fas fa-chevron-left"></i><span class="lang-ar">عطور رجالية</span><span class="lang-en">Men</span></a>
+        <a href="loyalty.html"><i class="fas fa-chevron-left"></i><span class="lang-ar">نظام الولاء</span><span class="lang-en">Loyalty</span></a>
+      </div>
+      <div class="footer-col">
+        <h3><span class="lang-ar">خدمة العملاء</span><span class="lang-en">Customer Service</span></h3>
+        <a href="legal/privacy.html"><i class="fas fa-shield-halved"></i><span class="lang-ar">سياسة الخصوصية</span><span class="lang-en">Privacy</span></a>
+        <a href="legal/terms.html"><i class="fas fa-file-contract"></i><span class="lang-ar">شروط الخدمة</span><span class="lang-en">Terms</span></a>
+        <a href="legal/refund.html"><i class="fas fa-rotate-left"></i><span class="lang-ar">سياسة الاسترداد</span><span class="lang-en">Refund</span></a>
+        <a href="legal/cookies.html"><i class="fas fa-cookie-bite"></i><span class="lang-ar">سياسة الكوكيز</span><span class="lang-en">Cookies</span></a>
+      </div>
+      <div class="footer-col">
+        <h3><span class="lang-ar">تواصل معنا</span><span class="lang-en">Contact</span></h3>
+        <p><i class="fas fa-map-marker-alt"></i><span class="lang-ar">عمّان، الأردن</span><span class="lang-en">Amman, Jordan</span></p>
+        <p><i class="fas fa-phone"></i><span dir="ltr">+962 7 9000 0000</span></p>
+        <p><i class="fas fa-envelope"></i><span dir="ltr">info@percent-perfume.com</span></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> PERCENT PERFUME. <span class="lang-ar">جميع الحقوق محفوظة.</span><span class="lang-en">All rights reserved.</span></p>
+    </div>
+  </div>
+</footer>
+
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+  <div class="cart-head">
+    <h3><i class="fas fa-shopping-bag"></i> <span class="lang-ar">سلة التسوق</span><span class="lang-en">Shopping Bag</span></h3>
+    <button id="cartClose" aria-label="Close"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-foot">
+    <div class="cart-total">
+      <span><span class="lang-ar">الإجمالي</span><span class="lang-en">Total</span></span>
+      <strong id="cartTotal">0.00 JOD</strong>
+    </div>
+    <button class="btn" id="checkoutBtn">
+      <i class="fas fa-lock"></i>
+      <span class="lang-ar">إتمام الطلب</span>
+      <span class="lang-en">Checkout</span>
+    </button>
+  </div>
+</aside>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastText"></span></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="cart.js"></script>
+<script src="cart-ui.js"></script>
+<script src="products.js"></script>
+<script src="product.js"></script>
+<!-- Wishlist (Phase 5.2) -->
+<script src="wishlist.js"></script>
+<!-- PHASE 7.1 SW START -->
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function() {
+    navigator.serviceWorker.register("service-worker.js").then(function(reg){
+      console.log("[PWA] Service Worker registered");
+    }).catch(function(err){
+      console.warn("[PWA] SW registration failed:", err);
+    });
+  });
+}
+</script>
+<!-- PHASE 7.1 SW END -->
+<script src="mobile-app.js" defer></script>
+<script src="pwa-install.js" defer></script>
+</body>
+</html>
