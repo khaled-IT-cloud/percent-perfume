@@ -1,0 +1,54 @@
+﻿# ═══════════════════════════════════════════════════════════
+#  PERCENT PERFUME — Git Ignore Rules
+# ═══════════════════════════════════════════════════════════
+
+# ─── Backup folders (محلية فقط، لا تُرفع) ───
+_backup_*/
+_backup*
+*.backup
+*.backup_*
+*.bak
+
+# ─── ملفات PowerShell المؤقتة ───
+*.ps1
+fix-*.ps1
+*.ps1.backup*
+
+# ─── Node.js ───
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+
+# ─── Environment ───
+.env
+.env.local
+.env.*.local
+
+# ─── System files ───
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── IDE ───
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ─── Logs ───
+*.log
+logs/
+
+# ─── Temporary ───
+tmp/
+temp/
+*.tmp
+*.temp
+
+# ─── Netlify ───
+.netlify/
+
+# ─── Build artifacts (keep source only) ───
+dist/
+build/
