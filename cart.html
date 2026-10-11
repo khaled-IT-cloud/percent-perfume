@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl" data-lang="ar">
 <head>
 <meta charset="UTF-8">
@@ -1886,6 +1886,7 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
 <meta name="twitter:site" content="@percentperfume">
 <!-- PHASE 7.2 SEO END -->
 <link rel="stylesheet" href="mobile-app.css">
+<link rel="stylesheet" href="mobile-fix-override.css">
 </head>
 <body>
 <!-- PHASE: PRELOADER FAILSAFE START -->
@@ -1903,7 +1904,7 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
     window.addEventListener("load", function(){ setTimeout(hidePreloader, 200); });
   }
   /* Guaranteed fail-safe: hide after 2.5 seconds NO MATTER WHAT */
-  setTimeout(hidePreloader, 2500);
+  setTimeout(hidePreloader, 800);
 })();
 </script>
 <!-- PHASE: PRELOADER FAILSAFE END -->
@@ -2385,31 +2386,30 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
                 </button>
               </div>
             </div>
-<div class="consent-block" style="margin-top:18px;padding:16px;border-radius:12px;background:#f5f1e8;border:1px solid #e5e7eb">
-  <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;margin-bottom:10px">
-    <input type="checkbox" id="consentTerms" style="margin-top:4px;width:18px;height:18px;accent-color:#c9a961;cursor:pointer;flex-shrink:0">
-    <span style="font-size:.82rem;font-weight:700;color:#0a0a0a;line-height:1.6">
+<div class="consent-block" style="margin-top:18px;padding:18px;border-radius:14px;background:#f5f1e8;border:1px solid #e5e7eb;display:block">
+  <label for="consentTerms" style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;margin-bottom:12px;padding:12px;border-radius:10px;background:#fff;border:1px solid rgba(10,10,10,.06)">
+    <input type="checkbox" id="consentTerms" style="width:24px;height:24px;min-width:24px;min-height:24px;margin-top:2px;accent-color:#c9a961;cursor:pointer;flex-shrink:0;-webkit-appearance:checkbox;appearance:checkbox">
+    <span style="font-size:.85rem;font-weight:700;color:#0a0a0a;line-height:1.65;flex:1">
       <span class="lang-ar">أوافق على <a href="legal/terms.html" target="_blank" style="color:#a8874a;text-decoration:underline">شروط الخدمة</a> و <a href="legal/privacy.html" target="_blank" style="color:#a8874a;text-decoration:underline">سياسة الخصوصية</a> <span style="color:#b91c1c">*</span></span>
-      <span class="lang-en">I agree to <a href="legal/terms.html" target="_blank" style="color:#a8874a;text-decoration:underline">Terms</a> & <a href="legal/privacy.html" target="_blank" style="color:#a8874a;text-decoration:underline">Privacy Policy</a> <span style="color:#b91c1c">*</span></span>
+      <span class="lang-en">I agree to <a href="legal/terms.html" target="_blank" style="color:#a8874a;text-decoration:underline">Terms</a> &amp; <a href="legal/privacy.html" target="_blank" style="color:#a8874a;text-decoration:underline">Privacy Policy</a> <span style="color:#b91c1c">*</span></span>
     </span>
   </label>
-  <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;margin-bottom:10px">
-    <input type="checkbox" id="consentAge" style="margin-top:4px;width:18px;height:18px;accent-color:#c9a961;cursor:pointer;flex-shrink:0">
-    <span style="font-size:.82rem;font-weight:700;color:#0a0a0a;line-height:1.6">
+  <label for="consentAge" style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;margin-bottom:12px;padding:12px;border-radius:10px;background:#fff;border:1px solid rgba(10,10,10,.06)">
+    <input type="checkbox" id="consentAge" style="width:24px;height:24px;min-width:24px;min-height:24px;margin-top:2px;accent-color:#c9a961;cursor:pointer;flex-shrink:0;-webkit-appearance:checkbox;appearance:checkbox">
+    <span style="font-size:.85rem;font-weight:700;color:#0a0a0a;line-height:1.65;flex:1">
       <span class="lang-ar">أؤكد أنني أبلغ 18 عاماً أو أكثر <span style="color:#b91c1c">*</span></span>
       <span class="lang-en">I confirm I'm 18 years or older <span style="color:#b91c1c">*</span></span>
     </span>
   </label>
-  <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
-    <input type="checkbox" id="consentMarketing" style="margin-top:4px;width:18px;height:18px;accent-color:#c9a961;cursor:pointer;flex-shrink:0">
-    <span style="font-size:.82rem;font-weight:700;color:#0a0a0a;line-height:1.6">
+  <label for="consentMarketing" style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;padding:12px;border-radius:10px;background:#fff;border:1px solid rgba(10,10,10,.06)">
+    <input type="checkbox" id="consentMarketing" style="width:24px;height:24px;min-width:24px;min-height:24px;margin-top:2px;accent-color:#c9a961;cursor:pointer;flex-shrink:0;-webkit-appearance:checkbox;appearance:checkbox">
+    <span style="font-size:.85rem;font-weight:700;color:#0a0a0a;line-height:1.65;flex:1">
       <span class="lang-ar">أرغب باستلام العروض والنشرات التسويقية (اختياري)</span>
       <span class="lang-en">Send me offers and newsletters (optional)</span>
     </span>
   </label>
-  <div id="consentError" style="display:none;margin-top:10px;padding:8px 12px;border-radius:8px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#b91c1c;font-size:.78rem;font-weight:700"></div>
-</div>
-            <button type="button" class="place-order-btn" id="placeOrderBtn">
+  <div id="consentError" style="display:none;margin-top:10px;padding:10px 14px;border-radius:8px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#b91c1c;font-size:.8rem;font-weight:700"></div>
+</div><button type="button" class="place-order-btn" id="placeOrderBtn">
               <i class="fas fa-check-circle"></i>
               <span class="lang-ar">تأكيد الطلب</span>
               <span class="lang-en">Place Order</span>
@@ -2615,7 +2615,7 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
   window.addEventListener('load', () => {
     setTimeout(() => $('#preloader').classList.add('hidden'), 500);
   });
-  setTimeout(() => $('#preloader').classList.add('hidden'), 3000);
+  setTimeout(() => $('#preloader').classList.add('hidden'), 1200);
 
   /* ---------- Custom cursor ---------- */
   (function customCursor(){

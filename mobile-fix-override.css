@@ -1,0 +1,115 @@
+﻿/* ═══════════════════════════════════════════════════════════
+   PERCENT — MOBILE OVERRIDE (FIX-ALL)
+   ضعه في نهاية <head> بعد mobile-app.css
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px){
+
+  /* ─── 1. السكرول — اسمح به دائماً ─── */
+  html, body{
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    touch-action: pan-y pinch-zoom !important;
+    overscroll-behavior-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  section, main, article, .hero, .cat-hero, .checkout-hero,
+  .prive-hero, .checkout-section, .products-section, .product-page{
+    touch-action: pan-y !important;
+    overflow-y: visible !important;
+  }
+
+  /* ─── 2. مربعات الاختيار — تظهر دائماً ─── */
+  input[type="checkbox"],
+  input[type="radio"]{
+    -webkit-appearance: auto !important;
+    appearance: auto !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 2px solid #c9a961 !important;
+    border-radius: 5px !important;
+    background-color: #fff !important;
+    accent-color: #c9a961 !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    transform: none !important;
+  }
+
+  input[type="checkbox"]:checked,
+  input[type="radio"]:checked{
+    background-color: #c9a961 !important;
+  }
+
+  input[type="checkbox"]:focus,
+  input[type="radio"]:focus{
+    outline: 2px solid #c9a961 !important;
+    outline-offset: 2px !important;
+  }
+
+  /* ─── 3. Consent block في السلة ─── */
+  .consent-block,
+  .consent-block label{
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .consent-block{
+    flex-direction: column !important;
+    padding: 16px !important;
+    background: #f5f1e8 !important;
+    border-radius: 14px !important;
+    border: 1px solid rgba(201,169,97,.3) !important;
+  }
+
+  .consent-block label{
+    align-items: flex-start !important;
+    gap: 12px !important;
+    padding: 12px !important;
+    background: #fff !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(10,10,10,.06) !important;
+    margin-bottom: 10px !important;
+    min-height: 56px !important;
+    cursor: pointer !important;
+  }
+
+  .consent-block label:last-child{ margin-bottom: 0 !important; }
+  .consent-block label > span{ flex: 1 !important; }
+
+  /* ─── 4. Preloader سريع ─── */
+  #preloader{
+    transition: opacity .3s ease, visibility .3s ease !important;
+  }
+
+  /* ─── 5. تحسين الأداء — إلغاء animation على العناصر الكبيرة ─── */
+  .hero-orb, .halo, .halo-ring, .prive-orb{
+    animation: none !important;
+    will-change: auto !important;
+  }
+
+  /* ─── 6. تحسين التمرير داخل الـdrawers ─── */
+  .cart-drawer, .wishlist-drawer, .modal-card{
+    overscroll-behavior: contain !important;
+    touch-action: pan-y !important;
+  }
+}
+
+/* ─── منع مشكلة الـdouble-tap zoom على iOS ─── */
+@media (max-width: 900px){
+  button, a, input, label, [role="button"]{
+    touch-action: manipulation !important;
+  }
+}

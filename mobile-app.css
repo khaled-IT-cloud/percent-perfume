@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════════════════════
+﻿/* ═══════════════════════════════════════════════════════════════
    PERCENT PERFUME — Mobile App CSS v2.0
    Complete mobile-first redesign for iOS + Android
    ═══════════════════════════════════════════════════════════════ */
@@ -30,16 +30,16 @@
   html{
     -webkit-text-size-adjust:100%;
     -webkit-tap-highlight-color:transparent;
-    overscroll-behavior-y:none;
+    overscroll-behavior-y: auto;
     scroll-behavior:smooth;
-    touch-action:pan-y;
+    
   }
 
   body{
     min-height:100dvh!important;
     padding-bottom:calc(var(--m-bottom-h) + var(--m-safe-bottom) + 8px)!important;
-    overscroll-behavior-y:none;
-    touch-action:pan-y;
+    overscroll-behavior-y: auto;
+    
     -webkit-overflow-scrolling:touch;
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
@@ -49,10 +49,41 @@
 
   .cursor-dot,.cursor-ring,.scroll-progress{display:none!important}
 
-  input,select,textarea{
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea{
     font-size:16px!important;
     -webkit-appearance:none;
     appearance:none;
+  }
+
+  /* ✅ إصلاح: مربعات الاختيار تظهر بوضوح على الجوال */
+  input[type="checkbox"],
+  input[type="radio"]{
+    -webkit-appearance: auto !important;
+    appearance: auto !important;
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px !important;
+    min-height: 22px !important;
+    accent-color: #c9a961 !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    border: 1.5px solid #c9a961 !important;
+    border-radius: 4px !important;
+    background-color: #fff !important;
+  }
+
+  input[type="checkbox"]:checked,
+  input[type="radio"]:checked{
+    background-color: #c9a961 !important;
   }
 
   button,a,[role="button"],.m-tappable{
@@ -1499,13 +1530,7 @@
 @media (max-width: 900px){
 
   /* ─── 1. FORCE NO HORIZONTAL SCROLL (root cause fix) ─── */
-  html, body{
-    overflow-x: hidden !important;
-    touch-action: pan-y !important;
-    max-width: 100% !important;
-    width: 100% !important;
-    position: relative !important;
-  }
+  html, body{overflow-x: hidden !important; max-width: 100% !important; width: 100% !important;}
 
   *{
     max-width: 100% !important;

@@ -1,9 +1,9 @@
-/* ============================================================
-   PERCENT PERFUME — Service Worker (Phase 7.1)
-   Basic offline caching strategy
-   ============================================================ */
+﻿/* ═══════════════════════════════════════════════════════════
+   PERCENT PERFUME — Service Worker (Auto-Update v5.0)
+   يجبر كل الزبائن على رؤية أحدث نسخة من الموقع
+   ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'percent-v2';
+const CACHE_NAME = 'percent-v5-' + Date.now(); // ← يتغير كل مرة يُحدّث الملف
 const CACHE_URLS = [
   './',
   './index.html',
@@ -13,9 +13,10 @@ const CACHE_URLS = [
   './loyalty.html',
   './product.html',
   './customer-service.html',
-  './about.html',
   './mobile.css',
+  './mobile-app.css',
   './loyalty-prive.css',
+  './mobile-fix-override.css',
   './config.js',
   './cart.js',
   './cart-ui.js',
@@ -33,54 +34,54 @@ const CACHE_URLS = [
   './icon-512.png'
 ];
 
-/* Install — cache core files */
+/* ─── Install: احفظ ملفات جديدة وامسح القديمة فوراً ─── */
 self.addEventListener('install', function(event){
+  self.skipWaiting(); // ← لا تنتظر الزائر يغلق المتصفح
   event.waitUntil(
     caches.open(CACHE_NAME).then(function(cache){
       return cache.addAll(CACHE_URLS).catch(function(err){
         console.warn('[SW] Some files failed to cache:', err);
       });
-    }).then(function(){
-      return self.skipWaiting();
     })
   );
 });
 
-/* Activate — cleanup old caches */
+/* ─── Activate: امسح كل الكاشات القديمة فوراً ─── */
 self.addEventListener('activate', function(event){
   event.waitUntil(
     caches.keys().then(function(cacheNames){
       return Promise.all(
         cacheNames.map(function(name){
           if (name !== CACHE_NAME){
+            console.log('[SW] Deleting old cache:', name);
             return caches.delete(name);
           }
         })
       );
     }).then(function(){
-      return self.clients.claim();
+      return self.clients.claim(); // ← سيطر على كل التبويبات فوراً
     })
   );
 });
 
-/* Fetch — network first, fallback to cache */
+/* ─── Fetch: Network First (حديث دائماً) ─── */
 self.addEventListener('fetch', function(event){
   var req = event.request;
-
-  /* Skip non-GET */
   if (req.method !== 'GET') return;
 
-  /* Skip Supabase API requests */
   var url = req.url;
+  
+  // لا تخزّن طلبات API
   if (url.indexOf('supabase.co') !== -1) return;
   if (url.indexOf('cdn.jsdelivr.net') !== -1) return;
   if (url.indexOf('cdnjs.cloudflare.com') !== -1) return;
   if (url.indexOf('fonts.googleapis.com') !== -1) return;
   if (url.indexOf('fonts.gstatic.com') !== -1) return;
 
+  // جرب الشبكة أولاً — إذا فشلت، استخدم الكاش
   event.respondWith(
     fetch(req).then(function(response){
-      /* Cache successful responses (same-origin only) */
+      // خزّن نسخة محدثة في الخلفية
       if (response && response.status === 200 && url.indexOf(location.origin) === 0){
         var cloned = response.clone();
         caches.open(CACHE_NAME).then(function(cache){
@@ -89,14 +90,20 @@ self.addEventListener('fetch', function(event){
       }
       return response;
     }).catch(function(){
-      /* Network failed — try cache */
+      // الشبكة فشلت → ابحث في الكاش
       return caches.match(req).then(function(cached){
         if (cached) return cached;
-        /* Return fallback for navigation requests */
         if (req.mode === 'navigate'){
           return caches.match('./index.html');
         }
       });
     })
   );
+});
+
+/* ─── استقبل رسالة من الصفحة: "حدّث نفسك فوراً" ─── */
+self.addEventListener('message', function(event){
+  if (event.data && event.data.type === 'SKIP_WAITING'){
+    self.skipWaiting();
+  }
 });

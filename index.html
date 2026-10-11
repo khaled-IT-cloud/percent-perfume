@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl" data-lang="ar">
 <head>
 <meta charset="UTF-8">
@@ -487,6 +487,7 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
 <link rel="sitemap" type="application/xml" title="Sitemap" href="https://percent-perfume.com/sitemap.xml">
 <!-- PHASE 7.3 SITEMAP END -->
 <link rel="stylesheet" href="mobile-app.css">
+<link rel="stylesheet" href="mobile-fix-override.css">
 </head>
 <body>
 <!-- PHASE: PRELOADER FAILSAFE START -->
@@ -504,7 +505,7 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
     window.addEventListener("load", function(){ setTimeout(hidePreloader, 200); });
   }
   /* Guaranteed fail-safe: hide after 2.5 seconds NO MATTER WHAT */
-  setTimeout(hidePreloader, 2500);
+  setTimeout(hidePreloader, 800);
 })();
 </script>
 <!-- PHASE: PRELOADER FAILSAFE END -->
@@ -863,7 +864,7 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
   window.addEventListener('load', () => {
     setTimeout(() => $('#preloader').classList.add('hidden'), 600);
   });
-  setTimeout(() => $('#preloader').classList.add('hidden'), 3000);
+  setTimeout(() => $('#preloader').classList.add('hidden'), 1200);
 
   /* 2. Particles */
   (function createParticles(){

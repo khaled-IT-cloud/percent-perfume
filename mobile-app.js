@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════════════════════
+﻿/* ═══════════════════════════════════════════════════════════════
    PERCENT PERFUME — Mobile App Behaviors v2.0
    ═══════════════════════════════════════════════════════════════ */
 (function(){
@@ -504,4 +504,72 @@
       console.log('%c✅ No horizontal overflow detected!', 'color:#0a0;font-weight:bold');
     }
   }, 2000);
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   FIX — PERCENT_SCROLL_FIX
+   يضمن عمل السكرول على جميع الأجهزة
+   ═══════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  if (!window.matchMedia('(max-width: 900px)').matches) return;
+
+  function fixScroll(){
+    /* 1. اسمح بالسكرول العمودي */
+    document.documentElement.style.touchAction = 'pan-y pinch-zoom';
+    document.body.style.touchAction = 'pan-y pinch-zoom';
+    document.documentElement.style.overscrollBehaviorY = 'auto';
+    document.body.style.overscrollBehaviorY = 'auto';
+
+    /* 2. تأكد من عدم منع السكرول */
+    document.body.style.overflowY = 'auto';
+    document.body.style.webkitOverflowScrolling = 'touch';
+
+    /* 3. عناصر تمنع السكرول بالخطأ */
+    document.querySelectorAll('.hero, .cat-hero, .checkout-hero, .prive-hero, section').forEach(function(el){
+      var st = window.getComputedStyle(el);
+      if (st.overflowY === 'hidden' && el.scrollHeight > el.clientHeight){
+        el.style.overflowY = 'visible';
+      }
+    });
+
+    /* 4. إزالة أي touch-action مانع */
+    document.querySelectorAll('*').forEach(function(el){
+      var ta = el.style.touchAction;
+      if (ta === 'none' && !el.closest('.cart-drawer, .modal, .wishlist-drawer, .admin-access-modal')){
+        el.style.touchAction = '';
+      }
+    });
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(fixScroll, 800); });
+  } else {
+    setTimeout(fixScroll, 800);
+  }
+
+  /* أعد التطبيق بعد كل فتح/إغلاق drawer */
+  window.addEventListener('pageshow', fixScroll);
+})();
+/* ═══════════════════════════════════════════════════════════
+   PERCENT_SW_FORCE_UPDATE
+   يجبر الزبون على استلام أحدث نسخة فوراً عند أي تحديث
+   ═══════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  if (!('serviceWorker' in navigator)) return;
+
+  // عند تسجيل SW جديد
+  navigator.serviceWorker.addEventListener('controllerchange', function(){
+    console.log('[SW] Controller changed — reloading for fresh version...');
+    // اختياري: أعد التحميل تلقائياً
+    // window.location.reload();
+  });
+
+  // تحقق من التحديثات كل 5 دقائق
+  navigator.serviceWorker.ready.then(function(registration){
+    setInterval(function(){
+      registration.update().catch(function(){});
+    }, 5 * 60 * 1000);
+  });
 })();

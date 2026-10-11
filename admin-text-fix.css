@@ -1,0 +1,56 @@
+﻿/* ═══════════════════════════════════════════════════════════
+   FIX — Admin Login Text Clipping
+   ═══════════════════════════════════════════════════════════ */
+.login-card{
+  overflow: visible !important;
+}
+
+.login-card h1{
+  letter-spacing: 2px !important;
+  font-size: clamp(1.3rem, 5vw, 1.7rem) !important;
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+  white-space: nowrap !important;
+  padding-inline: 8px !important;
+}
+
+.login-card .login-sub{
+  letter-spacing: 3px !important;
+  font-size: clamp(0.6rem, 2.2vw, 0.72rem) !important;
+  white-space: nowrap !important;
+  padding-inline: 8px !important;
+}
+
+/* للموبايل الصغير جداً */
+@media (max-width: 420px){
+  .login-card{
+    padding: 40px 24px 32px !important;
+  }
+  .login-card h1{
+    letter-spacing: 1.5px !important;
+    font-size: 1.25rem !important;
+  }
+  .login-card .login-sub{
+    letter-spacing: 2px !important;
+    font-size: 0.58rem !important;
+  }
+}
+
+/* لوحة التحكم نفسها — عنوان الصفحة */
+.top-bar h1,
+.sidebar-brand-text strong{
+  letter-spacing: 2px !important;
+  word-break: keep-all !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 520px){
+  .top-bar h1{
+    font-size: 1.15rem !important;
+    letter-spacing: 1.5px !important;
+  }
+  .sidebar-brand-text strong{
+    font-size: 0.95rem !important;
+    letter-spacing: 2px !important;
+  }
+}
