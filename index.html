@@ -1,6 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl" data-lang="ar">
 <head>
+<script>
+/* PERCENT - Dark mode anti-flash */
+(function(){try{var s=localStorage.getItem('percent_dark_mode');var d=s==='dark'||(s!=='light'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark-mode');}catch(e){}})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PERCENT PERFUME | عطور فاخرة تروي حكايتك</title>
@@ -447,7 +451,7 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
     "latitude": "31.9539",
     "longitude": "35.9106"
   },
-  "telephone": "+962790000000",
+  "telephone": "+962794440551",
   "email": "info@percent-perfume.com",
   "priceRange": "JOD 15 - JOD 200",
   "currenciesAccepted": "JOD",
@@ -488,6 +492,345 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
 <!-- PHASE 7.3 SITEMAP END -->
 <link rel="stylesheet" href="mobile-app.css">
 <link rel="stylesheet" href="mobile-fix-override.css">
+<style id="percent-fab-styles-v3">
+/* ═══════════════════════════════════════════════════
+   PERCENT — Floating Help Button v3
+   FIXED: right-aligned, no top clipping, mobile OK
+   ═══════════════════════════════════════════════════ */
+
+/* Overlay */
+.pfab-overlay{
+  position:fixed !important;
+  top:0 !important;left:0 !important;right:0 !important;bottom:0 !important;
+  width:100vw !important;height:100vh !important;
+  background:rgba(5,5,5,.55) !important;
+  backdrop-filter:blur(6px) !important;
+  -webkit-backdrop-filter:blur(6px) !important;
+  opacity:0;visibility:hidden;
+  transition:opacity .3s ease,visibility .3s ease;
+  z-index:99990 !important;
+  pointer-events:none;
+}
+.pfab-overlay.open{opacity:1 !important;visibility:visible !important;pointer-events:auto !important}
+
+/* FAB button wrapper */
+.pfab-wrap{
+  position:fixed !important;
+  right:26px !important;
+  left:auto !important;
+  bottom:26px !important;
+  top:auto !important;
+  z-index:99999 !important;
+  background:none !important;
+  border:none !important;
+  padding:0 !important;
+  margin:0 !important;
+  cursor:pointer !important;
+  font-family:'Almarai',sans-serif !important;
+  width:auto !important;height:auto !important;
+  min-width:0 !important;min-height:0 !important;
+  line-height:1 !important;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.pfab-main{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:62px !important;
+  height:62px !important;
+  border-radius:50% !important;
+  background:linear-gradient(145deg,#0a0a0a,#1a1a1a) !important;
+  color:#c9a961 !important;
+  font-size:1.45rem !important;
+  box-shadow:0 12px 30px rgba(0,0,0,.35),0 0 0 1px rgba(201,169,97,.45) !important;
+  position:relative !important;
+  transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .3s ease,background .3s ease !important;
+}
+.pfab-main:hover{
+  transform:translateY(-4px) scale(1.06) !important;
+  box-shadow:0 18px 42px rgba(0,0,0,.45),0 0 0 2px rgba(201,169,97,.65) !important;
+}
+.pfab-main:active{transform:scale(.94) !important}
+.pfab-main.active{
+  background:linear-gradient(145deg,#c9a961,#e8d4a2) !important;
+  color:#0a0a0a !important;
+  box-shadow:0 12px 30px rgba(201,169,97,.45),0 0 0 1px rgba(201,169,97,.6) !important;
+}
+.pfab-main i{position:relative !important;z-index:2 !important;pointer-events:none !important;line-height:1 !important}
+
+.pfab-pulse{
+  position:absolute !important;
+  top:0 !important;left:0 !important;right:0 !important;bottom:0 !important;
+  border-radius:50% !important;
+  border:2px solid #c9a961 !important;
+  opacity:0;
+  animation:pfabPulse 2.6s ease-out infinite;
+  pointer-events:none !important;
+}
+@keyframes pfabPulse{
+  0%{transform:scale(1);opacity:.75}
+  100%{transform:scale(1.9);opacity:0}
+}
+
+/* Panel — RIGHT side, ABOVE the button, never clipped */
+.pfab-panel{
+  position:fixed !important;
+  right:26px !important;
+  left:auto !important;
+  bottom:100px !important;
+  top:auto !important;
+  width:370px !important;
+  max-width:calc(100vw - 40px) !important;
+  max-height:calc(100vh - 140px) !important;
+  max-height:calc(100dvh - 140px) !important;
+  background:#faf8f3 !important;
+  border-radius:22px !important;
+  border:1px solid rgba(201,169,97,.35) !important;
+  box-shadow:0 30px 80px rgba(0,0,0,.4) !important;
+  overflow:hidden !important;
+  display:flex !important;
+  flex-direction:column !important;
+  transform:translateY(20px) scale(.94);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:transform .38s cubic-bezier(.22,1,.36,1),opacity .3s ease,visibility .3s ease;
+  z-index:99995 !important;
+  font-family:'Almarai',sans-serif !important;
+  box-sizing:border-box !important;
+}
+.pfab-panel.open{
+  transform:translateY(0) scale(1) !important;
+  opacity:1 !important;visibility:visible !important;pointer-events:auto !important;
+}
+
+.pfab-panel-head{
+  padding:16px 20px !important;
+  background:linear-gradient(135deg,#0a0a0a,#16161a) !important;
+  color:#faf8f3 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:12px !important;
+  position:relative !important;
+  flex-shrink:0 !important;
+}
+.pfab-panel-head::before{
+  content:'' !important;
+  position:absolute !important;
+  top:0 !important;left:0 !important;right:0 !important;
+  height:3px !important;
+  background:linear-gradient(90deg,#a8874a,#e8d4a2,#c9a961,#a8874a) !important;
+}
+.pfab-panel-head>div{min-width:0 !important;flex:1 !important}
+.pfab-panel-head strong{display:block !important;color:#c9a961 !important;font-size:1rem !important;font-weight:800 !important;letter-spacing:.5px !important;line-height:1.3 !important}
+.pfab-panel-head small{display:block !important;color:#8a8478 !important;font-size:.72rem !important;font-weight:700 !important;margin-top:3px !important;line-height:1.3 !important}
+
+.pfab-close{
+  width:36px !important;height:36px !important;
+  min-width:36px !important;min-height:36px !important;
+  border-radius:50% !important;
+  border:none !important;
+  background:rgba(255,255,255,.08) !important;
+  color:#c9a961 !important;
+  cursor:pointer !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  transition:all .28s ease !important;
+  flex-shrink:0 !important;
+  font-size:.95rem !important;
+  padding:0 !important;
+}
+.pfab-close:hover{background:#c9a961 !important;color:#0a0a0a !important;transform:rotate(90deg) !important}
+
+.pfab-panel-body{
+  flex:1 1 auto !important;
+  min-height:0 !important;
+  overflow-y:auto !important;
+  overflow-x:hidden !important;
+  padding:14px 16px !important;
+  -webkit-overflow-scrolling:touch !important;
+  overscroll-behavior:contain !important;
+  box-sizing:border-box !important;
+}
+.pfab-panel-body::-webkit-scrollbar{width:6px}
+.pfab-panel-body::-webkit-scrollbar-thumb{background:linear-gradient(#c9a961,#a8874a);border-radius:10px}
+.pfab-panel-body::-webkit-scrollbar-track{background:#ebe5d6}
+
+.pfab-faq-item{
+  background:#fff !important;
+  border:1px solid rgba(10,10,10,.08) !important;
+  border-radius:13px !important;
+  margin-bottom:8px !important;
+  overflow:hidden !important;
+  transition:border-color .3s ease,box-shadow .3s ease !important;
+}
+.pfab-faq-item:last-child{margin-bottom:0 !important}
+.pfab-faq-item.open{
+  border-color:rgba(201,169,97,.55) !important;
+  box-shadow:0 6px 18px rgba(10,10,10,.07) !important;
+}
+
+.pfab-faq-q{
+  width:100% !important;
+  padding:13px 16px !important;
+  background:transparent !important;
+  border:none !important;
+  cursor:pointer !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:10px !important;
+  text-align:start !important;
+  font-family:inherit !important;
+  font-size:.85rem !important;
+  font-weight:800 !important;
+  color:#1a1a1a !important;
+  line-height:1.5 !important;
+  transition:color .25s ease !important;
+  min-height:auto !important;
+}
+.pfab-faq-q:hover{color:#a8874a !important}
+.pfab-faq-item.open .pfab-faq-q{color:#a8874a !important}
+
+.pfab-faq-icon{
+  width:24px !important;height:24px !important;
+  min-width:24px !important;min-height:24px !important;
+  border-radius:50% !important;
+  background:rgba(201,169,97,.14) !important;
+  color:#a8874a !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  font-size:.68rem !important;
+  flex-shrink:0 !important;
+  transition:all .38s cubic-bezier(.22,1,.36,1) !important;
+}
+.pfab-faq-item.open .pfab-faq-icon{
+  background:#c9a961 !important;
+  color:#0a0a0a !important;
+  transform:rotate(135deg) !important;
+}
+
+.pfab-faq-a{
+  max-height:0 !important;
+  overflow:hidden !important;
+  padding:0 16px !important;
+  transition:max-height .45s cubic-bezier(.22,1,.36,1),padding .35s ease !important;
+}
+.pfab-faq-item.open .pfab-faq-a{
+  max-height:400px !important;
+  padding:0 16px 14px !important;
+}
+.pfab-faq-a p{
+  font-size:.8rem !important;
+  color:#6b6459 !important;
+  line-height:1.8 !important;
+  margin:0 !important;
+  font-weight:600 !important;
+}
+.pfab-faq-a a{color:#a8874a !important;text-decoration:underline !important;font-weight:800 !important}
+
+.pfab-panel-foot{
+  padding:12px 16px 16px !important;
+  border-top:1px solid rgba(10,10,10,.06) !important;
+  background:#fff !important;
+  flex-shrink:0 !important;
+}
+
+.pfab-wa-btn{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:10px !important;
+  width:100% !important;
+  padding:14px 18px !important;
+  border-radius:14px !important;
+  background:linear-gradient(135deg,#25D366,#128C7E) !important;
+  color:#fff !important;
+  font-weight:800 !important;
+  font-size:.92rem !important;
+  text-decoration:none !important;
+  box-shadow:0 8px 22px rgba(37,211,102,.32) !important;
+  transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease !important;
+  border:none !important;
+  font-family:inherit !important;
+  cursor:pointer !important;
+  min-height:auto !important;
+}
+.pfab-wa-btn:hover{
+  transform:translateY(-2px) !important;
+  box-shadow:0 14px 30px rgba(37,211,102,.48) !important;
+  color:#fff !important;
+}
+.pfab-wa-btn:active{transform:translateY(0) scale(.98) !important}
+.pfab-wa-btn i{font-size:1.25rem !important}
+
+/* ═══ Mobile ═══ */
+@media (max-width:900px){
+  .pfab-wrap{
+    right:14px !important;
+    left:auto !important;
+    bottom:calc(78px + env(safe-area-inset-bottom,0px)) !important;
+  }
+  .pfab-main{
+    width:54px !important;
+    height:54px !important;
+    font-size:1.2rem !important;
+  }
+  .pfab-panel{
+    right:0 !important;
+    left:0 !important;
+    bottom:0 !important;
+    top:auto !important;
+    width:100vw !important;
+    max-width:100vw !important;
+    max-height:85vh !important;
+    max-height:85dvh !important;
+    border-radius:24px 24px 0 0 !important;
+    transform:translateY(100%) !important;
+    border-left:none !important;
+    border-right:none !important;
+    border-bottom:none !important;
+  }
+  .pfab-panel.open{transform:translateY(0) !important}
+  .pfab-panel-head{padding:16px 18px !important;border-radius:24px 24px 0 0 !important}
+  .pfab-panel-head::after{
+    content:'' !important;
+    position:absolute !important;
+    top:8px !important;
+    left:50% !important;
+    transform:translateX(-50%) !important;
+    width:38px !important;
+    height:4px !important;
+    border-radius:4px !important;
+    background:rgba(201,169,97,.55) !important;
+    z-index:5 !important;
+  }
+  .pfab-panel-body{padding:14px 16px !important}
+  .pfab-faq-q{font-size:.84rem !important;padding:13px 15px !important}
+  .pfab-faq-a p{font-size:.79rem !important}
+  .pfab-close{width:36px !important;height:36px !important;min-width:36px !important;min-height:36px !important}
+  .pfab-wa-btn{min-height:48px !important}
+}
+
+@media (max-width:380px){
+  .pfab-main{width:50px !important;height:50px !important;font-size:1.1rem !important}
+  .pfab-wrap{right:12px !important}
+  .pfab-panel-head strong{font-size:.92rem !important}
+  .pfab-faq-q{font-size:.8rem !important}
+}
+
+/* Ensure no conflict with prefers-reduced-motion */
+@media (prefers-reduced-motion:reduce){
+  .pfab-main,.pfab-panel,.pfab-faq-a,.pfab-faq-icon,.pfab-wa-btn{
+    transition:opacity .01s,visibility .01s !important;
+    animation:none !important;
+  }
+  .pfab-pulse{display:none !important}
+}
+</style>
+<link rel="stylesheet" href="dark-mode.css">
 </head>
 <body>
 <!-- PHASE: PRELOADER FAILSAFE START -->
@@ -546,6 +889,10 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
 <div class="cursor-ring" id="cursorRing"></div>
 
 <header id="header">
+<script>
+/* PERCENT - Dark mode anti-flash */
+(function(){try{var s=localStorage.getItem('percent_dark_mode');var d=s==='dark'||(s!=='light'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark-mode');}catch(e){}})();
+</script>
   <div class="container nav-container">
     <a href="#home" class="brand">
       <svg class="brand-mark" role="img" aria-label="PERCENT PERFUME"><use href="#logo-mark"/></svg>
@@ -767,7 +1114,7 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
           <a href="https://www.instagram.com/percent._.perfume/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="#" aria-label="Facebook" onclick="return false;"><i class="fab fa-facebook-f"></i></a>
           <a href="#" aria-label="TikTok" onclick="return false;"><i class="fab fa-tiktok"></i></a>
-          <a href="#" aria-label="WhatsApp" onclick="return false;"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://wa.me/962794440551" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
       <div class="footer-col" data-reveal style="--d:.1s">
@@ -789,7 +1136,7 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
       <div class="footer-col" data-reveal style="--d:.3s">
         <h3><span class="lang-ar">تواصل معنا</span><span class="lang-en">Contact Us</span></h3>
         <p><i class="fas fa-map-marker-alt"></i><span class="lang-ar">عمّان، الأردن</span><span class="lang-en">Amman, Jordan</span></p>
-        <p><i class="fas fa-phone"></i><span dir="ltr">+962 7 9000 0000</span></p>
+        <p><i class="fas fa-phone"></i><span dir="ltr">+962 7 9444 0551</span></p>
         <p><i class="fas fa-envelope"></i><span dir="ltr">info@percent-perfume.com</span></p>
         <p><i class="fas fa-clock"></i><span class="lang-ar">يومياً 10ص - 10م</span><span class="lang-en">Daily 10AM - 10PM</span></p>
       </div>
@@ -1422,7 +1769,170 @@ if ("serviceWorker" in navigator) {
 }
 </script>
 <!-- PHASE 7.1 SW END -->
+<!-- ═══════════════════════════════════════════════════
+     PERCENT — Floating Help Button + FAQ Panel
+     ═══════════════════════════════════════════════════ -->
+<!-- P-FAB-V3-START -->
+<div class="pfab-overlay" id="pfabOverlay"></div>
+
+<button class="pfab-wrap" id="pfabMain" type="button" aria-label="مركز المساعدة" aria-expanded="false">
+  <span class="pfab-main">
+    <i class="fas fa-comments"></i>
+    <span class="pfab-pulse"></span>
+  </span>
+</button>
+
+<div class="pfab-panel" id="pfabPanel" role="dialog" aria-modal="true" aria-label="مركز المساعدة">
+  <div class="pfab-panel-head">
+    <div>
+      <strong>مركز المساعدة</strong>
+      <small>كيف يمكننا مساعدتك؟</small>
+    </div>
+    <button class="pfab-close" id="pfabClose" type="button" aria-label="إغلاق">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+
+  <div class="pfab-panel-body">
+
+    <div class="pfab-faq-item">
+      <button class="pfab-faq-q" type="button">
+        <span>كيف أطلب من المتجر؟</span>
+        <span class="pfab-faq-icon"><i class="fas fa-plus"></i></span>
+      </button>
+      <div class="pfab-faq-a">
+        <p>اختر العطر الذي يعجبك، اضغط "أضف إلى السلة"، ثم انتقل إلى صفحة السلة، أدخل بياناتك (الاسم، الهاتف، العنوان)، اختر طريقة الدفع، واضغط "تأكيد الطلب". سنتواصل معك للتأكيد.</p>
+      </div>
+    </div>
+
+    <div class="pfab-faq-item">
+      <button class="pfab-faq-q" type="button">
+        <span>كم يستغرق التوصيل؟</span>
+        <span class="pfab-faq-icon"><i class="fas fa-plus"></i></span>
+      </button>
+      <div class="pfab-faq-a">
+        <p>التوصيل داخل الأردن خلال <strong>1 - 4 أيام عمل</strong> حسب المحافظة. ستصلك رسالة تأكيد عند شحن طلبك، ويمكنك تتبع حالة الطلب من صفحة خدمة العملاء.</p>
+      </div>
+    </div>
+
+    <div class="pfab-faq-item">
+      <button class="pfab-faq-q" type="button">
+        <span>ما هي طرق الدفع المتاحة؟</span>
+        <span class="pfab-faq-icon"><i class="fas fa-plus"></i></span>
+      </button>
+      <div class="pfab-faq-a">
+        <p>نوفّر طريقتين للدفع:<br>• <strong>الدفع نقداً عند الاستلام (COD)</strong><br>• <strong>التحويل البنكي / CliQ</strong> — يرفع العميل صورة الحوالة عند إتمام الطلب.</p>
+      </div>
+    </div>
+
+    <div class="pfab-faq-item">
+      <button class="pfab-faq-q" type="button">
+        <span>هل يمكنني إرجاع المنتج؟</span>
+        <span class="pfab-faq-icon"><i class="fas fa-plus"></i></span>
+      </button>
+      <div class="pfab-faq-a">
+        <p>نعم، يحق لك طلب الإرجاع خلال <strong>3 أيام</strong> من استلام الطلب، بشرط أن يكون المنتج غير مفتوح وفي عبوته الأصلية. راجع <a href="legal/refund.html">سياسة الاسترداد</a> للتفاصيل الكاملة.</p>
+      </div>
+    </div>
+
+    <div class="pfab-faq-item">
+      <button class="pfab-faq-q" type="button">
+        <span>كيف أستخدم نقاط الولاء؟</span>
+        <span class="pfab-faq-icon"><i class="fas fa-plus"></i></span>
+      </button>
+      <div class="pfab-faq-a">
+        <p>عند إتمام أي طلب من صفحة السلة، فعّل خيار <strong>"استخدم نقاطك"</strong> وسيتم خصم النقاط تلقائياً بمعدل <strong>100 PERC = 1 دينار</strong> من إجمالي طلبك.</p>
+      </div>
+    </div>
+
+    <div class="pfab-faq-item">
+      <button class="pfab-faq-q" type="button">
+        <span>هل العطور أصلية؟</span>
+        <span class="pfab-faq-icon"><i class="fas fa-plus"></i></span>
+      </button>
+      <div class="pfab-faq-a">
+        <p>نعم، جميع منتجاتنا <strong>أصلية 100%</strong> ومختارة بعناية من أرقى المصادر العالمية، مع ضمان الجودة والثبات. نعمل مباشرة مع موردين موثوقين لضمان أصالة كل عطر.</p>
+      </div>
+    </div>
+
+    <div class="pfab-faq-item">
+      <button class="pfab-faq-q" type="button">
+        <span>كيف أتتبع طلبي؟</span>
+        <span class="pfab-faq-icon"><i class="fas fa-plus"></i></span>
+      </button>
+      <div class="pfab-faq-a">
+        <p>انتقل إلى صفحة <strong>خدمة العملاء</strong>، أدخل رقم طلبك (بصيغة PERC-XXXXXX-XXXX)، وستظهر حالة الطلب مباشرة، مع إمكانية محادثة فريقنا في نفس الصفحة.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="pfab-panel-foot">
+    <a href="https://wa.me/962794440551" target="_blank" rel="noopener noreferrer" class="pfab-wa-btn">
+      <i class="fab fa-whatsapp"></i>
+      <span>تواصل معنا على واتساب</span>
+    </a>
+  </div>
+</div>
+
+<script>
+/* PERCENT — Floating Help Panel v3 (fixed) */
+(function(){
+  'use strict';
+  var fab      = document.getElementById('pfabMain');
+  var panel    = document.getElementById('pfabPanel');
+  var closeBtn = document.getElementById('pfabClose');
+  var overlay  = document.getElementById('pfabOverlay');
+  if (!fab || !panel || !overlay) return;
+
+  function openPanel(){
+    panel.classList.add('open');
+    overlay.classList.add('open');
+    fab.classList.add('active');
+    fab.setAttribute('aria-expanded', 'true');
+    var icon = fab.querySelector('.pfab-main i');
+    if (icon) icon.className = 'fas fa-times';
+    document.body.style.overflow = 'hidden';
+  }
+  function closePanel(){
+    panel.classList.remove('open');
+    overlay.classList.remove('open');
+    fab.classList.remove('active');
+    fab.setAttribute('aria-expanded', 'false');
+    var icon = fab.querySelector('.pfab-main i');
+    if (icon) icon.className = 'fas fa-comments';
+    document.body.style.overflow = '';
+  }
+  function togglePanel(){
+    if (panel.classList.contains('open')) closePanel();
+    else openPanel();
+  }
+
+  fab.addEventListener('click', function(e){ e.preventDefault(); togglePanel(); });
+  if (closeBtn) closeBtn.addEventListener('click', closePanel);
+  overlay.addEventListener('click', closePanel);
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
+  });
+
+  var faqButtons = document.querySelectorAll('.pfab-faq-q');
+  for (var i = 0; i < faqButtons.length; i++){
+    (function(btn){
+      btn.addEventListener('click', function(){
+        var item = btn.closest('.pfab-faq-item');
+        if (!item) return;
+        var wasOpen = item.classList.contains('open');
+        var all = document.querySelectorAll('.pfab-faq-item');
+        for (var j = 0; j < all.length; j++) all[j].classList.remove('open');
+        if (!wasOpen) item.classList.add('open');
+      });
+    })(faqButtons[i]);
+  }
+})();
+</script>
+<!-- P-FAB-V3-END -->
 <script src="mobile-app.js" defer></script>
 <script src="pwa-install.js" defer></script>
+<script src="dark-mode.js" defer></script>
 </body>
 </html>

@@ -1,6 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl" data-lang="ar">
 <head>
+<script>
+/* PERCENT - Dark mode anti-flash */
+(function(){try{var s=localStorage.getItem('percent_dark_mode');var d=s==='dark'||(s!=='light'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark-mode');}catch(e){}})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PERCENT PERFUME | عطور نسائية</title>
@@ -322,6 +326,7 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
 <!-- PHASE 7.2 SEO END -->
 <link rel="stylesheet" href="mobile-app.css">
 <link rel="stylesheet" href="mobile-fix-override.css">
+<link rel="stylesheet" href="dark-mode.css">
 </head>
 <body>
 <!-- PHASE: PRELOADER FAILSAFE START -->
@@ -386,6 +391,10 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
 <div class="cursor-ring" id="cursorRing"></div>
 
 <header id="header">
+<script>
+/* PERCENT - Dark mode anti-flash */
+(function(){try{var s=localStorage.getItem('percent_dark_mode');var d=s==='dark'||(s!=='light'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark-mode');}catch(e){}})();
+</script>
   <div class="container nav-container">
     <a href="index.html" class="brand">
       <svg class="brand-mark" role="img" aria-label="PERCENT PERFUME"><use href="#logo-mark"/></svg>
@@ -492,7 +501,7 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
           <a href="https://www.instagram.com/percent._.perfume?stkn=aTQ1dnlqZXBvengy" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="#" aria-label="Facebook" onclick="return false;"><i class="fab fa-facebook-f"></i></a>
           <a href="#" aria-label="TikTok" onclick="return false;"><i class="fab fa-tiktok"></i></a>
-          <a href="#" aria-label="WhatsApp" onclick="return false;"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://wa.me/962794440551" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
       <div class="footer-col" data-reveal style="--d:.1s">
@@ -513,7 +522,7 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
       <div class="footer-col" data-reveal style="--d:.3s">
         <h3><span class="lang-ar">تواصل معنا</span><span class="lang-en">Contact Us</span></h3>
         <p><i class="fas fa-map-marker-alt"></i><span class="lang-ar">عمّان، الأردن</span><span class="lang-en">Amman, Jordan</span></p>
-        <p><i class="fas fa-phone"></i><span dir="ltr">+962 7 9000 0000</span></p>
+        <p><i class="fas fa-phone"></i><span dir="ltr">+962 7 9444 0551</span></p>
         <p><i class="fas fa-envelope"></i><span dir="ltr">info@percent-perfume.com</span></p>
         <p><i class="fas fa-clock"></i><span class="lang-ar">يومياً 10ص - 10م</span><span class="lang-en">Daily 10AM - 10PM</span></p>
       </div>
@@ -900,5 +909,6 @@ if ("serviceWorker" in navigator) {
 <!-- PHASE 7.1 SW END -->
 <script src="mobile-app.js" defer></script>
 <script src="pwa-install.js" defer></script>
+<script src="dark-mode.js" defer></script>
 </body>
 </html>

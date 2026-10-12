@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" data-lang="ar">
 <head>
+<script>
+/* PERCENT - Dark mode anti-flash */
+(function(){try{var s=localStorage.getItem('percent_dark_mode');var d=s==='dark'||(s!=='light'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark-mode');}catch(e){}})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>إلغاء الاشتراك | PERCENT PERFUME</title>
@@ -120,10 +124,15 @@ footer a{color:var(--gold-deep);font-weight:700}
   .btn{width:100%;justify-content:center}
 }
 </style>
+<link rel="stylesheet" href="../dark-mode.css">
 </head>
 <body>
 
 <header>
+<script>
+/* PERCENT - Dark mode anti-flash */
+(function(){try{var s=localStorage.getItem('percent_dark_mode');var d=s==='dark'||(s!=='light'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark-mode');}catch(e){}})();
+</script>
   <div class="container nav-bar">
     <a href="../index.html" class="brand">
       <div>
@@ -337,5 +346,6 @@ footer a{color:var(--gold-deep);font-weight:700}
   // if (targetEmail) doUnsubscribe(targetEmail);
 })();
 </script>
+<script src="../dark-mode.js" defer></script>
 </body>
 </html>

@@ -1,6 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl" data-lang="ar">
 <head>
+<script>
+/* PERCENT - Dark mode anti-flash */
+(function(){try{var s=localStorage.getItem('percent_dark_mode');var d=s==='dark'||(s!=='light'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark-mode');}catch(e){}})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>سياسة الاسترداد والإرجاع | PERCENT PERFUME</title>
@@ -137,9 +141,14 @@ table.info-table td:first-child{font-weight:800;color:var(--navy)}
 <meta name="twitter:image" content="https://percent-perfume.com/icon-512.png">
 <meta name="twitter:site" content="@percentperfume">
 <!-- PHASE 7.2 SEO END -->
+<link rel="stylesheet" href="../dark-mode.css">
 </head>
 <body>
 <header>
+<script>
+/* PERCENT - Dark mode anti-flash */
+(function(){try{var s=localStorage.getItem('percent_dark_mode');var d=s==='dark'||(s!=='light'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark-mode');}catch(e){}})();
+</script>
   <div class="container nav-bar">
     <a href="../index.html" class="brand">
       <div>
@@ -368,5 +377,6 @@ table.info-table td:first-child{font-weight:800;color:var(--navy)}
 
 <script src="../cookie-banner.js" defer></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="../dark-mode.js" defer></script>
 </body>
 </html>

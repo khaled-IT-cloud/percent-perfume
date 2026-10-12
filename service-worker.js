@@ -28,6 +28,8 @@ const CACHE_URLS = [
   './product-link.js',
   './reviews.js',
   './reviews-display.js',
+  './dark-mode.css',
+  './dark-mode.js',
   './cookie-banner.js',
   './favicon.svg',
   './icon-192.png',
