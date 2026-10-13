@@ -844,8 +844,7 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
   });
 
   $('#promoBtn').addEventListener('click', () => showToast(t('promo'), 'fa-tags'));
-  $('#searchBtn').addEventListener('click', () => showToast(t('searching'), 'fa-magnifying-glass'));
-
+  /* Search handled by search.js */
   $('#year').textContent = new Date().getFullYear();
   applyLang();
 
