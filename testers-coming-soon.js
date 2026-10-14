@@ -1,582 +1,443 @@
-/* ═══════════════════════════════════════════════════════════
-   PERCENT — Testers "Coming Soon" Modal
-   - يضيف رابط "عطور التست" في القائمة
-   - عند الضغط تظهر نافذة قيد الإنشاء
-   - مع خيارات: واتساب، اتصال، عودة للرئيسية
-   ═══════════════════════════════════════════════════════════ */
+/* ============================================================
+   PERCENT PERFUME — Testers Coming Soon
+   - Adds "Testers" nav link to every page
+   - Opens a modal with "under construction" message
+   - WhatsApp button with pre-written message
+   - Hides brand text on mobile (logo only)
+   ============================================================ */
 (function(){
   'use strict';
   if (window.__percentTestersLoaded) return;
   window.__percentTestersLoaded = true;
 
-  var CFG = window.PERCENT_CONFIG || {};
-  var PHONE = (CFG.CONTACT && CFG.CONTACT.PHONE_E164) || '+962794440551';
-  var WA    = (CFG.CONTACT && CFG.CONTACT.WHATSAPP) || '962794440551';
+  var WHATSAPP_NUMBER = '962794440551';
+  var WHATSAPP_MESSAGE_AR = 'مرحباً، أريد الاستفسار عن عطور التست (5ml) — متى ستتوفر في المتجر؟';
+  var WHATSAPP_MESSAGE_EN = 'Hello, I would like to ask about the testers (5ml) — when will they be available?';
+
+  function getLang(){
+    return document.documentElement.dataset.lang || document.documentElement.lang || 'ar';
+  }
 
   /* ═══════════════════════════════════════════════
      CSS
      ═══════════════════════════════════════════════ */
   function injectStyles(){
-    if (document.getElementById('percent-testers-styles')) return;
+    if (document.getElementById('testers-coming-soon-styles')) return;
     var style = document.createElement('style');
-    style.id = 'percent-testers-styles';
+    style.id = 'testers-coming-soon-styles';
     style.textContent = `
+      /* ═══ Hide brand text on mobile — logo only ═══ */
+      @media (max-width: 900px) {
+        .brand-text {
+          display: none !important;
+        }
+        .brand {
+          gap: 0 !important;
+        }
+        .brand-mark {
+          width: 42px !important;
+          height: 42px !important;
+        }
+      }
 
-      /* ═══ Modal Overlay ═══ */
-      .ptest-overlay {
+      /* ═══ Testers Modal Overlay ═══ */
+      .pctest-overlay {
         position: fixed;
         inset: 0;
         background: rgba(5, 5, 5, .72);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
-        z-index: 99990;
+        z-index: 99999;
         opacity: 0;
         visibility: hidden;
-        transition: opacity .3s ease, visibility .3s ease;
-      }
-      .ptest-overlay.open {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      /* ═══ Modal ═══ */
-      .ptest-modal {
-        position: fixed;
-        inset: 0;
-        z-index: 99995;
+        transition: opacity .35s ease, visibility .35s ease;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 24px;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity .3s ease, visibility .3s ease;
-        pointer-events: none;
+        padding: 20px;
       }
-      .ptest-modal.open {
+      .pctest-overlay.show {
         opacity: 1;
         visibility: visible;
-        pointer-events: auto;
       }
 
-      .ptest-card {
-        position: relative;
+      /* ═══ Modal Card ═══ */
+      .pctest-modal {
+        background: #faf8f3;
+        border-radius: 24px;
         width: 100%;
-        max-width: 520px;
-        max-height: calc(100vh - 48px);
-        overflow-y: auto;
-        background: linear-gradient(160deg, #0a0a0a 0%, #16161a 100%);
-        border: 1px solid rgba(201, 169, 97, .4);
-        border-radius: 26px;
-        padding: 48px 40px 36px;
+        max-width: 480px;
+        padding: 44px 34px 32px;
         text-align: center;
-        color: #faf8f3;
-        box-shadow: 0 40px 100px rgba(0, 0, 0, .6), 0 0 80px rgba(201, 169, 97, .15);
-        transform: scale(.9) translateY(20px);
-        transition: transform .45s cubic-bezier(.22, 1, .36, 1);
+        position: relative;
+        box-shadow: 0 40px 100px rgba(0, 0, 0, .5), 0 0 60px rgba(201, 169, 97, .08);
+        border: 1px solid rgba(201, 169, 97, .35);
+        transform: translateY(24px) scale(.94);
+        transition: transform .4s cubic-bezier(.22, 1, .36, 1);
+        overflow: hidden;
       }
-      .ptest-modal.open .ptest-card {
-        transform: scale(1) translateY(0);
+      .pctest-overlay.show .pctest-modal {
+        transform: translateY(0) scale(1);
       }
-      .ptest-card::before {
+      .pctest-modal::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
+        top: 0; left: 0; right: 0;
         height: 4px;
-        border-radius: 26px 26px 0 0;
-        background: linear-gradient(90deg, #a8874a, #e8d4a2, #c9a961, #e8d4a2, #a8874a);
-        background-size: 200% auto;
-        animation: ptestShine 4s linear infinite;
-      }
-      @keyframes ptestShine {
-        to { background-position: 200% center; }
-      }
-      .ptest-card::after {
-        content: '';
-        position: absolute;
-        top: -100px;
-        right: -100px;
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(201, 169, 97, .18), transparent 70%);
-        pointer-events: none;
+        background: linear-gradient(90deg, #a8874a, #e8d4a2, #c9a961, #a8874a);
       }
 
       /* ═══ Icon ═══ */
-      .ptest-icon-wrap {
-        position: relative;
-        width: 100px;
-        height: 100px;
-        margin: 0 auto 24px;
+      .pctest-icon {
+        width: 92px;
+        height: 92px;
+        margin: 0 auto 22px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(201, 169, 97, .22), rgba(201, 169, 97, .04));
-        border: 1px solid rgba(201, 169, 97, .55);
+        background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
+        border: 2px solid rgba(201, 169, 97, .5);
         display: flex;
         align-items: center;
         justify-content: center;
         color: #c9a961;
-        font-size: 2.2rem;
-        box-shadow: 0 20px 50px rgba(201, 169, 97, .25);
-        animation: ptestFloat 4s ease-in-out infinite;
+        font-size: 2rem;
+        position: relative;
+        animation: pctestFloat 3.2s ease-in-out infinite;
       }
-      @keyframes ptestFloat {
+      @keyframes pctestFloat {
         0%, 100% { transform: translateY(0); }
-        50%      { transform: translateY(-10px); }
+        50% { transform: translateY(-8px); }
       }
-      .ptest-icon-wrap::before {
+      .pctest-icon::after {
         content: '';
         position: absolute;
         inset: -14px;
         border-radius: 50%;
-        border: 1px dashed rgba(201, 169, 97, .3);
-        animation: ptestSpin 22s linear infinite;
+        border: 1px dashed rgba(201, 169, 97, .35);
+        animation: pctestSpin 22s linear infinite;
       }
-      .ptest-icon-wrap::after {
-        content: '';
-        position: absolute;
-        inset: -28px;
-        border-radius: 50%;
-        border: 1px solid rgba(201, 169, 97, .12);
-        animation: ptestSpin 30s linear infinite reverse;
-      }
-      @keyframes ptestSpin {
+      @keyframes pctestSpin {
         to { transform: rotate(360deg); }
       }
 
       /* ═══ Badge ═══ */
-      .ptest-badge {
+      .pctest-badge {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 7px 18px;
-        border-radius: 40px;
+        padding: 6px 16px;
+        border-radius: 30px;
         background: rgba(201, 169, 97, .15);
-        border: 1px solid rgba(201, 169, 97, .5);
-        color: #e8d4a2;
+        border: 1px solid rgba(201, 169, 97, .45);
+        color: #a8874a;
         font-size: .72rem;
         font-weight: 800;
-        letter-spacing: 3px;
-        margin-bottom: 18px;
+        letter-spacing: 2px;
+        margin-bottom: 16px;
         text-transform: uppercase;
       }
-      .ptest-badge i {
-        font-size: .7rem;
-        animation: ptestSparkle 2s ease-in-out infinite;
+      .pctest-badge::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #c9a961;
+        box-shadow: 0 0 0 3px rgba(201, 169, 97, .25);
+        animation: pctestBlink 1.6s ease-in-out infinite;
       }
-      @keyframes ptestSparkle {
-        0%, 100% { transform: scale(1) rotate(0); opacity: 1; }
-        50%      { transform: scale(1.25) rotate(15deg); opacity: .7; }
+      @keyframes pctestBlink {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: .5; transform: scale(.85); }
       }
 
-      /* ═══ Heading ═══ */
-      .ptest-card h2 {
+      /* ═══ Text ═══ */
+      .pctest-modal h3 {
         font-family: 'Playfair Display', serif;
-        font-size: clamp(1.6rem, 4vw, 2rem);
-        font-weight: 700;
-        color: #faf8f3;
+        font-size: 1.75rem;
+        color: #0a0a0a;
         margin-bottom: 12px;
-        letter-spacing: 1px;
-        line-height: 1.2;
+        line-height: 1.3;
+        letter-spacing: .5px;
       }
-      .ptest-card h2 .gold {
-        background: linear-gradient(100deg, #a8874a 0%, #c9a961 22%, #e8d4a2 45%, #c9a961 68%, #a8874a 100%);
-        background-size: 220% auto;
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        color: transparent;
-        animation: ptestShine 6s linear infinite;
-      }
-
-      /* ═══ Description ═══ */
-      .ptest-desc {
-        font-size: .92rem;
-        color: #a8a29b;
-        line-height: 1.85;
+      .pctest-modal p.pctest-sub {
+        color: #6b6459;
+        font-size: .93rem;
+        line-height: 1.8;
         margin-bottom: 28px;
-        max-width: 380px;
-        margin-inline: auto;
-        margin-bottom: 28px;
-      }
-      .ptest-desc strong {
-        color: #e8d4a2;
-        font-weight: 800;
+        font-weight: 700;
       }
 
       /* ═══ Actions ═══ */
-      .ptest-actions {
+      .pctest-actions {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        margin-bottom: 22px;
       }
-      .ptest-btn {
+      .pctest-btn {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
         padding: 15px 22px;
         border-radius: 14px;
-        border: none;
         font-family: inherit;
         font-weight: 800;
-        font-size: .92rem;
-        letter-spacing: .3px;
+        font-size: .95rem;
         cursor: pointer;
+        border: none;
         transition: all .3s cubic-bezier(.22, 1, .36, 1);
         text-decoration: none;
+        letter-spacing: .3px;
       }
-      .ptest-btn i {
-        font-size: 1.05rem;
-      }
-      .ptest-btn-wa {
+      .pctest-btn.whatsapp {
         background: linear-gradient(135deg, #25D366, #128C7E);
         color: #fff;
         box-shadow: 0 10px 28px rgba(37, 211, 102, .35);
       }
-      .ptest-btn-wa:hover {
+      .pctest-btn.whatsapp:hover {
         transform: translateY(-3px);
-        box-shadow: 0 16px 36px rgba(37, 211, 102, .5);
+        box-shadow: 0 14px 34px rgba(37, 211, 102, .5);
       }
-      .ptest-btn-call {
-        background: rgba(201, 169, 97, .12);
-        border: 1.5px solid rgba(201, 169, 97, .5);
-        color: #e8d4a2;
-      }
-      .ptest-btn-call:hover {
-        background: rgba(201, 169, 97, .22);
-        border-color: #c9a961;
-        transform: translateY(-3px);
-      }
-      .ptest-btn-home {
-        background: rgba(255, 255, 255, .05);
-        border: 1.5px solid rgba(255, 255, 255, .12);
-        color: #a8a29b;
-      }
-      .ptest-btn-home:hover {
-        background: rgba(255, 255, 255, .1);
-        color: #faf8f3;
-        transform: translateY(-3px);
-      }
-
-      /* ═══ Footer Note ═══ */
-      .ptest-note {
-        font-size: .72rem;
-        color: #6b6459;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-        padding-top: 18px;
-        border-top: 1px dashed rgba(201, 169, 97, .2);
-      }
-      .ptest-note i {
+      .pctest-btn.home {
+        background: linear-gradient(135deg, #0a0a0a, #16161a);
         color: #c9a961;
-        font-size: .7rem;
+        box-shadow: 0 8px 20px rgba(10, 10, 10, .25);
+        border: 1px solid rgba(201, 169, 97, .3);
+      }
+      .pctest-btn.home:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 28px rgba(10, 10, 10, .35);
+        background: linear-gradient(135deg, #c9a961, #e8d4a2);
+        color: #0a0a0a;
+      }
+      .pctest-btn i {
+        font-size: 1.15rem;
       }
 
-      /* ═══ Close Button ═══ */
-      .ptest-close {
+      /* ═══ Close ═══ */
+      .pctest-close {
         position: absolute;
-        top: 16px;
-        right: 16px;
+        top: 14px;
+        inset-inline-end: 14px;
         width: 38px;
         height: 38px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, .08);
-        color: #c9a961;
+        background: rgba(10, 10, 10, .06);
         border: none;
+        color: #6b6459;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: .9rem;
-        transition: all .3s ease;
-        z-index: 10;
+        font-size: .88rem;
+        transition: all .3s cubic-bezier(.22, 1, .36, 1);
+        padding: 0;
       }
-      .ptest-close:hover {
-        background: #c9a961;
-        color: #0a0a0a;
+      .pctest-close:hover {
+        background: #b91c1c;
+        color: #fff;
         transform: rotate(90deg);
-      }
-      html[dir="ltr"] .ptest-close {
-        right: auto;
-        left: 16px;
-      }
-
-      /* ═══ Nav Link Highlight ═══ */
-      .nav-links a.nav-testers {
-        position: relative;
-      }
-      .nav-links a.nav-testers::before {
-        content: 'NEW';
-        position: absolute;
-        top: -14px;
-        inset-inline-end: -10px;
-        background: linear-gradient(135deg, #c9a961, #e8d4a2);
-        color: #0a0a0a;
-        font-size: .5rem;
-        font-weight: 900;
-        padding: 2px 7px;
-        border-radius: 10px;
-        letter-spacing: 1px;
-        box-shadow: 0 4px 10px rgba(201, 169, 97, .4);
-        animation: navTestersPulse 2.5s ease-in-out infinite;
-      }
-      @keyframes navTestersPulse {
-        0%, 100% { transform: scale(1); }
-        50%      { transform: scale(1.08); }
       }
 
       /* ═══ Mobile ═══ */
-      @media (max-width: 640px) {
-        .ptest-modal {
+      @media (max-width: 480px) {
+        .pctest-overlay {
           padding: 0;
           align-items: flex-end;
         }
-        .ptest-card {
-          max-width: 100vw;
-          max-height: 92vh;
-          max-height: 92dvh;
+        .pctest-modal {
+          padding: 40px 22px calc(24px + env(safe-area-inset-bottom, 0px));
           border-radius: 24px 24px 0 0;
-          padding: 44px 24px 32px;
+          max-width: 100%;
           transform: translateY(100%);
-          border-bottom: none;
         }
-        .ptest-modal.open .ptest-card {
+        .pctest-overlay.show .pctest-modal {
           transform: translateY(0);
         }
-        .ptest-card::before {
-          border-radius: 24px 24px 0 0;
-        }
-        .ptest-card::after {
-          display: none;
-        }
-        .ptest-icon-wrap {
-          width: 80px;
-          height: 80px;
-          font-size: 1.8rem;
-          margin-bottom: 20px;
-        }
-        .ptest-icon-wrap::before { inset: -12px; }
-        .ptest-icon-wrap::after  { inset: -24px; }
-        .ptest-card h2 {
+        .pctest-modal h3 {
           font-size: 1.4rem;
         }
-        .ptest-desc {
-          font-size: .86rem;
-          margin-bottom: 22px;
-        }
-        .ptest-btn {
-          padding: 14px 20px;
-          font-size: .88rem;
+        .pctest-icon {
+          width: 78px;
+          height: 78px;
+          font-size: 1.7rem;
         }
       }
 
-      @media (max-width: 380px) {
-        .ptest-card {
-          padding: 40px 18px 28px;
-        }
-        .ptest-icon-wrap {
-          width: 70px;
-          height: 70px;
-          font-size: 1.6rem;
-        }
-        .ptest-card h2 {
-          font-size: 1.25rem;
-        }
+      /* ═══ Dark Mode ═══ */
+      html.dark-mode .pctest-modal {
+        background: #16161a;
+        border-color: rgba(201, 169, 97, .4);
       }
-
-      /* ═══ Reduced Motion ═══ */
-      @media (prefers-reduced-motion: reduce) {
-        .ptest-card,
-        .ptest-icon-wrap,
-        .ptest-icon-wrap::before,
-        .ptest-icon-wrap::after,
-        .ptest-badge i,
-        .nav-links a.nav-testers::before {
-          animation: none !important;
-          transition: none !important;
-        }
+      html.dark-mode .pctest-modal::before {
+        background: linear-gradient(90deg, #a8874a, #e8d4a2, #c9a961, #a8874a);
       }
-
-      /* ═══ Dark Mode Support (already dark) ═══ */
-      html.dark-mode .ptest-card {
-        background: linear-gradient(160deg, #0a0a0a 0%, #16161a 100%);
-        border-color: rgba(201, 169, 97, .45);
+      html.dark-mode .pctest-modal h3 {
+        color: #f5f1e8;
+      }
+      html.dark-mode .pctest-modal p.pctest-sub {
+        color: #a8a29b;
+      }
+      html.dark-mode .pctest-close {
+        background: rgba(255, 255, 255, .08);
+        color: #a8a29b;
+      }
+      html.dark-mode .pctest-close:hover {
+        background: #b91c1c;
+        color: #fff;
+      }
+      html.dark-mode .pctest-btn.home {
+        background: linear-gradient(135deg, #1a1a1e, #0a0a0a);
+        border-color: rgba(201, 169, 97, .4);
+      }
+      html.dark-mode .pctest-btn.home:hover {
+        background: linear-gradient(135deg, #c9a961, #e8d4a2);
+        color: #0a0a0a;
       }
     `;
     document.head.appendChild(style);
   }
 
   /* ═══════════════════════════════════════════════
-     HTML (Modal)
+     MODAL HTML
      ═══════════════════════════════════════════════ */
   function injectModal(){
-    if (document.getElementById('ptestModal')) return;
-
-    var waMsg = encodeURIComponent(
-      'مرحباً PERCENT 👋\n' +
-      'أرغب بمعرفة المزيد عن عطور التست (5ml) التي ستتوفر قريباً.\n' +
-      'هل يمكنكم إخباري بالموعد المتوقع؟'
-    );
-
-    var modal = document.createElement('div');
-    modal.innerHTML = '' +
-      '<div class="ptest-overlay" id="ptestOverlay"></div>' +
-      '<div class="ptest-modal" id="ptestModal" role="dialog" aria-modal="true" aria-labelledby="ptestTitle">' +
-      '  <div class="ptest-card">' +
-      '    <button class="ptest-close" id="ptestClose" type="button" aria-label="إغلاق">' +
-      '      <i class="fas fa-times"></i>' +
-      '    </button>' +
-      '    <div class="ptest-icon-wrap">' +
-      '      <i class="fas fa-flask"></i>' +
-      '    </div>' +
-      '    <div class="ptest-badge">' +
-      '      <i class="fas fa-hourglass-half"></i>' +
-      '      <span class="lang-ar">قيد الإنشاء</span>' +
-      '      <span class="lang-en">COMING SOON</span>' +
-      '    </div>' +
-      '    <h2 id="ptestTitle">' +
-      '      <span class="lang-ar">قسم <span class="gold">عطور التست</span></span>' +
-      '      <span class="lang-en"><span class="gold">Testers</span> Section</span>' +
-      '    </h2>' +
-      '    <p class="ptest-desc">' +
-      '      <span class="lang-ar">نعمل حالياً على تجهيز قسم <strong>عطور التست (5ml)</strong> ليكون جاهزاً قريباً. تابعنا على واتساب لتصلك أخبار الإطلاق أولاً بأول.</span>' +
-      '      <span class="lang-en">We\'re currently preparing the <strong>Testers (5ml)</strong> section. Follow us on WhatsApp to be the first to know when we launch.</span>' +
-      '    </p>' +
-      '    <div class="ptest-actions">' +
-      '      <a href="https://wa.me/' + WA + '?text=' + waMsg + '" ' +
-      '         target="_blank" rel="noopener noreferrer" class="ptest-btn ptest-btn-wa">' +
-      '        <i class="fab fa-whatsapp"></i>' +
-      '        <span class="lang-ar">راسلنا على واتساب</span>' +
-      '        <span class="lang-en">Message us on WhatsApp</span>' +
-      '      </a>' +
-      '      <a href="tel:' + PHONE + '" class="ptest-btn ptest-btn-call">' +
-      '        <i class="fas fa-phone"></i>' +
-      '        <span class="lang-ar">اتصل بنا مباشرة</span>' +
-      '        <span class="lang-en">Call us directly</span>' +
-      '      </a>' +
-      '      <a href="index.html" class="ptest-btn ptest-btn-home">' +
-      '        <i class="fas fa-home"></i>' +
-      '        <span class="lang-ar">العودة للصفحة الرئيسية</span>' +
-      '        <span class="lang-en">Back to Home</span>' +
-      '      </a>' +
-      '    </div>' +
-      '    <div class="ptest-note">' +
-      '      <i class="fas fa-lock"></i>' +
-      '      <span class="lang-ar">شكراً لصبرك — نعدك بشيء مميز جداً</span>' +
-      '      <span class="lang-en">Thanks for your patience — something special is coming</span>' +
-      '    </div>' +
-      '  </div>' +
+    if (document.getElementById('pctestOverlay')) return;
+    var html = '' +
+      '<div class="pctest-overlay" id="pctestOverlay" role="dialog" aria-modal="true" aria-labelledby="pctestTitle">' +
+        '<div class="pctest-modal">' +
+          '<button class="pctest-close" id="pctestClose" type="button" aria-label="إغلاق"><i class="fas fa-times"></i></button>' +
+          '<div class="pctest-icon"><i class="fas fa-flask"></i></div>' +
+          '<div class="pctest-badge">' +
+            '<span class="lang-ar">قيد الإنشاء</span>' +
+            '<span class="lang-en">Coming Soon</span>' +
+          '</div>' +
+          '<h3 id="pctestTitle">' +
+            '<span class="lang-ar">عطور التست قريباً</span>' +
+            '<span class="lang-en">Testers Coming Soon</span>' +
+          '</h3>' +
+          '<p class="pctest-sub">' +
+            '<span class="lang-ar">نعمل حالياً على تجهيز قسم <strong>عطور التست (5ml)</strong> لتتمكن من تجربة أي عطر قبل شرائه. نعتذر عن الإزعاج!</span>' +
+            '<span class="lang-en">We are currently preparing the <strong>Testers (5ml)</strong> section so you can try any perfume before buying it. Sorry for the inconvenience!</span>' +
+          '</p>' +
+          '<div class="pctest-actions">' +
+            '<a class="pctest-btn whatsapp" id="pctestWhatsapp" target="_blank" rel="noopener noreferrer">' +
+              '<i class="fab fa-whatsapp"></i>' +
+              '<span class="lang-ar">استفسر على واتساب</span>' +
+              '<span class="lang-en">Ask on WhatsApp</span>' +
+            '</a>' +
+            '<a class="pctest-btn home" href="index.html">' +
+              '<i class="fas fa-home"></i>' +
+              '<span class="lang-ar">العودة للصفحة الرئيسية</span>' +
+              '<span class="lang-en">Back to Home</span>' +
+            '</a>' +
+          '</div>' +
+        '</div>' +
       '</div>';
-
-    document.body.appendChild(modal);
+    var wrap = document.createElement('div');
+    wrap.innerHTML = html;
+    while (wrap.firstChild) document.body.appendChild(wrap.firstChild);
   }
 
   /* ═══════════════════════════════════════════════
-     OPEN / CLOSE
+     MODAL CONTROLS
      ═══════════════════════════════════════════════ */
   function openModal(){
-    var overlay = document.getElementById('ptestOverlay');
-    var modal = document.getElementById('ptestModal');
-    if (!overlay || !modal) return;
-
-    overlay.classList.add('open');
-    modal.classList.add('open');
+    var ov = document.getElementById('pctestOverlay');
+    if (!ov) return;
+    ov.classList.add('show');
     document.body.style.overflow = 'hidden';
-
     if (window.mHaptic) window.mHaptic(12);
-
-    // Analytics
-    if (window.PercentAnalytics && window.PercentAnalytics.track) {
-      try { window.PercentAnalytics.track('testers_coming_soon_open'); } catch(e){}
-    }
   }
-
   function closeModal(){
-    var overlay = document.getElementById('ptestOverlay');
-    var modal = document.getElementById('ptestModal');
-    if (!overlay || !modal) return;
-
-    overlay.classList.remove('open');
-    modal.classList.remove('open');
+    var ov = document.getElementById('pctestOverlay');
+    if (!ov) return;
+    ov.classList.remove('show');
     document.body.style.overflow = '';
-
     if (window.mHaptic) window.mHaptic(8);
   }
 
   /* ═══════════════════════════════════════════════
-     INJECT NAV LINK
+     NAV LINK
      ═══════════════════════════════════════════════ */
-  function injectNavLink(){
-    // Skip if already injected
-    if (document.querySelector('.nav-testers')) return;
-
+  function addTestersLink(){
     var navLinks = document.querySelector('.nav-links');
     if (!navLinks) return;
 
-    var link = document.createElement('a');
-    link.href = '#';
-    link.className = 'nav-testers';
-    link.setAttribute('data-testers-trigger', '');
-    link.innerHTML = '' +
-      '<span class="lang-ar">عطور التست</span>' +
-      '<span class="lang-en">Testers</span>';
+    // Already exists?
+    if (navLinks.querySelector('[data-testers-link]')) return;
 
-    // Insert after "men.html" link (before "story" or "bestsellers")
+    // Existing testers.html link?
+    var existing = navLinks.querySelector('a[href="testers.html"]');
+    if (existing){
+      existing.setAttribute('data-testers-link', '1');
+      return;
+    }
+
+    // Create new link
+    var link = document.createElement('a');
+    link.href = 'testers.html';
+    link.setAttribute('data-testers-link', '1');
+    link.innerHTML = '<span class="lang-ar">عطور التست</span><span class="lang-en">Testers</span>';
+
+    // Insert after "men.html" link or before "loyalty.html"
     var menLink = navLinks.querySelector('a[href="men.html"]');
     var loyaltyLink = navLinks.querySelector('a[href="loyalty.html"]');
-    var storyLink = navLinks.querySelector('a[href="#story"], a[href="index.html#story"]');
 
-    if (menLink && menLink.nextSibling) {
-      navLinks.insertBefore(link, menLink.nextSibling);
-    } else if (storyLink) {
-      navLinks.insertBefore(link, storyLink);
-    } else if (loyaltyLink) {
+    if (menLink && menLink.parentNode === navLinks){
+      menLink.parentNode.insertBefore(link, menLink.nextSibling);
+    } else if (loyaltyLink && loyaltyLink.parentNode === navLinks){
       navLinks.insertBefore(link, loyaltyLink);
     } else {
       navLinks.appendChild(link);
     }
-
-    // Bind click
-    link.addEventListener('click', function(e){
-      e.preventDefault();
-      openModal();
-    });
   }
 
   /* ═══════════════════════════════════════════════
-     BIND EVENTS
+     EVENTS
      ═══════════════════════════════════════════════ */
   function bindEvents(){
+    // Intercept clicks on testers links
+    document.addEventListener('click', function(e){
+      var link = e.target.closest('a[data-testers-link], a[href="testers.html"]');
+      if (!link) return;
+      e.preventDefault();
+      e.stopPropagation();
+      openModal();
+    }, true);
+
     // Close button
-    var closeBtn = document.getElementById('ptestClose');
+    var closeBtn = document.getElementById('pctestClose');
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
-    // Overlay
-    var overlay = document.getElementById('ptestOverlay');
-    if (overlay) overlay.addEventListener('click', closeModal);
+    // Overlay click
+    var ov = document.getElementById('pctestOverlay');
+    if (ov) ov.addEventListener('click', function(e){
+      if (e.target === ov) closeModal();
+    });
 
     // ESC key
     document.addEventListener('keydown', function(e){
-      var modal = document.getElementById('ptestModal');
-      if (e.key === 'Escape' && modal && modal.classList.contains('open')) {
-        closeModal();
-      }
+      if (e.key === 'Escape' && ov && ov.classList.contains('show')) closeModal();
     });
 
-    // Global delegated clicks on [data-testers-trigger] (in case of dynamic injection)
-    document.addEventListener('click', function(e){
-      var trigger = e.target.closest('[data-testers-trigger]');
-      if (!trigger) return;
-      e.preventDefault();
-      openModal();
-    }, true);
+    // WhatsApp URL with pre-written message
+    updateWhatsAppURL();
   }
+
+  function updateWhatsAppURL(){
+    var wa = document.getElementById('pctestWhatsapp');
+    if (!wa) return;
+    var isEn = getLang() === 'en';
+    var msg = isEn ? WHATSAPP_MESSAGE_EN : WHATSAPP_MESSAGE_AR;
+    wa.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg);
+  }
+
+  // Update WhatsApp URL when language switches
+  document.addEventListener('click', function(e){
+    if (e.target.closest('#langBtn, #langBtnMobile, .lang-switch')){
+      setTimeout(updateWhatsAppURL, 100);
+    }
+  });
 
   /* ═══════════════════════════════════════════════
      INIT
@@ -584,7 +445,7 @@
   function init(){
     injectStyles();
     injectModal();
-    injectNavLink();
+    addTestersLink();
     bindEvents();
   }
 
@@ -594,15 +455,19 @@
     init();
   }
 
-  // Retry nav injection in case nav loads later
-  setTimeout(injectNavLink, 500);
-  setTimeout(injectNavLink, 1500);
+  // Watch for nav link additions (dynamic content)
+  if (window.MutationObserver){
+    var mo = new MutationObserver(function(){ addTestersLink(); });
+    mo.observe(document.body, { childList: true, subtree: true });
+    setTimeout(function(){ mo.disconnect(); }, 6000);
+  }
 
   /* ═══════════════════════════════════════════════
      PUBLIC API
      ═══════════════════════════════════════════════ */
   window.PercentTesters = {
     open: openModal,
-    close: closeModal
+    close: closeModal,
+    number: WHATSAPP_NUMBER
   };
 })();
