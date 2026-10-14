@@ -33,6 +33,7 @@ const CACHE_URLS = [
   './analytics.js',
   './search.js',
   './click-to-call.js',
+  './testers-coming-soon.js',
   './cookie-banner.js',
   './favicon.svg',
   './icon-192.png',
