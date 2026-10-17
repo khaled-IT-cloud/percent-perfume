@@ -8,6 +8,7 @@
   const COUPON_KEY  = 'percent_coupon';
 
   const CFG = window.PERCENT_CONFIG;
+   const DELIVERY_FEE = (CFG && CFG.DELIVERY_FEE != null) ? Number(CFG.DELIVERY_FEE) : 2;
   const SUPABASE_URL = CFG.SUPABASE_URL;
   const SUPABASE_KEY = CFG.SUPABASE_KEY;
 
@@ -50,18 +51,18 @@
     return subtotal * (coupon.value / 100);
   }
 
-  function getState() {
-    const subtotal = getSubtotal();
-    const itemCount = getCount();
-    const discount = computeDiscount(subtotal);
-    const total = Math.max(0, subtotal - discount);
-    return {
-      items: cart.slice(),
-      subtotal, itemCount, discount, total,
-      coupon: coupon ? { ...coupon } : null
-    };
-  }
-
+function getState() {
+  const subtotal = getSubtotal();
+  const itemCount = getCount();
+  const discount = computeDiscount(subtotal);
+  const shipping = cart.length > 0 ? DELIVERY_FEE : 0;  // ← جديد
+  const total = Math.max(0, subtotal - discount + shipping);
+  return {
+    items: cart.slice(),
+    subtotal, itemCount, discount, shipping, total,      // ← أضفنا shipping
+    coupon: coupon ? { ...coupon } : null
+  };
+}
   function persist() { writeJSON(CART_KEY, cart); }
   function persistCoupon() { writeJSON(COUPON_KEY, coupon); }
 
@@ -156,6 +157,7 @@
         items: o.items || [],
         subtotal: Number(o.subtotal) || 0,
         discount: Number(o.discount) || 0,
+         shipping: Number(o.shipping) || 0,
         coupon: o.coupon,
         total: Number(o.total) || 0,
         status: o.status || 'pending',
@@ -183,6 +185,7 @@
       items: orderData.items || [],
       subtotal: Number(orderData.subtotal) || 0,
       discount: Number(orderData.discount) || 0,
+       shipping: Number(orderData.shipping) || 0,
       coupon: orderData.coupon || null,
       total: Number(orderData.total) || 0,
       status: 'pending',
