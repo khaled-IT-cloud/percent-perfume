@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<script>
+/* PERCENT - Dark mode anti-flash */
+(function(){try{var s=localStorage.getItem('percent_dark_mode');var d=s==='dark'||(s!=='light'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark-mode');}catch(e){}})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الصفحة غير موجودة | PERCENT PERFUME</title>
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+<style>
+:root{
+  --navy:#0a0a0a;--navy-deep:#050505;
+  --gold:#c9a961;--gold-light:#e8d4a2;--gold-deep:#a8874a;
+  --bg:#faf8f3;--text:#12172a;--muted:#6b6459;--border:rgba(212,175,55,.2);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Almarai',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  overflow-x:hidden;
+  position:relative;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle at 15% 20%, rgba(212,175,55,.10), transparent 45%),
+             radial-gradient(circle at 85% 80%, rgba(10,17,40,.06), transparent 45%);
+}
+h1,h2,h3,.english-text{font-family:'Playfair Display',serif}
+a{text-decoration:none;color:inherit}
+
+/* Header */
+header{
+  position:fixed;top:0;inset-inline-start:0;width:100%;
+  padding:16px 0;z-index:100;
+  background:rgba(253,251,247,.85);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+.nav-container{
+  width:92%;max-width:1240px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{width:40px;height:40px}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;letter-spacing:3px;color:var(--navy)}
+.brand-sub{font-family:'Playfair Display',serif;font-size:.48rem;letter-spacing:4px;color:var(--gold);margin-top:2px}
+.back-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 18px;border-radius:30px;
+  background:var(--navy);color:var(--gold);
+  font-weight:800;font-size:.82rem;transition:all .3s;
+}
+.back-btn:hover{background:var(--gold);color:var(--navy);transform:translateY(-2px)}
+
+/* Main 404 Section */
+main{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  padding:120px 20px 60px;position:relative;z-index:2;
+}
+.error-container{
+  text-align:center;max-width:600px;margin:0 auto;
+  animation:fadeUp .8s cubic-bezier(.22,1,.36,1);
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+
+.error-icon{
+  width:100px;height:100px;margin:0 auto 20px;
+  border-radius:50%;
+  background:linear-gradient(145deg, var(--navy), #1a1a1a);
+  border:2px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.5rem;color:var(--gold);
+  box-shadow:0 20px 40px rgba(10,10,10,.2), 0 0 0 10px rgba(212,175,55,.08);
+  animation:floatIcon 4s ease-in-out infinite;
+}
+@keyframes floatIcon{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-10px) rotate(5deg)}}
+
+.error-404{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(5rem, 15vw, 8rem);
+  font-weight:900;
+  line-height:1;
+  letter-spacing:5px;
+  background:linear-gradient(100deg, var(--gold-deep), var(--gold-light), var(--gold-deep));
+  background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  animation:shine 4s linear infinite;
+  margin-bottom:10px;
+}
+@keyframes shine{to{background-position:200% center}}
+
+.error-title{
+  font-size:clamp(1.5rem, 4vw, 2rem);
+  color:var(--navy);
+  margin-bottom:12px;
+  font-weight:700;
+}
+.error-desc{
+  color:var(--muted);
+  font-size:1.05rem;
+  line-height:1.8;
+  margin-bottom:36px;
+}
+
+.error-actions{
+  display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 28px;border-radius:12px;
+  font-weight:800;font-size:.92rem;
+  transition:all .3s;cursor:pointer;border:none;
+  font-family:inherit;
+}
+.btn-gold{
+  background:linear-gradient(120deg, var(--gold), var(--gold-light));
+  color:var(--navy);
+  box-shadow:0 8px 20px rgba(212,175,55,.3);
+}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(212,175,55,.4);color:var(--navy)}
+
+.btn-outline{
+  background:transparent;color:var(--navy);
+  border:1.5px solid var(--navy);
+}
+.btn-outline:hover{background:var(--navy);color:var(--gold);transform:translateY(-3px)}
+
+/* Footer */
+footer{
+  text-align:center;padding:24px;
+  border-top:1px solid var(--border);
+  font-size:.82rem;color:var(--muted);
+}
+footer a{color:var(--gold-deep);font-weight:700}
+footer a:hover{text-decoration:underline}
+
+/* Dark Mode Overrides */
+html.dark-mode body{background:#0a0a0a;color:#f5f1e8}
+html.dark-mode body::before{background:radial-gradient(circle at 15% 20%, rgba(201,169,97,.08), transparent 45%),radial-gradient(circle at 85% 80%, rgba(255,255,255,.03), transparent 45%)}
+html.dark-mode header{background:rgba(10,10,10,.85);border-color:rgba(201,169,97,.15)}
+html.dark-mode .brand-name{color:var(--gold)}
+html.dark-mode .back-btn{background:var(--gold);color:var(--navy)}
+html.dark-mode .back-btn:hover{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+html.dark-mode .error-title{color:#f5f1e8}
+html.dark-mode .error-desc{color:#a8a29b}
+html.dark-mode .btn-outline{border-color:var(--gold);color:var(--gold)}
+html.dark-mode .btn-outline:hover{background:var(--gold);color:var(--navy)}
+html.dark-mode footer{border-color:rgba(201,169,97,.15)}
+
+@media (max-width:600px){
+  .error-actions{flex-direction:column}
+  .btn{width:100%}
+}
+</style>
+<link rel="stylesheet" href="dark-mode.css">
+</head>
+<body>
+
+<!-- SVG Logo -->
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8d4a2"/><stop offset="28%" stop-color="#c9a961"/>
+      <stop offset="52%" stop-color="#e8d4a2"/><stop offset="78%" stop-color="#d4b76a"/>
+      <stop offset="100%" stop-color="#a8874a"/>
+    </linearGradient>
+  </defs>
+  <symbol id="logo-mark" viewBox="0 0 220 220">
+    <g stroke="url(#goldGrad)" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="95" y="10" width="30" height="17" rx="4"/><path d="M104 27v23M116 27v23"/>
+      <circle cx="110" cy="118" r="62"/><path d="M68 178 L152 58"/>
+      <circle cx="87" cy="96" r="15"/><circle cx="133" cy="140" r="15"/>
+      <path d="M60 70 C 24 96, 24 152, 62 180" stroke-width="5"/>
+    </g>
+    <g fill="url(#goldGrad)">
+      <path d="M56 84 C 36 78, 24 62, 28 44 C 48 48, 60 64, 58 82 Z"/>
+      <path d="M44 124 C 22 122, 8 108, 6 88 C 28 88, 44 102, 46 120 Z"/>
+      <path d="M58 164 C 40 172, 20 166, 10 150 C 30 140, 50 144, 58 160 Z"/>
+      <path d="M170 38 l5 15 15 5 -15 5 -5 15 -5-15 -15-5 15-5 z"/>
+      <path d="M185 84 l3 8 8 3 -8 3 -3 8 -3-8 -8-3 8-3 z"/>
+    </g>
+  </symbol>
+</svg>
+
+<!-- Header -->
+<header>
+  <div class="nav-container">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark"><use href="#logo-mark"/></svg>
+      <span class="brand-text">
+        <span class="brand-name">PERCENT</span>
+        <span class="brand-sub">PERFUME</span>
+      </span>
+    </a>
+    <a href="index.html" class="back-btn">
+      <i class="fas fa-arrow-right"></i>
+      <span class="lang-ar">الرئيسية</span>
+      <span class="lang-en">Home</span>
+    </a>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main>
+  <div class="error-container">
+    <div class="error-icon">
+      <i class="fas fa-compass"></i>
+    </div>
+    <div class="error-404">404</div>
+    <h1 class="error-title">
+      <span class="lang-ar">الصفحة غير موجودة</span>
+      <span class="lang-en">Page Not Found</span>
+    </h1>
+    <p class="error-desc">
+      <span class="lang-ar">عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها. ربما ضللت طريقك في رحلة البحث عن عطرك المثالي!</span>
+      <span class="lang-en">Sorry, the page you are looking for does not exist or has been moved. You might have lost your way searching for your perfect scent!</span>
+    </p>
+    
+    <div class="error-actions">
+      <a href="index.html" class="btn btn-gold">
+        <i class="fas fa-home"></i>
+        <span class="lang-ar">العودة للرئيسية</span>
+        <span class="lang-en">Back to Home</span>
+      </a>
+      <a href="women.html" class="btn btn-outline">
+        <i class="fas fa-spa"></i>
+        <span class="lang-ar">عطور نسائية</span>
+        <span class="lang-en">Women's Perfumes</span>
+      </a>
+      <a href="men.html" class="btn btn-outline">
+        <i class="fas fa-gem"></i>
+        <span class="lang-ar">عطور رجالية</span>
+        <span class="lang-en">Men's Perfumes</span>
+      </a>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; <span id="year"></span> PERCENT PERFUME. 
+    <span class="lang-ar">جميع الحقوق محفوظة.</span>
+    <span class="lang-en">All rights reserved.</span>
+  </p>
+  <p style="margin-top:8px">
+    <a href="customer-service.html"><span class="lang-ar">تواصل معنا</span><span class="lang-en">Contact Us</span></a>
+  </p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<script src="dark-mode.js" defer></script>
+</body>
+</html>
