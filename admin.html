@@ -2342,6 +2342,7 @@ html[dir="ltr"] .sidebar{border-inline-end:none;border-inline-start:1px solid rg
       items: o.items || [],
       subtotal: Number(o.subtotal) || 0,
       discount: Number(o.discount) || 0,
+      shipping: Number(o.shipping) || 0,
       coupon: o.coupon || null,
       total: Number(o.total) || 0,
       status: o.status || 'pending',
@@ -2749,13 +2750,13 @@ html[dir="ltr"] .sidebar{border-inline-end:none;border-inline-start:1px solid rg
 
   function exportOrdersCSV(orders){
     if (!orders.length) return showToast('لا توجد طلبات للتصدير', 'fa-triangle-exclamation', 'error');
-    const headers = ['Order Number','Date','Customer','Phone','Email','City','Address','Payment','Status','Subtotal','Discount','Total','Items'];
+    const headers = ['Order Number','Date','Customer','Phone','Email','City','Address','Payment','Status','Subtotal','Discount','Shipping','Total','Items'];
     const rows = orders.map(o => {
       const c = o.customer || {};
       const items = (o.items || []).map(i => `${i.nameEn || i.nameAr} ×${i.qty}`).join(' | ');
       return [o.orderNumber, formatDate(o.createdAt), c.name || '', c.phone || '', c.email || '', c.city || '',
         (c.address || '').replace(/\n/g,' '), (o.payment && o.payment.method) || 'cod', STATUS[o.status || 'pending'].en,
-        (o.subtotal || 0).toFixed(2), (o.discount || 0).toFixed(2), (o.total || 0).toFixed(2), items
+        (o.subtotal || 0).toFixed(2), (o.discount || 0).toFixed(2), (o.shipping || 0).toFixed(2), (o.total || 0).toFixed(2), items
       ].map(v => `"${String(v).replace(/"/g, '""')}"`).join(',');
     });
     downloadFile(`percent-orders-${Date.now()}.csv`, '\uFEFF' + headers.join(',') + '\n' + rows.join('\n'), 'text/csv;charset=utf-8');
@@ -2865,6 +2866,7 @@ html[dir="ltr"] .sidebar{border-inline-end:none;border-inline-start:1px solid rg
       <div class="totals-block">
         <div class="order-row"><span>المجموع الفرعي:</span><strong>${(o.subtotal || 0).toFixed(2)} JOD</strong></div>
         ${o.discount > 0 ? `<div class="order-row"><span>الخصم ${o.coupon ? `(${esc(o.coupon.code)})` : ''}:</span><strong style="color:var(--success)">-${o.discount.toFixed(2)} JOD</strong></div>` : ''}
+        ${o.shipping > 0 ? `<div class="order-row"><span>التوصيل:</span><strong>${o.shipping.toFixed(2)} JOD</strong></div>` : ''}
         <div class="order-row"><span>الإجمالي:</span><strong>${(o.total || 0).toFixed(2)} JOD</strong></div>
       </div>
 
@@ -3004,6 +3006,7 @@ html[dir="ltr"] .sidebar{border-inline-end:none;border-inline-start:1px solid rg
       <div class="totals">
         <div class="row"><span>المجموع الفرعي:</span><strong>${(o.subtotal || 0).toFixed(2)} JOD</strong></div>
         ${o.discount > 0 ? `<div class="row"><span>الخصم:</span><strong>-${o.discount.toFixed(2)} JOD</strong></div>` : ''}
+        ${o.shipping > 0 ? `<div class="row"><span>التوصيل:</span><strong>${o.shipping.toFixed(2)} JOD</strong></div>` : ''}
         <div class="row"><span>الإجمالي النهائي:</span><strong>${(o.total || 0).toFixed(2)} JOD</strong></div>
       </div>
       <div class="footer"><p>شكراً لتسوقكم من PERCENT PERFUME</p><p>info@percent-perfume.com · +962 7 9444 0551</p></div>
@@ -4976,13 +4979,13 @@ html[dir="ltr"] .sidebar{border-inline-end:none;border-inline-start:1px solid rg
   function exportFinancialCSV(){
     const orders = Cart.getOrders().filter(o => o.status !== 'cancelled');
     if (!orders.length) return showToast('لا توجد بيانات', 'fa-triangle-exclamation', 'error');
-    const headers = ['Order Number', 'Date', 'Customer', 'Phone', 'Status', 'Subtotal', 'Coupon Discount', 'Points Discount', 'Total', 'Payment Method'];
+    const headers = ['Order Number', 'Date', 'Customer', 'Phone', 'Status', 'Subtotal', 'Coupon Discount', 'Points Discount', 'Shipping', 'Total', 'Payment Method'];
     const rows = orders.map(o => {
       const c = o.customer || {};
       return [
         o.orderNumber, formatDate(o.createdAt), c.name || '', c.phone || '', o.status || 'pending',
         (o.subtotal || 0).toFixed(2), (o.couponDiscount || 0).toFixed(2),
-        (o.pointsDiscount || 0).toFixed(2), (o.total || 0).toFixed(2),
+        (o.pointsDiscount || 0).toFixed(2), (o.shipping || 0).toFixed(2), (o.total || 0).toFixed(2),
         (o.payment && o.payment.method) || 'cod'
       ].map(v => '"' + String(v).replace(/"/g, '""') + '"').join(',');
     });
