@@ -8,9 +8,11 @@
   const COUPON_KEY  = 'percent_coupon';
 
   const CFG = window.PERCENT_CONFIG;
-   const DELIVERY_FEE = (CFG && CFG.DELIVERY_FEE != null) ? Number(CFG.DELIVERY_FEE) : 2;
   const SUPABASE_URL = CFG.SUPABASE_URL;
   const SUPABASE_KEY = CFG.SUPABASE_KEY;
+
+  // ⚡ رسوم التوصيل الثابتة
+  const DELIVERY_FEE = (CFG && CFG.DELIVERY_FEE != null) ? Number(CFG.DELIVERY_FEE) : 2;
 
   const COUPONS = {
     'PERCENT10': { type: 'percent', value: 10, labelAr: 'خصم 10%',  labelEn: '10% off' },
@@ -51,18 +53,20 @@
     return subtotal * (coupon.value / 100);
   }
 
-function getState() {
-  const subtotal = getSubtotal();
-  const itemCount = getCount();
-  const discount = computeDiscount(subtotal);
-  const shipping = cart.length > 0 ? DELIVERY_FEE : 0;  // ← جديد
-  const total = Math.max(0, subtotal - discount + shipping);
-  return {
-    items: cart.slice(),
-    subtotal, itemCount, discount, shipping, total,      // ← أضفنا shipping
-    coupon: coupon ? { ...coupon } : null
-  };
-}
+  function getState() {
+    const subtotal = getSubtotal();
+    const itemCount = getCount();
+    const discount = computeDiscount(subtotal);
+    const shipping = cart.length > 0 ? DELIVERY_FEE : 0; // ⚡ التوصيل يُحسب فقط إذا كانت السلة غير فارغة
+    const total = Math.max(0, subtotal - discount + shipping);
+    
+    return {
+      items: cart.slice(),
+      subtotal, itemCount, discount, shipping, total,
+      coupon: coupon ? { ...coupon } : null
+    };
+  }
+
   function persist() { writeJSON(CART_KEY, cart); }
   function persistCoupon() { writeJSON(COUPON_KEY, coupon); }
 
@@ -157,7 +161,7 @@ function getState() {
         items: o.items || [],
         subtotal: Number(o.subtotal) || 0,
         discount: Number(o.discount) || 0,
-         shipping: Number(o.shipping) || 0,
+        shipping: Number(o.shipping) || 0, // ⚡ إضافة التوصيل
         coupon: o.coupon,
         total: Number(o.total) || 0,
         status: o.status || 'pending',
@@ -185,21 +189,21 @@ function getState() {
       items: orderData.items || [],
       subtotal: Number(orderData.subtotal) || 0,
       discount: Number(orderData.discount) || 0,
-       shipping: Number(orderData.shipping) || 0,
+      shipping: Number(orderData.shipping) || 0, // ⚡ حفظ التوصيل
       coupon: orderData.coupon || null,
       total: Number(orderData.total) || 0,
       status: 'pending',
       member_phone: orderData.memberPhone || null,
       member_name: orderData.memberName || null,
-          lang: orderData.lang || 'ar',
-    terms_consent: orderData.terms_consent === true,
-    age_confirmed: orderData.age_confirmed === true,
-    marketing_consent: orderData.marketing_consent === true,
-    consent_timestamp: orderData.consent_timestamp || new Date().toISOString(),
-    points_used: Number(orderData.pointsUsed) || 0,
-    points_discount: Number(orderData.pointsDiscount) || 0,
-    coupon_discount: Number(orderData.couponDiscount) || 0
-  };
+      lang: orderData.lang || 'ar',
+      terms_consent: orderData.terms_consent === true,
+      age_confirmed: orderData.age_confirmed === true,
+      marketing_consent: orderData.marketing_consent === true,
+      consent_timestamp: orderData.consent_timestamp || new Date().toISOString(),
+      points_used: Number(orderData.pointsUsed) || 0,
+      points_discount: Number(orderData.pointsDiscount) || 0,
+      coupon_discount: Number(orderData.couponDiscount) || 0
+    };
 
     const res = await fetch(`${SUPABASE_URL}/rest/v1/orders`, {
       method: 'POST',
@@ -222,6 +226,7 @@ function getState() {
       items: order.items,
       subtotal: order.subtotal,
       discount: order.discount,
+      shipping: order.shipping,
       coupon: order.coupon,
       total: order.total,
       status: order.status,
@@ -258,7 +263,7 @@ function getState() {
   }
 
   /* ============ Order Chats (Supabase) ============ */
-  let cachedChats = {};  // { orderNumber: { messages: [...] } }
+  let cachedChats = {};  
   const chatListeners = new Set();
 
   async function fetchChats() {
@@ -267,10 +272,7 @@ function getState() {
         `${SUPABASE_URL}/rest/v1/order_chats?select=*&order=created_at.asc`,
         { headers }
       );
-      if (!res.ok) {
-        console.error('Fetch chats error:', res.status);
-        return cachedChats;
-      }
+      if (!res.ok) return cachedChats;
       const data = await res.json();
       const newChats = {};
       (data || []).forEach(row => {
@@ -286,7 +288,6 @@ function getState() {
       chatListeners.forEach(fn => { try { fn(); } catch(e){} });
       return cachedChats;
     } catch (e) {
-      console.error('Fetch chats error:', e);
       return cachedChats;
     }
   }
@@ -300,7 +301,6 @@ function getState() {
     text = String(text || '').trim();
     if (!orderNumber || !text || !['customer', 'admin'].includes(sender)) return false;
 
-    // 🔥 إرسال إلى Supabase
     fetch(`${SUPABASE_URL}/rest/v1/order_chats`, {
       method: 'POST',
       headers,
@@ -356,7 +356,7 @@ function getState() {
     }
   });
 
-  /* ============ Realtime (orders + chats) ============ */
+  /* ============ Realtime ============ */
   function initRealtime() {
     try {
       if (typeof supabase !== 'undefined') {
