@@ -15,7 +15,8 @@
     POINTS_TO_JOD: 100,
     TRASH_RETENTION_DAYS: 30,
     AUTO_REFRESH_MS: 30000,
-    MAX_IMAGE_SIZE: 5 * 1024 * 1024,
+     MAX_IMAGE_SIZE: 5 * 1024 * 1024,
+DELIVERY_FEE: 2, // ← رسوم التوصيل الثابتة بالدينار
 
     // â”€â”€ Coupons (moved to Supabase in Phase 4) â”€â”€â”€â”€â”€â”€â”€â”€
     COUPONS: {
