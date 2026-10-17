@@ -2342,7 +2342,14 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
               </span>
               <strong id="sumPoints">-0.00 JOD</strong>
             </div>
-
+<div class="sum-line" id="sumShippingLine">
+  <span>
+    <i class="fas fa-truck-fast"></i>
+    <span class="lang-ar">التوصيل</span>
+    <span class="lang-en">Delivery</span>
+  </span>
+  <strong id="sumShipping">0.00 JOD</strong>
+</div>
             <div class="sum-divider"></div>
 
             <div class="sum-total">
@@ -3036,10 +3043,24 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
         pointsLine.style.display = 'none';
       }
     }
-
+const shipping = state.shipping || 0;
+const total = Math.max(0, sub - disc - pointsDiscount + shipping);
     // Total
     $('#sumTotal').textContent = total.toFixed(2) + ' JOD';
+// سطر التوصيل
+const shippingLine = $('#sumShippingLine');
+const shippingEl = $('#sumShipping');
+if (shippingLine && shippingEl) {
+  if (state.items.length > 0) {
+    shippingLine.style.display = '';
+    shippingEl.textContent = shipping.toFixed(2) + ' JOD';
+  } else {
+    shippingLine.style.display = 'none';
+  }
+}
 
+// الإجمالي
+$('#sumTotal').textContent = total.toFixed(2) + ' JOD';
     // Coupon block
     if (state.coupon){
       $('#couponApplied').classList.add('show');
@@ -3284,6 +3305,7 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
       pointsDiscount: pointsDiscount,
       pointsUsed: pointsUsed,
       coupon: state.coupon,
+         shipping: state.shipping || 0,          // ← جديد
       total: finalTotal,
       memberPhone: detectedMember ? detectedMember.phone : '',
       memberName: detectedMember ? detectedMember.name : '',
