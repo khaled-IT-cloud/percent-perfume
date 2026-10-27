@@ -387,95 +387,119 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}}
 /* ═══════════════════════════════════════════════════════════
-   التصميم النهائي: يمين ويسار للكمبيوتر، وفوق بعضهما للهاتف
+   التصميم النهائي الجذري (الكمبيوتر والهاتف) - لا تحذف هذا
    ═══════════════════════════════════════════════════════════ */
 
 /* 1. إعدادات الكمبيوتر (الشاشات الكبيرة) */
 @media (min-width: 993px) {
     .hero-grid {
         display: grid !important;
-        grid-template-columns: 1.1fr 0.9fr !important; /* مساحة أكبر للنص */
+        grid-template-columns: 1fr 1fr !important; /* تقسيم الشاشة لنصفين بالضبط */
         gap: 40px !important;
         align-items: center !important;
-        max-width: 1240px !important;
-        margin: 0 auto !important;
+        direction: rtl !important; /* يفرض اللغة العربية */
     }
+    
+    /* اللوقو على اليمين */
     .hero-visual {
-        grid-column: 1 / 2 !important; /* اللوقو على اليمين */
-        grid-row: 1 / 2 !important;
+        grid-column: 1 !important; 
+        grid-row: 1 !important;
         display: flex !important;
         justify-content: center !important;
+        width: 100% !important;
+        min-width: 0 !important;
     }
+    
+    /* النص على اليسار */
     .hero-text {
-        grid-column: 2 / 3 !important; /* النص على اليسار */
-        grid-row: 1 / 2 !important;
+        grid-column: 2 !important; 
+        grid-row: 1 !important;
+        text-align: right !important;
+        width: 100% !important;
+        min-width: 0 !important; /* يمنع تمدد النص ويخلصنا من الزووم */
+        display: flex !important;
+        flex-direction: column !important;
         align-items: flex-start !important;
     }
-    /* تصغير الخط قليلاً حتى لا يقص */
-    .hero-title { font-size: clamp(2.5rem, 4vw, 4rem) !important; }
-    .hero-actions { justify-content: flex-start !important; }
+
+    /* تصغير حجم الخط الضخم الذي كان يسبب الزووم */
+    .hero-title {
+        font-size: clamp(2.5rem, 4vw, 3.8rem) !important;
+        line-height: 1.1 !important;
+    }
+
+    /* ترتيب الأزرار الثلاثة بشكل متناسق وعدم نزولها تحت الشاشة */
+    .hero-actions {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        width: 100% !important;
+        justify-content: flex-start !important;
+    }
+    
+    .hero-actions .btn {
+        padding: 12px 15px !important;
+        font-size: 0.85rem !important;
+        flex: 1 1 auto !important;
+        min-width: 130px !important;
+        justify-content: center !important;
+    }
+
+    /* إبعاد أزرار الاتصال العائمة لكي لا تغطي الأزرار */
+    .pcall-float { bottom: 110px !important; right: 30px !important; }
+    .pfab-wrap { bottom: 35px !important; right: 30px !important; }
 }
 
 /* 2. إعدادات الهاتف (الشاشات الصغيرة) */
 @media (max-width: 992px) {
-    .hero {
-        padding-top: 100px !important; /* مسافة من الأعلى */
-    }
     .hero-grid {
         display: flex !important;
-        flex-direction: column !important; /* إجبار العناصر على النزول تحت بعضها */
-        align-items: center !important;
+        flex-direction: column !important;
         text-align: center !important;
         gap: 20px !important;
-        width: 100% !important;
+        direction: rtl !important;
     }
     
-    /* إلغاء تقسيم الشاشة (يمين ويسار) على الهاتف */
-    .hero-text, .hero-visual {
-        grid-column: auto !important; 
-        grid-row: auto !important;
+    /* اللوقو فوق */
+    .hero-visual {
+        order: 1 !important; 
+        margin-bottom: 15px !important;
         width: 100% !important;
-        max-width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+    
+    /* النص والأزرار تحت */
+    .hero-text {
+        order: 2 !important; 
+        width: 100% !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
+        text-align: center !important;
     }
 
-    /* ترتيب العناصر: النص فوق، اللوقو تحت */
-    .hero-text {
-        order: 1 !important; 
-    }
-    .hero-visual {
-        order: 2 !important;
-        min-height: 350px !important; 
-        margin-top: 20px !important;
+    /* تصغير خط الهاتف */
+    .hero-title {
+        font-size: 2.2rem !important;
     }
 
     /* جعل الأزرار عريضة وتحت بعضها */
     .hero-actions {
         flex-direction: column !important;
         width: 100% !important;
+        gap: 10px !important;
         align-items: stretch !important;
     }
+    
     .hero-actions .btn {
         width: 100% !important;
-        margin-bottom: 10px !important;
+        margin-bottom: 0 !important;
     }
-
-    /* إصلاح حجم اللوقو في الهاتف */
-    .hero-card {
-        width: 260px !important;
-        height: 300px !important;
-        margin: 0 auto !important;
-    }
-    .halo { width: 280px !important; height: 280px !important; }
-    .halo-ring { width: 320px !important; height: 320px !important; }
-}
-
-/* 3. إبعاد أزرار الاتصال العائمة في الكمبيوتر لكي لا تغطي الأزرار */
-@media (min-width: 993px) {
-    .pcall-float { bottom: 100px !important; right: 30px !important; }
-    .pfab-wrap { bottom: 30px !important; right: 30px !important; }
+    
+    /* إبعاد أزرار الاتصال العائمة في الهاتف */
+    .pcall-float { bottom: 90px !important; right: 15px !important; }
+    .pfab-wrap { bottom: 25px !important; right: 15px !important; }
 }
 </style>
 
