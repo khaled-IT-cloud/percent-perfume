@@ -387,60 +387,68 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}}
 /* ═══════════════════════════════════════════════════════════
-   الحل الجذري: إصلاح الهيرو (اللوقو يمين والنص يسار) بدون زووم
+   الحل النهائي: إصلاح القص والزووم وتوزيع المساحات
    ═══════════════════════════════════════════════════════════ */
 
-/* 1. منع الزووم ومنع الخروج عن الشاشة */
+/* 1. منع أي خروج عن الشاشة */
 body, html {
     overflow-x: hidden !important;
+    width: 100% !important;
 }
 .hero {
     overflow: hidden !important;
 }
 
-/* 2. تقسيم الشاشة لنصفين بالضبط: يمين ويسار */
+/* 2. إعطاء مساحة أكبر للنص (60%) ومساحة للوجو (40%) */
 .hero-grid {
     display: grid !important;
-    grid-template-columns: 1fr 1fr !important; /* نصفين متساويين */
-    gap: 40px !important;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr) !important;
+    gap: 30px !important;
     align-items: center !important;
     max-width: 1240px !important;
     margin: 0 auto !important;
     width: 100% !important;
 }
 
-/* 3. وضع اللوقو (الزجاجة) على اليمين */
+/* 3. اللوجو على اليمين */
 .hero-visual {
-    grid-column: 1 / 2 !important; /* العمود الأول (اليمين في العربية) */
+    grid-column: 1 / 2 !important; 
     grid-row: 1 / 2 !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     position: relative !important;
     width: 100% !important;
-    min-width: 0 !important; /* يمنع التمدد */
+    min-width: 0 !important; 
 }
 
-/* 4. وضع النصوص والأزرار على اليسار */
+/* 4. النص على اليسار */
 .hero-text {
-    grid-column: 2 / 3 !important; /* العمود الثاني (اليسار) */
+    grid-column: 2 / 3 !important; 
     grid-row: 1 / 2 !important;
     display: flex !important;
     flex-direction: column !important;
-    align-items: flex-start !important; /* محاذاة النص لليمين من جهته */
+    align-items: flex-start !important;
     width: 100% !important;
-    min-width: 0 !important; /* يمنع التمدد */
+    min-width: 0 !important; 
 }
 
-/* 5. تصغير حجم الخط قليلاً لمنع الزووم */
+/* 5. تصغير حجم العنوان حتى لا يُقص (هذا هو سر المشكلة) */
 .hero-title {
-    font-size: clamp(2.2rem, 4vw, 3.8rem) !important; 
-    line-height: 1.2 !important;
+    font-size: clamp(2rem, 3.5vw, 3.2rem) !important; 
+    line-height: 1.1 !important;
     margin-bottom: 15px !important;
-    word-break: break-word !important;
+    word-break: keep-all !important; /* يمنع تقطيع الكلمة الإنجليزية */
+    white-space: normal !important;
 }
 
-/* 6. ترتيب الأزرار الثلاثة بشكل احترافي */
+/* التأكد من أن الكلمات الإنجليزية لا تخرج عن الإطار */
+.hero-title .line > span {
+    display: inline-block !important;
+    white-space: nowrap !important;
+}
+
+/* 6. ترتيب الأزرار الثلاثة */
 .hero-actions {
     display: flex !important;
     flex-wrap: wrap !important;
@@ -450,20 +458,36 @@ body, html {
 }
 
 .hero-actions .btn {
-    padding: 14px 20px !important;
-    font-size: 0.85rem !important;
+    padding: 12px 16px !important; /* تصغير الحشوة قليلاً */
+    font-size: 0.82rem !important;
     flex: 1 1 auto !important;
-    min-width: 140px !important;
+    min-width: 130px !important; /* تصغير العرض الأدنى للزر */
     justify-content: center !important;
     white-space: nowrap !important;
 }
 
-/* إصلاح أماكن العلامات العائمة (الرقائق) لكي لا تخرج من الشاشة */
-.chip-1 { right: -10px !important; left: auto !important; }
-.chip-2 { left: -10px !important; right: auto !important; }
-.chip-3 { right: 20px !important; left: auto !important; }
+/* 7. تصغير الرقائق العائمة لكي لا تزاحم */
+.float-chip {
+    font-size: 0.65rem !important;
+    padding: 8px 12px !important;
+}
+.chip-1 { right: -5px !important; left: auto !important; }
+.chip-2 { left: -5px !important; right: auto !important; }
+.chip-3 { right: 10px !important; left: auto !important; bottom: -10px !important; }
 
-/* 7. إصلاح شكل الجوال (اللوقو فوق والنص تحته) */
+/* 8. إبعاد أزرار الاتصال والواتساب العائمة لكي لا تغطي الأزرار السفلية */
+@media (min-width: 993px) {
+    .pcall-float {
+        bottom: 100px !important;
+        right: 30px !important; 
+    }
+    .pfab-wrap {
+        bottom: 30px !important;
+        right: 30px !important;
+    }
+}
+
+/* 9. إصلاح تصميم الجوال (اللوجو فوق والنص تحته) */
 @media (max-width: 992px) {
     .hero-grid {
         display: flex !important;
@@ -471,11 +495,11 @@ body, html {
         text-align: center !important;
     }
     .hero-visual {
-        order: 1 !important; /* اللوقو فوق */
+        order: 1 !important; 
         margin-bottom: 30px !important;
     }
     .hero-text {
-        order: 2 !important; /* النص تحت */
+        order: 2 !important; 
         align-items: center !important;
         text-align: center !important;
     }
