@@ -3,7 +3,7 @@
    يجبر كل الزبائن على رؤية أحدث نسخة من الموقع
    ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'percent-v5-' + Date.now(); // ← يتغير كل مرة يُحدّث الملف
+const CACHE_NAME = 'percent-v6-' + Date.now(); // ← يتغير كل مرة يُحدّث الملف
 const CACHE_URLS = [
   './',
   './index.html',
@@ -13,7 +13,7 @@ const CACHE_URLS = [
   './loyalty.html',
   './product.html',
   './customer-service.html',
-  './testers.html',
+  './testers.html',  // <--- أضف هذا السطر
   './mobile.css',
   './mobile-app.css',
   './loyalty-prive.css',

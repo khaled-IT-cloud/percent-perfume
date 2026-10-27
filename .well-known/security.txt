@@ -1,0 +1,11 @@
+# ============================================================
+# PERCENT PERFUME — Security Contact
+# ============================================================
+
+Contact: mailto:info@percent-perfume.com
+Expires: 2027-10-08T17:06:46.918Z
+Preferred-Languages: ar, en
+Canonical: https://percent-perfume.com/.well-known/security.txt
+
+# For security issues, please contact us by email.
+# Do not disclose vulnerabilities publicly until resolved.

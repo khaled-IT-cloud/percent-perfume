@@ -1,0 +1,33 @@
+PERCENT — صفحة عطور التست (5 مل) — النسخة 2 (تصميم فاخر + حركات 3D)
+
+التركيب:
+1) ارفع testers.html و tester-hero.jpg على جذر الموقع (نفس مكان men.html).
+2) استبدل testers-coming-soon.js الموجود بالنسخة اللي هون (بيوقف نافذة "قريباً" وخلّي رابط "عطور التست" بالقائمة يفتح الصفحة مباشرة).
+
+ملاحظات:
+- الصفحة بتسحب العطور من نفس جدول products بـ Supabase اللي بيستعمله الموقع (للقراءة فقط)، فأي عطر جديد بيظهر لحاله.
+- "أضف للسلة" بيستعمل السلة الحالية (cart-ui.js / cart.js) — كل تيستر بينضاف كعنصر منفصل: id = <product-id>--tester-5ml، السعر 2.5 JOD، الاسم "تيستر 5 مل — <اسم العطر>". ما في أي تعديل على الباك إند.
+- سعر التيستر بيتغيّر من سطر واحد: TESTER_PRICE داخل testers.html.
+
+Install (EN): upload testers.html + tester-hero.jpg to the site root, and replace testers-coming-soon.js with this version (removes the "coming soon" popup so the existing Testers nav link opens the page).
+
+النسخة 2 — شو الجديد:
+- نفس أسماء الملفات ونفس طريقة التركيب بالضبط (بس استبدل testers.html و tester-hero.jpg و testers-coming-soon.js).
+- كل التصميم والحركات جوّا testers.html نفسه (CSS + JS خفيف، بدون أي مكتبة إضافية): زجاجة 3D بتلف وبتطفي، طبقات عمق بتتحرك مع اللمس/حركة الجوال/الماوس، غبار ذهبي، كروت بتميل 3D مع اللمس وحركة الجوال، ظهور متدرج مع السكرول، لمعة ذهبية على العناوين والأزرار.
+- بيحترم إعداد "تقليل الحركة" بالجوال (prefers-reduced-motion) — بيوقف الحركات.
+- على الآيفون، حركة الكروت مع ميلان الجوال بتشتغل بعد ما الزبون يلمس الزجاجة ويوافق على "Motion" (شرط من آبل)؛ على أندرويد بتشتغل لحالها.
+- إذا اسم العطر بالعربي بالداتابيز مكتوب إنجليزي، بينعرض بخط إنجليزي ومن اليسار لليمين بدل ما يطلع مقلوب.
+- سلة، أسعار، عدد العطور، فلتر رجالي/نسائي، روابط العبوة الكاملة وواتساب: كلها زي ما هي.
+
+v2 (EN): same three files, same install. All styling/motion is inline in testers.html (no extra libraries).
+
+
+النسخة 3 — شو الجديد (نفس الملفات ونفس طريقة التركيب):
+- أخف بكثير عالجوال: شلنا الغبار الذهبي والضباب والبلور (blur) عالجوال، ووقفنا الحركات اللي كانت تعيد رسم الصفحة كل فريم (لمعة الأزرار، لمعة العنوان، لمعة الكروت). حركة الزجاجة 3D بتشتغل بس لما تكون ظاهرة، وميلان الكروت صار خفيف.
+- الشريط الذهبي المتحرك انبنى من جديد: كل لغة لحالها، بدون تداخل بالكتابة.
+- زر الاتصال العائم صار أصغر وعلى اليسار، والصفحة إلها مسافة تحت عشان ما يغطي كتابة الكروت.
+- أسماء عربي لكل الـ35 عطر (بتظهر عالكروت بالعربي والاسم الإنجليزي صغير تحته). الأسماء مربوطة بـ id المنتج جوّا testers.html (PERCENT_AR_NAMES)، فبتشتغل حتى لو ما غيّرتها بالمتجر. ملف percent-arabic-names.xlsx فيه نفس الأسماء لتحطها بخانة name_ar بلوحة التحكم.
+- بكج «اختار 3 تيسترات بـ 6 دنانير»: الزبون بيختار 3 من الكروت (عدّاد «اخترت 2 من 3»)، وزر واحد بيضيف البكج للسلة كسطر واحد بسعر 6 JOD فيه أسماء الثلاث عطور. السعر بيتغير من BUNDLE_PRICE / BUNDLE_SIZE داخل testers.html.
+- ما في داعي لكوبون: سلة الموقع بتاخذ سعر العنصر من الصفحة نفسها (متل سعر التيستر 2.5)، فالبكج بيطلع 6 دنانير بالسلة مباشرة.
+
+v3 (EN): same 3 files, same install. Lighter on phones (no particles/mist/blur on mobile, no per-frame repaint animations), rebuilt RTL-safe marquee, smaller floating call button moved off card text, Arabic names for all 35 products (mapped by product id), and a pick-3-for-6-JOD bundle that adds one 6 JOD cart line. No coupon needed: the store cart takes the price from the page, the same way the 2.5 JOD tester price already works.

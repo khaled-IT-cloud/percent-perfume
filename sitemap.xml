@@ -96,5 +96,12 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+    <!-- Testers Page -->
+  <url>
+    <loc>https://percent-perfume.com/testers.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
 </urlset>

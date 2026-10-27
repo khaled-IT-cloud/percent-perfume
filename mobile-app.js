@@ -35,12 +35,12 @@
     nav.className = 'm-bottom-nav';
     nav.setAttribute('aria-label', 'Main navigation');
 
-    var items = [
-      { href: 'index.html',  icon: 'fa-house-chimney',  label: 'الرئيسية', labelEn: 'Home',  key: 'home' },
-      { href: 'women.html',  icon: 'fa-spa',            label: 'نسائي',    labelEn: 'Women', key: 'women' },
-      { href: 'men.html',    icon: 'fa-shield-halved',  label: 'رجالي',    labelEn: 'Men',   key: 'men' },
-      { href: 'loyalty.html',icon: 'fa-crown',          label: 'النادي',   labelEn: 'Club',  key: 'loyalty' },
-      { href: '#cart',       icon: 'fa-bag-shopping',   label: 'السلة',    labelEn: 'Cart',  key: 'cart', isCart: true, badge: 'cart' }
+        var items = [
+      { href: 'index.html',   icon: 'fa-house-chimney', label: 'الرئيسية', labelEn: 'Home',    key: 'home' },
+      { href: 'women.html',   icon: 'fa-spa',           label: 'نسائي',    labelEn: 'Women',   key: 'women' },
+      { href: 'men.html',     icon: 'fa-shield-halved', label: 'رجالي',    labelEn: 'Men',     key: 'men' },
+      { href: 'testers.html', icon: 'fa-flask',         label: 'تسترات',   labelEn: 'Testers', key: 'testers' }, // <--- تمت الإضافة هنا
+      { href: '#cart',        icon: 'fa-bag-shopping',  label: 'السلة',    labelEn: 'Cart',    key: 'cart', isCart: true, badge: 'cart' }
     ];
 
     var currentKey = 'home';
