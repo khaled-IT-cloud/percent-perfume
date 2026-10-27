@@ -487,24 +487,42 @@ body, html {
     }
 }
 
-/* 9. إصلاح تصميم الجوال (اللوجو فوق والنص تحته) */
+/* إصلاح الجوال: إلغاء شبكة الكمبيوتر وإجبار العناصر على النزول تحت بعضها */
 @media (max-width: 992px) {
     .hero-grid {
         display: flex !important;
-        flex-direction: column !important;
+        flex-direction: column !important; /* إجبار العناصر على النزول تحت بعضها */
         text-align: center !important;
+        gap: 20px !important;
     }
-    .hero-visual {
+    
+    /* إلغاء تأثير الأعمدة (اليمين واليسار) على الهاتف */
+    .hero-text, .hero-visual {
+        grid-column: unset !important; 
+        grid-row: unset !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    /* 1. النصوص والأزرار (فوق) */
+    .hero-text {
         order: 1 !important; 
         margin-bottom: 30px !important;
     }
-    .hero-text {
-        order: 2 !important; 
-        align-items: center !important;
-        text-align: center !important;
+    
+    /* 2. اللوقو (تحت) */
+    .hero-visual {
+        order: 2 !important;
+        min-height: 320px !important; 
     }
+
+    /* ترتيب الأزرار تحت بعضها */
     .hero-actions {
         flex-direction: column !important;
+        width: 100% !important;
         justify-content: center !important;
     }
     .hero-actions .btn {
