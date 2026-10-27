@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<script>
+/* PERCENT - Dark mode anti-flash */
+(function(){try{var s=localStorage.getItem('percent_dark_mode');var d=s==='dark'||(s!=='light'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark-mode');}catch(e){}})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عطور التست (5ml) | PERCENT PERFUME</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+<style>
+:root {
+  --bg: #faf8f3; --black: #0a0a0a; --gold: #c9a961; --gold-light: #e8d4a2;
+  --gold-deep: #a8874a; --text: #1a1a1a; --text-muted: #6b6459;
+  --border: rgba(10, 10, 10, .08); --ease: cubic-bezier(.22,1,.36,1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Almarai', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.7; }
+h1, h2, h3, .english-text { font-family: 'Playfair Display', serif; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+img { max-width: 100%; display: block; }
+
+/* Header & Hero */
+header { position: fixed; top: 0; width: 100%; z-index: 1200; padding: 15px 0; background: rgba(250, 248, 243, .92); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(201, 169, 97, .2); transition: transform 0.4s ease; }
+header.hidden { transform: translateY(-100%); }
+.container { width: 92%; max-width: 1200px; margin: 0 auto; }
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-mark { width: 40px; height: 40px; }
+.brand-name { font-size: 1.2rem; font-weight: 700; letter-spacing: 3px; color: var(--black); }
+.brand-sub { font-size: .5rem; letter-spacing: 4px; color: var(--gold); display: block; margin-top: 2px; }
+.nav-icons { display: flex; gap: 10px; align-items: center; }
+.icon-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--black); transition: .3s; }
+.icon-btn:hover { background: var(--black); color: var(--gold); }
+.cart-count { position: absolute; top: -5px; right: -5px; background: var(--gold); color: var(--black); font-size: .7rem; font-weight: 800; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+.testers-hero { padding: 140px 0 60px; text-align: center; background: linear-gradient(150deg, #faf8f3 0%, #f5f1e8 100%); transition: opacity 0.4s ease; }
+.testers-hero.hidden { opacity: 0; pointer-events: none; }
+.testers-hero h1 { font-size: clamp(2rem, 5vw, 3rem); color: var(--black); margin-bottom: 12px; }
+.testers-hero h1 span { color: var(--gold-deep); font-style: italic; }
+.testers-hero p { color: var(--text-muted); font-size: 1.05rem; max-width: 600px; margin: 0 auto 30px; }
+.btn-3d-launch { display: inline-flex; align-items: center; gap: 10px; padding: 15px 35px; border-radius: 40px; background: linear-gradient(135deg, var(--black), #16161a); color: var(--gold); font-weight: 800; font-size: 1rem; border: 1px solid rgba(201, 169, 97, .4); box-shadow: 0 10px 30px rgba(10, 10, 10, .2); transition: .3s var(--ease); margin-bottom: 40px; }
+.btn-3d-launch:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(201, 169, 97, .3); }
+.btn-3d-launch i { font-size: 1.2rem; animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+/* Grid */
+.testers-section { padding: 20px 0 80px; transition: opacity 0.4s ease; }
+.testers-section.hidden { opacity: 0; pointer-events: none; }
+.testers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; }
+.tester-card { background: #fff; border-radius: 20px; padding: 20px; border: 1px solid var(--border); display: flex; flex-direction: column; transition: .4s var(--ease); position: relative; overflow: hidden; }
+.tester-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(10, 10, 10, .08); border-color: rgba(201, 169, 97, .4); }
+.tester-image-wrap { width: 100%; height: 220px; border-radius: 14px; background: linear-gradient(160deg, #f5f1e8, #ebe5d6); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; margin-bottom: 16px; }
+.tester-image-wrap img { width: 100%; height: 100%; object-fit: contain; padding: 20px; transition: .4s; }
+.tester-card:hover .tester-image-wrap img { transform: scale(1.08); }
+.badge-5ml { position: absolute; top: 10px; right: 10px; background: var(--black); color: var(--gold); padding: 4px 10px; border-radius: 20px; font-size: .7rem; font-weight: 800; }
+.tester-brand { font-size: .75rem; color: var(--gold-deep); font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+.tester-title { font-size: 1rem; color: var(--black); font-weight: 800; margin-bottom: 8px; line-height: 1.4; }
+.tester-price { font-size: 1.2rem; color: var(--gold-deep); font-weight: 800; margin-bottom: 16px; margin-top: auto; }
+.tester-price span { font-size: .8rem; color: var(--text-muted); font-weight: 600; }
+.add-tester-btn { width: 100%; padding: 12px; border-radius: 10px; background: transparent; color: var(--black); border: 1.5px solid var(--black); font-weight: 800; font-size: .85rem; transition: .3s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.add-tester-btn:hover { background: var(--black); color: var(--gold); }
+.skeleton { background: #fff; border-radius: 20px; height: 380px; border: 1px solid var(--border); overflow: hidden; position: relative; }
+.skeleton::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,.8), transparent); animation: shimmer 1.5s infinite; }
+@keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
+footer { background: var(--black); color: #8a8478; padding: 40px 0; text-align: center; font-size: .85rem; transition: opacity 0.4s ease; }
+footer.hidden { opacity: 0; pointer-events: none; }
+footer a { color: var(--gold); }
+
+/* 3D Container */
+#threeContainer { position: fixed; inset: 0; z-index: 2000; background: #020202; opacity: 0; visibility: hidden; transition: opacity 0.8s ease, visibility 0.8s ease; }
+#threeContainer.active { opacity: 1; visibility: visible; }
+canvas { display: block; width: 100%; height: 100%; outline: none; }
+
+/* تأثير Vignette السينمائي */
+#threeContainer::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.6) 100%);
+  z-index: 1;
+}
+
+.close-3d-btn { position: absolute; top: 20px; right: 20px; z-index: 10; width: 44px; height: 44px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); color: #fff; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: 0.3s; cursor: pointer; }
+.close-3d-btn:hover { background: var(--gold); color: var(--black); transform: rotate(90deg); }
+
+.scroll-hint { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: rgba(255, 255, 255, 0.5); font-size: 0.8rem; letter-spacing: 2px; display: flex; flex-direction: column; align-items: center; gap: 10px; pointer-events: none; transition: opacity 0.3s; z-index: 5; }
+.scroll-hint i { font-size: 1.2rem; animation: bounce 2s infinite; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+
+.three-ui { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(50px); width: 90%; max-width: 450px; background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(201, 169, 97, 0.3); border-radius: 20px; padding: 20px; color: #fff; text-align: center; opacity: 0; transition: all 0.4s var(--ease); pointer-events: none; z-index: 10; }
+.three-ui.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
+.three-ui h3 { font-size: 1.3rem; color: var(--gold); margin-bottom: 4px; }
+.three-ui p { font-size: 0.85rem; color: #a8a29b; margin-bottom: 12px; }
+.three-ui .price { font-size: 1.4rem; font-weight: 800; color: var(--gold-light); margin-bottom: 16px; display: block; }
+.three-ui button { width: 100%; padding: 14px; border-radius: 12px; background: linear-gradient(120deg, var(--gold), var(--gold-light)); color: var(--black); font-weight: 800; font-size: 0.95rem; transition: 0.3s; }
+.three-ui button:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(201, 169, 97, 0.3); }
+
+.loader-3d { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 5; color: var(--gold); background: #020202; transition: opacity 0.5s; }
+.loader-3d.hidden { opacity: 0; pointer-events: none; }
+.loader-3d i { font-size: 2.5rem; animation: spin 1.5s linear infinite; margin-bottom: 15px; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+@media (max-width: 768px) {
+  .testers-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .tester-card { padding: 12px; border-radius: 16px; }
+  .tester-image-wrap { height: 160px; margin-bottom: 12px; }
+  .tester-title { font-size: .85rem; }
+  .tester-price { font-size: 1rem; }
+  .add-tester-btn { font-size: .75rem; padding: 10px; }
+  .three-ui { bottom: 20px; padding: 16px; }
+}
+</style>
+
+<link rel="stylesheet" href="mobile-app.css">
+<link rel="stylesheet" href="mobile-fix-override.css">
+<link rel="stylesheet" href="dark-mode.css">
+</head>
+<body>
+
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8d4a2"/><stop offset="28%" stop-color="#c9a961"/>
+      <stop offset="52%" stop-color="#e8d4a2"/><stop offset="78%" stop-color="#d4b76a"/>
+      <stop offset="100%" stop-color="#a8874a"/>
+    </linearGradient>
+  </defs>
+  <symbol id="logo-mark" viewBox="0 0 220 220">
+    <g stroke="url(#goldGrad)" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="95" y="10" width="30" height="17" rx="4"/><path d="M104 27v23M116 27v23"/>
+      <circle cx="110" cy="118" r="62"/><path d="M68 178 L152 58"/>
+      <circle cx="87" cy="96" r="15"/><circle cx="133" cy="140" r="15"/>
+      <path d="M60 70 C 24 96, 24 152, 62 180" stroke-width="5"/>
+    </g>
+    <g fill="url(#goldGrad)">
+      <path d="M56 84 C 36 78, 24 62, 28 44 C 48 48, 60 64, 58 82 Z"/>
+      <path d="M44 124 C 22 122, 8 108, 6 88 C 28 88, 44 102, 46 120 Z"/>
+      <path d="M58 164 C 40 172, 20 166, 10 150 C 30 140, 50 144, 58 160 Z"/>
+    </g>
+  </symbol>
+</svg>
+
+<header id="mainHeader">
+  <div class="container nav-container">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark"><use href="#logo-mark"/></svg>
+      <span>
+        <span class="brand-name">PERCENT</span>
+        <span class="brand-sub">PERFUME</span>
+      </span>
+    </a>
+    <div class="nav-icons">
+      <a href="cart.html" class="icon-btn" style="position:relative">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
+      <a href="index.html" class="icon-btn"><i class="fas fa-home"></i></a>
+    </div>
+  </div>
+</header>
+
+<section class="testers-hero" id="mainHero">
+  <div class="container">
+    <h1>عطور <span>التست</span> (5ml)</h1>
+    <p>جرّب عطرك المفضل قبل أن تقتنيه. عينات أصلية بحجم 5ml معبأة بعناية.</p>
+    
+    <button class="btn-3d-launch" id="launch3DBtn">
+      <i class="fas fa-cube"></i>
+      <span>دخول المعرض السينمائي</span>
+    </button>
+  </div>
+</section>
+
+<section class="testers-section" id="mainGridSection">
+  <div class="container">
+    <div class="testers-grid" id="testersGrid">
+      <div class="skeleton"></div><div class="skeleton"></div>
+    </div>
+  </div>
+</section>
+
+<footer id="mainFooter">
+  <div class="container">
+    <p>&copy; <span id="year"></span> PERCENT PERFUME. جميع الحقوق محفوظة.</p>
+  </div>
+</footer>
+
+<div id="threeContainer">
+  <div class="loader-3d" id="loader3D">
+    <i class="fas fa-circle-notch"></i>
+    <span>جارٍ تجهيز المعرض...</span>
+  </div>
+  
+  <button class="close-3d-btn" id="close3DBtn" title="خروج">
+    <i class="fas fa-times"></i>
+  </button>
+
+  <div class="scroll-hint" id="scrollHint">
+    <i class="fas fa-chevron-down"></i>
+    <span>مرر للأسفل للتنقل</span>
+  </div>
+
+  <div class="three-ui" id="threeUI">
+    <h3 id="uiProductName">اسم العطر</h3>
+    <p id="uiProductBrand">الماركة</p>
+    <span class="price" id="uiProductPrice">3.00 JOD</span>
+    <button id="uiAddToCart"><i class="fas fa-bag-shopping"></i> أضف للسلة</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="products.js"></script>
+<script src="cart.js"></script>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+(function(){
+  'use strict';
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+  const Cart = window.PercentCart;
+  const Products = window.PercentProducts;
+
+  const MAX_3D_BOTTLES = 30; 
+  const TESTER_PRICE = 3.00;
+
+  $('#year').textContent = new Date().getFullYear();
+
+  function renderTesters() {
+    const grid = $('#testersGrid');
+    if (!Products) return;
+    const allProducts = Products.getActive();
+    if (!allProducts.length) {
+      grid.innerHTML = '<p style="text-align:center;grid-column:1/-1;">لا توجد عينات.</p>';
+      return;
+    }
+    grid.innerHTML = allProducts.map(p => `
+      <article class="tester-card">
+        <div class="tester-image-wrap">
+          ${p.image ? `<img src="${p.image}" loading="lazy">` : ''}
+          <span class="badge-5ml">5ml</span>
+        </div>
+        <div class="tester-brand">${p.brandLabel || p.brand || 'PERCENT'}</div>
+        <h3 class="tester-title">${p.nameAr || p.nameEn}</h3>
+        <div class="tester-price">${TESTER_PRICE.toFixed(2)} <span>JOD</span></div>
+        <button class="add-tester-btn" data-id="${p.id}"><i class="fas fa-bag-shopping"></i> أضف للسلة</button>
+      </article>
+    `).join('');
+
+    $$('.add-tester-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const p = Products.getById(this.dataset.id);
+        if (!p) return;
+        Cart.add({ id: p.id + '-tester', nameAr: p.nameAr + ' (تست)', nameEn: p.nameEn, price: TESTER_PRICE, qty: 1, category: 'testers', image: p.image });
+        const orig = this.innerHTML;
+        this.innerHTML = '<i class="fas fa-check"></i> تمت';
+        setTimeout(() => this.innerHTML = orig, 1500);
+      });
+    });
+  }
+
+  if (Cart) Cart.onChange(() => { const c = Cart.getCount(); const b = $('#cartCount'); if(b) { b.textContent = c; b.style.display = c > 0 ? 'flex' : 'none'; } });
+
+  // ══════════════════════════════════════════════════════════
+  //  3D MUSEUM LOGIC (CINEMATIC POLISH)
+  // ══════════════════════════════════════════════════════════
+  let scene, camera, renderer, composer, bloomPass;
+  let bottles = [];
+  let particlesMesh;
+  let raycaster = new THREE.Raycaster();
+  let mouse = new THREE.Vector2();
+  let selectedBottle = null;
+  let targetScrollPos = 0;
+  let scrollPos = 0;
+  let clock = new THREE.Clock();
+
+  // نسيج الليبل 
+  function createLabelTexture(name, brand) {
+    const canvas = document.createElement('canvas');
+    canvas.width = 1024; canvas.height = 512; 
+    const ctx = canvas.getContext('2d');
+    
+    ctx.fillStyle = '#0a0a0a'; ctx.fillRect(0, 0, 1024, 512);
+    ctx.strokeStyle = '#c9a961'; ctx.lineWidth = 16; ctx.strokeRect(16, 16, 992, 480);
+    ctx.strokeStyle = '#a8874a'; ctx.lineWidth = 4; ctx.strokeRect(40, 40, 944, 432);
+    
+    ctx.fillStyle = '#e8d4a2'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.font = '900 72px "Almarai", Arial, sans-serif';
+    ctx.fillText(name.substring(0, 14), 512, 200);
+    
+    ctx.font = 'bold 36px "Almarai", Arial, sans-serif'; ctx.fillStyle = '#c9a961';
+    ctx.fillText(brand.substring(0, 20).toUpperCase(), 512, 320);
+    
+    ctx.beginPath(); ctx.moveTo(400, 370); ctx.lineTo(624, 370); ctx.strokeStyle = '#c9a961'; ctx.lineWidth = 6; ctx.stroke();
+
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.anisotropy = 16;
+    return tex;
+  }
+
+  // بناء القنينة 
+  function createPremiumBottle(product) {
+    const group = new THREE.Group();
+
+    const glassGeo = new THREE.CylinderGeometry(0.25, 0.25, 2.2, 32);
+    const glassMat = new THREE.MeshPhysicalMaterial({
+      color: 0x7a3300, metalness: 0.1, roughness: 0.05, 
+      transparent: true, opacity: 0.85, envMapIntensity: 2.0, clearcoat: 1.0
+    });
+    const glass = new THREE.Mesh(glassGeo, glassMat);
+    group.add(glass);
+
+    const liquidGeo = new THREE.CylinderGeometry(0.23, 0.23, 1.8, 32);
+    const liquidMat = new THREE.MeshStandardMaterial({ color: 0x2a0e00, roughness: 0.3 });
+    const liquid = new THREE.Mesh(liquidGeo, liquidMat);
+    liquid.position.y = -0.15;
+    group.add(liquid);
+
+    // غطاء لامع جداً ليعكس الـ Bloom
+    const capGeo = new THREE.CylinderGeometry(0.18, 0.18, 0.8, 32);
+    const capMat = new THREE.MeshStandardMaterial({
+      color: 0x111111, roughness: 0.0, metalness: 1.0 
+    });
+    const cap = new THREE.Mesh(capGeo, capMat);
+    cap.position.y = 1.5;
+    group.add(cap);
+
+    // حلقة ذهبية مشعة (ستتوهج بالـ Bloom)
+    const ringGeo = new THREE.CylinderGeometry(0.2, 0.2, 0.08, 32);
+    const ringMat = new THREE.MeshStandardMaterial({ 
+      color: 0xc9a961, metalness: 1, roughness: 0.1, emissive: 0xc9a961, emissiveIntensity: 0.5 
+    });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.position.y = 1.1;
+    group.add(ring);
+
+    const labelGeo = new THREE.CylinderGeometry(0.252, 0.252, 1.4, 32, 1, true, -Math.PI / 2, Math.PI);
+    const labelMat = new THREE.MeshStandardMaterial({
+      map: createLabelTexture(product.nameAr || product.nameEn, product.brandLabel || product.brand || ''),
+      roughness: 0.5, metalness: 0.1, side: THREE.DoubleSide
+    });
+    const label = new THREE.Mesh(labelGeo, labelMat);
+    label.position.y = 0; 
+    group.add(label);
+
+    group.userData = { product: product };
+    return group;
+  }
+
+  function init3D() {
+    const container = $('#threeContainer');
+    
+    scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x020202, 0.02);
+
+    camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 100);
+    camera.position.set(0, 0, 6); 
+
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.0;
+    container.appendChild(renderer.domElement);
+
+    const pmremGenerator = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmremGenerator.fromScene(new RoomEnvironment(), 0.04).texture;
+
+    // ══════════════════════════════════════════════════════════
+    //  Post-Processing (Bloom Effect)
+    // ══════════════════════════════════════════════════════════
+    composer = new EffectComposer(renderer);
+    const renderPass = new RenderPass(scene, camera);
+    composer.addPass(renderPass);
+
+    // إعدادات Bloom دقيقة جداً (فقط الحواف الذهبية ستتوهج)
+    bloomPass = new UnrealBloomPass(
+      new THREE.Vector2(window.innerWidth, window.innerHeight),
+      0.6,   // Strength (قوة التوهج)
+      0.4,   // Radius (نطاق التوهج)
+      0.85   // Threshold (يجب أن يكون السطوع أعلى من 85% ليتوهج)
+    );
+    composer.addPass(bloomPass);
+
+    const outputPass = new OutputPass();
+    composer.addPass(outputPass);
+
+    // ══════════════════════════════════════════════════════════
+    //  Lights
+    // ══════════════════════════════════════════════════════════
+    scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+    
+    const frontLight = new THREE.DirectionalLight(0xffffff, 1.5);
+    frontLight.position.set(0, 2, 10);
+    scene.add(frontLight);
+    
+    for (let i = 0; i < MAX_3D_BOTTLES; i++) {
+      const spot = new THREE.SpotLight(0xc9a961, 50);
+      spot.position.set(0, 6, -i * 5);
+      spot.angle = Math.PI / 4;
+      spot.penumbra = 0.5;
+      spot.decay = 2;
+      spot.distance = 15;
+      spot.target.position.set(i % 2 === 0 ? 1.5 : -1.5, 0, -i * 5);
+      scene.add(spot);
+      scene.add(spot.target);
+    }
+
+    buildMuseumCorridor();
+    buildParticles(); // إضافة الغبار الذهبي
+    buildBottles();
+
+    window.addEventListener('resize', onWindowResize);
+    renderer.domElement.addEventListener('pointerdown', onPointerDown);
+    window.addEventListener('wheel', onScroll, { passive: false });
+    
+    let touchStartY = 0;
+    renderer.domElement.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, { passive: true });
+    renderer.domElement.addEventListener('touchmove', e => {
+      if (selectedBottle) return;
+      const delta = touchStartY - e.touches[0].clientY;
+      touchStartY = e.touches[0].clientY;
+      targetScrollPos += delta * 0.05;
+      const maxScroll = (MAX_3D_BOTTLES - 1) * 5;
+      targetScrollPos = Math.max(0, Math.min(targetScrollPos, maxScroll));
+    }, { passive: true });
+
+    animate();
+  }
+
+  function buildMuseumCorridor() {
+    // أرضية داكنة تعكس قليلاً
+    const floorGeo = new THREE.PlaneGeometry(20, MAX_3D_BOTTLES * 10);
+    const floorMat = new THREE.MeshStandardMaterial({
+      color: 0x111111,
+      roughness: 0.2, // لامعة
+      metalness: 0.8, // معدنية لتعكس الإضاءة
+    });
+    const floor = new THREE.Mesh(floorGeo, floorMat);
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.z = -(MAX_3D_BOTTLES * 5) / 2 + 2;
+    floor.position.y = -1.1;
+    scene.add(floor);
+
+    // خطوط ذهبية مشعة
+    const lineGeo = new THREE.PlaneGeometry(0.05, MAX_3D_BOTTLES * 10);
+    const lineMat = new THREE.MeshBasicMaterial({ 
+      color: 0xc9a961, opacity: 0.8, transparent: true 
+    });
+    const line1 = new THREE.Mesh(lineGeo, lineMat);
+    line1.rotation.x = -Math.PI / 2;
+    line1.position.set(-1.5, -1.09, floor.position.z);
+    scene.add(line1);
+    const line2 = line1.clone();
+    line2.position.x = 1.5;
+    scene.add(line2);
+  }
+
+  // إضافة الغبار الذهبي
+  function buildParticles() {
+    const particlesGeo = new THREE.BufferGeometry();
+    const count = 800;
+    const positions = new Float32Array(count * 3);
+    
+    for(let i = 0; i < count * 3; i += 3) {
+      positions[i] = (Math.random() - 0.5) * 20; // X
+      positions[i+1] = Math.random() * 10 - 2;  // Y
+      positions[i+2] = (Math.random() - 0.5) * (MAX_3D_BOTTLES * 6); // Z
+    }
+    
+    particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    
+    const particlesMat = new THREE.PointsMaterial({
+      color: 0xc9a961,
+      size: 0.05,
+      transparent: true,
+      opacity: 0.6,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    });
+    
+    particlesMesh = new THREE.Points(particlesGeo, particlesMat);
+    scene.add(particlesMesh);
+  }
+
+  function buildBottles() {
+    const allProducts = Products.getActive();
+    const count = Math.min(allProducts.length, MAX_3D_BOTTLES);
+
+    for (let i = 0; i < count; i++) {
+      const p = allProducts[i];
+      const bottle = createPremiumBottle(p);
+      
+      const side = i % 2 === 0 ? 1 : -1;
+      bottle.position.set(side * 1.5, 0, -i * 5);
+      bottle.rotation.y = side === 1 ? -Math.PI / 6 : Math.PI / 6; 
+      
+      bottle.userData.index = i;
+      scene.add(bottle);
+      bottles.push(bottle);
+    }
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    const time = clock.getElapsedTime();
+    
+    scrollPos += (targetScrollPos - scrollPos) * 0.05;
+    
+    if (!selectedBottle) {
+      camera.position.z = 6 - scrollPos;
+      camera.position.y = 0.2 + Math.sin(time * 0.5) * 0.05; 
+      camera.lookAt(0, 0, -scrollPos);
+    }
+
+    bottles.forEach(b => {
+      if (b !== selectedBottle) {
+        b.position.y = 0 + Math.sin(time * 1.5 + b.userData.index) * 0.05;
+      }
+    });
+
+    // تحريك الغبار
+    if (particlesMesh) {
+      particlesMesh.rotation.y = time * 0.02;
+      particlesMesh.position.y = Math.sin(time * 0.5) * 0.5;
+    }
+
+    // استخدام الـ Composer بدلاً من Renderer المباشر
+    composer.render();
+  }
+
+  function onScroll(e) {
+    if (selectedBottle) return;
+    e.preventDefault(); 
+    targetScrollPos += e.deltaY * 0.01;
+    const maxScroll = (MAX_3D_BOTTLES - 1) * 5;
+    targetScrollPos = Math.max(0, Math.min(targetScrollPos, maxScroll));
+    $('#scrollHint').style.opacity = '0';
+  }
+
+  function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    composer.setSize(window.innerWidth, window.innerHeight);
+  }
+
+  function onPointerDown(event) {
+    if (selectedBottle) return;
+
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+    const intersects = raycaster.intersectObjects(bottles, true);
+
+    if (intersects.length > 0) {
+      let obj = intersects[0].object;
+      while (obj.parent && !obj.userData.product) obj = obj.parent;
+      if (obj.userData.product) selectBottle(obj);
+    }
+  }
+
+  function selectBottle(bottle) {
+    selectedBottle = bottle;
+    const p = bottle.userData.product;
+    $('#scrollHint').style.opacity = '0';
+
+    const targetPos = new THREE.Vector3(
+      bottle.position.x * 0.4, 
+      0.2, 
+      bottle.position.z + 3
+    );
+
+    const startPos = camera.position.clone();
+    const startTime = performance.now();
+    const duration = 1200;
+
+    function moveCam(time) {
+      const elapsed = time - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+
+      camera.position.lerpVectors(startPos, targetPos, ease);
+      camera.lookAt(bottle.position.x, 0.2, bottle.position.z);
+
+      if (progress < 1) requestAnimationFrame(moveCam);
+      else showUI(p);
+    }
+    requestAnimationFrame(moveCam);
+  }
+
+  function showUI(product) {
+    $('#uiProductName').textContent = product.nameAr || product.nameEn;
+    $('#uiProductBrand').textContent = product.brandLabel || product.brand;
+    $('#uiProductPrice').textContent = TESTER_PRICE.toFixed(2) + ' JOD';
+    
+    const btn = $('#uiAddToCart');
+    const newBtn = btn.cloneNode(true);
+    btn.parentNode.replaceChild(newBtn, btn);
+    
+    newBtn.addEventListener('click', () => {
+      Cart.add({ id: product.id + '-tester', nameAr: product.nameAr + ' (تست)', nameEn: product.nameEn, price: TESTER_PRICE, qty: 1, category: 'testers', image: product.image });
+      newBtn.innerHTML = '<i class="fas fa-check"></i> تمت الإضافة';
+      setTimeout(() => newBtn.innerHTML = '<i class="fas fa-bag-shopping"></i> أضف للسلة', 1500);
+    });
+
+    $('#threeUI').classList.add('show');
+  }
+
+  function close3D() {
+    $('#threeContainer').classList.remove('active');
+    $('#mainHeader').classList.remove('hidden');
+    $('#mainHero').classList.remove('hidden');
+    $('#mainGridSection').classList.remove('hidden');
+    $('#mainFooter').classList.remove('hidden');
+    $('#threeUI').classList.remove('show');
+    
+    selectedBottle = null;
+    targetScrollPos = 0;
+    scrollPos = 0;
+    if (camera) camera.position.set(0, 0, 6);
+  }
+
+  function open3D() {
+    $('#mainHeader').classList.add('hidden');
+    $('#mainHero').classList.add('hidden');
+    $('#mainGridSection').classList.add('hidden');
+    $('#mainFooter').classList.add('hidden');
+
+    $('#threeContainer').classList.add('active');
+    $('#scrollHint').style.opacity = '1';
+
+    if (!renderer) {
+      init3D();
+      setTimeout(() => $('#loader3D').classList.add('hidden'), 1500);
+    } else {
+      $('#loader3D').classList.add('hidden');
+      selectedBottle = null;
+      targetScrollPos = 0;
+      scrollPos = 0;
+      camera.position.set(0, 0, 6);
+    }
+  }
+
+  $('#launch3DBtn').addEventListener('click', open3D);
+  $('#close3DBtn').addEventListener('click', close3D);
+
+  function init() {
+    if (Products) {
+      if (Products.getProducts().length > 0) renderTesters();
+      Products.onChange(() => renderTesters());
+    }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+
+})();
+</script>
+
+<script src="dark-mode.js" defer></script>
+<script src="cookie-banner.js" defer></script>
+<script src="mobile-app.js" defer></script>
+</body>
+</html>

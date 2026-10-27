@@ -13,6 +13,7 @@ const CACHE_URLS = [
   './loyalty.html',
   './product.html',
   './customer-service.html',
+  './testers.html',
   './mobile.css',
   './mobile-app.css',
   './loyalty-prive.css',
