@@ -387,87 +387,104 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}}
 /* ═══════════════════════════════════════════════════════════
-   /* ═══════════════════════════════════════════════════════════
-   إصلاح جذري لشبكة الصفحة الرئيسية بعد إضافة زر التسترات
+   الحل الجذري: إصلاح الهيرو (اللوقو يمين والنص يسار) بدون زووم
    ═══════════════════════════════════════════════════════════ */
 
-/* 1. إجبار الشبكة على البقاء 50/50 وعدم التمدد */
-.hero-grid {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr) !important;
-    gap: 40px !important;
+/* 1. منع الزووم ومنع الخروج عن الشاشة */
+body, html {
+    overflow-x: hidden !important;
+}
+.hero {
+    overflow: hidden !important;
 }
 
-/* 2. منع النصوص من كسر التصميم */
-.hero-text {
-    min-width: 0 !important;
+/* 2. تقسيم الشاشة لنصفين بالضبط: يمين ويسار */
+.hero-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* نصفين متساويين */
+    gap: 40px !important;
+    align-items: center !important;
+    max-width: 1240px !important;
+    margin: 0 auto !important;
     width: 100% !important;
-    overflow-wrap: break-word !important;
+}
+
+/* 3. وضع اللوقو (الزجاجة) على اليمين */
+.hero-visual {
+    grid-column: 1 / 2 !important; /* العمود الأول (اليمين في العربية) */
+    grid-row: 1 / 2 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
+    width: 100% !important;
+    min-width: 0 !important; /* يمنع التمدد */
+}
+
+/* 4. وضع النصوص والأزرار على اليسار */
+.hero-text {
+    grid-column: 2 / 3 !important; /* العمود الثاني (اليسار) */
+    grid-row: 1 / 2 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important; /* محاذاة النص لليمين من جهته */
+    width: 100% !important;
+    min-width: 0 !important; /* يمنع التمدد */
+}
+
+/* 5. تصغير حجم الخط قليلاً لمنع الزووم */
+.hero-title {
+    font-size: clamp(2.2rem, 4vw, 3.8rem) !important; 
+    line-height: 1.2 !important;
+    margin-bottom: 15px !important;
     word-break: break-word !important;
 }
 
-/* تصغير حجم الخط قليلاً حتى لا يخرج عن الشاشة */
-.hero-title {
-    font-size: clamp(2.5rem, 5vw, 4.5rem) !important; 
-    line-height: 1.1 !important;
-    margin-bottom: 15px !important;
-}
-
-/* 3. ترتيب الأزرار الثلاثة بشكل مثالي */
+/* 6. ترتيب الأزرار الثلاثة بشكل احترافي */
 .hero-actions {
     display: flex !important;
-    flex-wrap: wrap !important; /* ينزل لسطر جديد إذا ضاقت الشاشة */
+    flex-wrap: wrap !important;
     gap: 10px !important;
     width: 100% !important;
+    justify-content: flex-start !important;
 }
 
 .hero-actions .btn {
-    flex: 1 1 auto !important;
-    min-width: 140px !important; /* يضمن أن الزر لا يصغر كثيراً */
     padding: 14px 20px !important;
     font-size: 0.85rem !important;
+    flex: 1 1 auto !important;
+    min-width: 140px !important;
     justify-content: center !important;
     white-space: nowrap !important;
 }
 
-/* 4. إصلاح شكل الصورة/اللوجو */
-.hero-visual {
-    min-width: 0 !important;
-    width: 100% !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-}
+/* إصلاح أماكن العلامات العائمة (الرقائق) لكي لا تخرج من الشاشة */
+.chip-1 { right: -10px !important; left: auto !important; }
+.chip-2 { left: -10px !important; right: auto !important; }
+.chip-3 { right: 20px !important; left: auto !important; }
 
-/* 5. رفع أزرار الاتصال والواتساب في الكمبيوتر لكي لا تغطي الأزرار */
-@media (min-width: 993px) {
-    .pcall-float {
-        bottom: 100px !important;
-        right: 26px !important; 
-    }
-    .pfab-wrap {
-        bottom: 25px !important;
-        right: 26px !important;
-    }
-}
-
-/* 6. إصلاح تصميم الجوال (شاشات صغيرة) */
+/* 7. إصلاح شكل الجوال (اللوقو فوق والنص تحته) */
 @media (max-width: 992px) {
     .hero-grid {
         display: flex !important;
         flex-direction: column !important;
-        gap: 30px !important;
+        text-align: center !important;
+    }
+    .hero-visual {
+        order: 1 !important; /* اللوقو فوق */
+        margin-bottom: 30px !important;
+    }
+    .hero-text {
+        order: 2 !important; /* النص تحت */
+        align-items: center !important;
         text-align: center !important;
     }
     .hero-actions {
-        flex-direction: column !important; 
+        flex-direction: column !important;
+        justify-content: center !important;
     }
     .hero-actions .btn {
-        width: 100% !important; 
-    }
-    .hero-visual {
-        order: -1 !important; /* اللوجو يرجع فوق النص */
-        margin-bottom: 20px !important;
+        width: 100% !important;
     }
 }
 </style>
