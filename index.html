@@ -387,75 +387,88 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}}
 /* ═══════════════════════════════════════════════════════════
-   إصلاحات إضافة زر التسترات (الكمبيوتر والجوال)
+   /* ═══════════════════════════════════════════════════════════
+   إصلاح جذري لشبكة الصفحة الرئيسية بعد إضافة زر التسترات
    ═══════════════════════════════════════════════════════════ */
 
-/* 1. إصلاح انهيار شبكة العرض بسبب النصوص الطويلة */
-.hero-text { 
-  min-width: 0 !important; 
-}
-.hero-title { 
-  overflow-wrap: break-word !important; 
-  word-break: break-word !important; 
-}
-
-/* 2. ترتيب الأزرار بشكل احترافي (الكمبيوتر) */
-.hero-actions { 
-  display: flex !important;
-  flex-wrap: wrap !important; 
-  gap: 12px !important; 
-  width: 100% !important;
-  align-items: center !important;
-}
-
-/* تصغير حجم الأزرار قليلاً لتتسع لثلاثة أزرار */
-.hero-actions .btn { 
-  padding: 14px 20px !important; 
-  font-size: 0.88rem !important; 
-  flex: 1 1 auto !important; 
-  min-width: 145px !important;
-  white-space: nowrap !important;
-}
-
-/* 3. إصلاح ازدحام القائمة العلوية (لأنها أصبحت 7 روابط) */
-@media (min-width: 993px) {
-  .nav-links { 
-    gap: 18px !important; 
-  }
-  .nav-links a { 
-    font-size: 0.85rem !important; 
-    letter-spacing: 0px !important;
-  }
-}
-
-/* 4. رفع أزرار الاتصال والواتساب العائمة لكي لا تغطي الأزرار */
-.pfab-wrap { 
-  bottom: 25px !important; 
-}
-.pcall-float { 
-  bottom: 100px !important; 
-}
-
-/* 5. إصلاح شكل الجوال (ترتيب الأزرار عمودياً وتوسيط اللوجو) */
-@media (max-width: 992px) {
-  .hero-grid {
-    display: flex !important;
-    flex-direction: column !important;
+/* 1. إجبار الشبكة على البقاء 50/50 وعدم التمدد */
+.hero-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr) !important;
     gap: 40px !important;
-    text-align: center !important;
-  }
-  .hero-actions { 
-    flex-direction: column !important; 
-    align-items: stretch !important;
-  }
-  .hero-actions .btn { 
-    width: 100% !important; 
+}
+
+/* 2. منع النصوص من كسر التصميم */
+.hero-text {
+    min-width: 0 !important;
+    width: 100% !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+}
+
+/* تصغير حجم الخط قليلاً حتى لا يخرج عن الشاشة */
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem) !important; 
+    line-height: 1.1 !important;
+    margin-bottom: 15px !important;
+}
+
+/* 3. ترتيب الأزرار الثلاثة بشكل مثالي */
+.hero-actions {
+    display: flex !important;
+    flex-wrap: wrap !important; /* ينزل لسطر جديد إذا ضاقت الشاشة */
+    gap: 10px !important;
+    width: 100% !important;
+}
+
+.hero-actions .btn {
+    flex: 1 1 auto !important;
+    min-width: 140px !important; /* يضمن أن الزر لا يصغر كثيراً */
+    padding: 14px 20px !important;
+    font-size: 0.85rem !important;
     justify-content: center !important;
-  }
-  .hero-visual { 
-    margin-top: 30px !important; 
-    order: -1 !important; /* إرجاع الصورة لأعلى النص في الجوال */
-  }
+    white-space: nowrap !important;
+}
+
+/* 4. إصلاح شكل الصورة/اللوجو */
+.hero-visual {
+    min-width: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* 5. رفع أزرار الاتصال والواتساب في الكمبيوتر لكي لا تغطي الأزرار */
+@media (min-width: 993px) {
+    .pcall-float {
+        bottom: 100px !important;
+        right: 26px !important; 
+    }
+    .pfab-wrap {
+        bottom: 25px !important;
+        right: 26px !important;
+    }
+}
+
+/* 6. إصلاح تصميم الجوال (شاشات صغيرة) */
+@media (max-width: 992px) {
+    .hero-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 30px !important;
+        text-align: center !important;
+    }
+    .hero-actions {
+        flex-direction: column !important; 
+    }
+    .hero-actions .btn {
+        width: 100% !important; 
+    }
+    .hero-visual {
+        order: -1 !important; /* اللوجو يرجع فوق النص */
+        margin-bottom: 20px !important;
+    }
 }
 </style>
 
