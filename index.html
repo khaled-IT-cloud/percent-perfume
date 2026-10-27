@@ -386,6 +386,77 @@ html[dir="ltr"] .cart-drawer.open{transform:translateX(0)}
   .f-left{transform:rotateY(-90deg) translateZ(95px)}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}}
+/* ═══════════════════════════════════════════════════════════
+   إصلاحات إضافة زر التسترات (الكمبيوتر والجوال)
+   ═══════════════════════════════════════════════════════════ */
+
+/* 1. إصلاح انهيار شبكة العرض بسبب النصوص الطويلة */
+.hero-text { 
+  min-width: 0 !important; 
+}
+.hero-title { 
+  overflow-wrap: break-word !important; 
+  word-break: break-word !important; 
+}
+
+/* 2. ترتيب الأزرار بشكل احترافي (الكمبيوتر) */
+.hero-actions { 
+  display: flex !important;
+  flex-wrap: wrap !important; 
+  gap: 12px !important; 
+  width: 100% !important;
+  align-items: center !important;
+}
+
+/* تصغير حجم الأزرار قليلاً لتتسع لثلاثة أزرار */
+.hero-actions .btn { 
+  padding: 14px 20px !important; 
+  font-size: 0.88rem !important; 
+  flex: 1 1 auto !important; 
+  min-width: 145px !important;
+  white-space: nowrap !important;
+}
+
+/* 3. إصلاح ازدحام القائمة العلوية (لأنها أصبحت 7 روابط) */
+@media (min-width: 993px) {
+  .nav-links { 
+    gap: 18px !important; 
+  }
+  .nav-links a { 
+    font-size: 0.85rem !important; 
+    letter-spacing: 0px !important;
+  }
+}
+
+/* 4. رفع أزرار الاتصال والواتساب العائمة لكي لا تغطي الأزرار */
+.pfab-wrap { 
+  bottom: 25px !important; 
+}
+.pcall-float { 
+  bottom: 100px !important; 
+}
+
+/* 5. إصلاح شكل الجوال (ترتيب الأزرار عمودياً وتوسيط اللوجو) */
+@media (max-width: 992px) {
+  .hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 40px !important;
+    text-align: center !important;
+  }
+  .hero-actions { 
+    flex-direction: column !important; 
+    align-items: stretch !important;
+  }
+  .hero-actions .btn { 
+    width: 100% !important; 
+    justify-content: center !important;
+  }
+  .hero-visual { 
+    margin-top: 30px !important; 
+    order: -1 !important; /* إرجاع الصورة لأعلى النص في الجوال */
+  }
+}
 </style>
 
 <!-- PHASE 7.1 PWA START -->
