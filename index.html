@@ -488,35 +488,36 @@ body, html {
 }
 
 /* إصلاح الجوال: إلغاء شبكة الكمبيوتر وإجبار العناصر على النزول تحت بعضها */
+/* إصلاح جذري للجوال: إلغاء تقسيم الشاشة وإجبار العناصر على النزول تحت بعضها */
 @media (max-width: 992px) {
     .hero-grid {
         display: flex !important;
-        flex-direction: column !important; /* إجبار العناصر على النزول تحت بعضها */
+        flex-direction: column !important; 
+        align-items: center !important;
         text-align: center !important;
-        gap: 20px !important;
+        gap: 30px !important;
     }
     
-    /* إلغاء تأثير الأعمدة (اليمين واليسار) على الهاتف */
     .hero-text, .hero-visual {
-        grid-column: unset !important; 
-        grid-row: unset !important;
+        grid-column: auto !important; /* هذا السطر هو السر: يلغي تقسيم اليمين واليسار */
+        grid-row: auto !important;
         width: 100% !important;
         max-width: 100% !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
+        margin: 0 auto !important;
     }
 
     /* 1. النصوص والأزرار (فوق) */
     .hero-text {
         order: 1 !important; 
-        margin-bottom: 30px !important;
     }
     
     /* 2. اللوقو (تحت) */
     .hero-visual {
         order: 2 !important;
-        min-height: 320px !important; 
+        min-height: 350px !important; 
     }
 
     /* ترتيب الأزرار تحت بعضها */
