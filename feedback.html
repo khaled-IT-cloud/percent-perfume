@@ -3,72 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رأيك يهمنا | Percent Perfume</title>
+    <title>رأيك يهمنا | PERCENT PERFUME</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
             --bg-dark: #0a0a0a;
             --card-bg: #141414;
-            --gold: #d4af37;
-            --gold-hover: #f3ce5e;
-            --text-main: #ffffff;
-            --text-muted: #a0a0a0;
-            --border-color: #262626;
+            --champagne: #c9a961;
+            --champagne-lt: #e8d4a2;
+            --champagne-dk: #a8874a;
+            --ivory: #f5f1e8;
+            --text-muted: #9a9488;
+            --border-gold: rgba(201, 169, 97, 0.25);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Cairo', sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Almarai', sans-serif; }
 
         body {
             background-color: var(--bg-dark);
-            color: var(--text-main);
+            color: var(--ivory);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
+            background-image: radial-gradient(circle at 15% 10%, rgba(201,169,97,.08), transparent 45%);
         }
 
         .top-bar {
             width: 100%;
-            max-width: 900px;
+            max-width: 920px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-gold);
         }
 
         .brand-logo {
-            font-size: 1.4rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--text-main);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: var(--ivory);
             text-decoration: none;
         }
 
-        .brand-logo span {
-            color: var(--gold);
-        }
+        .brand-logo span { color: var(--champagne); }
 
         .visit-store-btn {
             background: transparent;
-            color: var(--gold);
-            border: 1.5px solid var(--gold);
-            padding: 8px 20px;
+            color: var(--champagne);
+            border: 1.5px solid var(--champagne);
+            padding: 9px 22px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
+            font-weight: 800;
+            font-size: 0.88rem;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
@@ -76,33 +73,30 @@
         }
 
         .visit-store-btn:hover {
-            background: var(--gold);
-            color: #000;
+            background: var(--champagne);
+            color: #0a0a0a;
+            transform: translateY(-2px);
         }
 
         .container {
             width: 100%;
-            max-width: 900px;
+            max-width: 920px;
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
+            grid-template-columns: 1fr 1.25fr;
             gap: 30px;
             align-items: start;
         }
 
         @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
+            .container { grid-template-columns: 1fr; }
         }
 
-        /* قسم الفيديو */
         .video-wrapper {
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
+            border: 1px solid var(--border-gold);
+            border-radius: 22px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
         }
 
         .video-wrapper video {
@@ -110,58 +104,53 @@
             display: block;
             aspect-ratio: 9/16;
             object-fit: cover;
-            max-height: 520px;
+            max-height: 540px;
         }
 
-        /* قسم الفورم */
         .feedback-card {
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid var(--border-gold);
+            border-radius: 22px;
+            padding: 32px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
         }
 
         .feedback-card h1 {
-            font-size: 1.6rem;
+            font-size: 1.55rem;
+            font-weight: 800;
             margin-bottom: 8px;
-            color: var(--gold);
+            color: var(--champagne);
         }
 
         .feedback-card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 25px;
+            font-size: 0.92rem;
+            margin-bottom: 24px;
+            line-height: 1.6;
         }
 
-        .form-group {
-            margin-bottom: 18px;
-        }
-
+        .form-group { margin-bottom: 18px; }
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--champagne-lt);
         }
 
         .form-control {
             width: 100%;
-            background: #1f1f1f;
-            border: 1px solid #333;
+            background: #1c1c1e;
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 12px;
-            padding: 12px 15px;
+            padding: 13px 16px;
             color: #fff;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: border-color 0.3s;
         }
 
-        .form-control:focus {
-            outline: none;
-            border-color: var(--gold);
-        }
+        .form-control:focus { outline: none; border-color: var(--champagne); }
 
-        /* تقييم النجوم */
         .star-rating {
             display: flex;
             flex-direction: row-reverse;
@@ -169,13 +158,10 @@
             gap: 8px;
         }
 
-        .star-rating input {
-            display: none;
-        }
-
+        .star-rating input { display: none; }
         .star-rating label {
             font-size: 2rem;
-            color: #444;
+            color: #3a3a3c;
             cursor: pointer;
             transition: color 0.2s;
             margin: 0;
@@ -183,59 +169,43 @@
 
         .star-rating input:checked ~ label,
         .star-rating label:hover,
-        .star-rating label:hover ~ label {
-            color: var(--gold);
-        }
+        .star-rating label:hover ~ label { color: var(--champagne); }
 
         .submit-btn {
             width: 100%;
-            background: var(--gold);
-            color: #000;
+            background: linear-gradient(120deg, var(--champagne), var(--champagne-lt), var(--champagne));
+            background-size: 200% auto;
+            color: #0a0a0a;
             border: none;
-            padding: 14px;
+            padding: 15px;
             border-radius: 12px;
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 800;
             cursor: pointer;
-            transition: background 0.3s;
-            margin-top: 10px;
+            transition: all 0.3s;
+            margin-top: 8px;
         }
 
-        .submit-btn:hover {
-            background: var(--gold-hover);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
+        .submit-btn:hover { background-position: 200% center; transform: translateY(-2px); }
+        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
         .status-msg {
-            margin-top: 15px;
-            padding: 12px;
+            margin-top: 16px;
+            padding: 13px;
             border-radius: 10px;
             text-align: center;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 0.9rem;
             display: none;
         }
-
-        .status-success {
-            background: rgba(39, 174, 96, 0.2);
-            color: #2ecc71;
-            border: 1px solid #2ecc71;
-        }
-
-        .status-error {
-            background: rgba(231, 76, 60, 0.2);
-            color: #e74c3c;
-            border: 1px solid #e74c3c;
-        }
+        .status-success { background: rgba(45, 122, 79, 0.2); color: #4ade80; border: 1px solid #2d7a4f; }
+        .status-error { background: rgba(185, 28, 28, 0.2); color: #fca5a5; border: 1px solid #b91c1c; }
 
         .bottom-cta {
-            margin-top: 25px;
+            margin-top: 26px;
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid rgba(255,255,255,0.08);
         }
     </style>
 </head>
@@ -243,16 +213,14 @@
 
     <header class="top-bar">
         <a href="index.html" class="brand-logo">PERCENT <span>PERFUME</span></a>
-        <a href="index.html" class="visit-store-btn">عرض الموقع 🛍️</a>
+        <a href="index.html" class="visit-store-btn"><i class="fas fa-store"></i><span>عرض الموقع</span></a>
     </header>
 
     <main class="container">
-        <!-- الفيديو الترويجي -->
         <div class="video-wrapper">
             <video src="assets/feedback-promo.mp4" autoplay loop muted playsinline controls></video>
         </div>
 
-        <!-- نموذج التقييم -->
         <div class="feedback-card">
             <h1>كُلُّ رَشَّةٍ... حِكَايةٌ ✨</h1>
             <p>تجربتك مع عطورنا بتهمنا كثير! شاركنا رأيك وتقييمك بكل صراحة.</p>
@@ -262,15 +230,15 @@
                     <label>تقييمك للتجربة *</label>
                     <div class="star-rating">
                         <input type="radio" id="star5" name="rating" value="5" checked />
-                        <label for="star5" title="5 نجوم">★</label>
+                        <label for="star5">★</label>
                         <input type="radio" id="star4" name="rating" value="4" />
-                        <label for="star4" title="4 نجوم">★</label>
+                        <label for="star4">★</label>
                         <input type="radio" id="star3" name="rating" value="3" />
-                        <label for="star3" title="3 نجوم">★</label>
+                        <label for="star3">★</label>
                         <input type="radio" id="star2" name="rating" value="2" />
-                        <label for="star2" title="نجمتان">★</label>
+                        <label for="star2">★</label>
                         <input type="radio" id="star1" name="rating" value="1" />
-                        <label for="star1" title="نجمة واحدة">★</label>
+                        <label for="star1">★</label>
                     </div>
                 </div>
 
@@ -286,49 +254,48 @@
 
                 <div class="form-group">
                     <label for="customerMessage">رأيك وتجربتك *</label>
-                    <textarea id="customerMessage" class="form-control" rows="4" placeholder="احكيلنا عن العطر أو التغليف أو تجربتك معنا..." required></textarea>
+                    <textarea id="customerMessage" class="form-control" rows="4" placeholder="احكيلنا عن العطر، الثبات، التغليف أو تجربتك معنا..." required></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn" id="submitBtn">إرسال الرأي</button>
+                <button type="submit" class="submit-btn" id="submitBtn"><i class="fas fa-paper-plane"></i> إرسال الرأي</button>
                 <div id="statusMsg" class="status-msg"></div>
             </form>
 
             <div class="bottom-cta">
-                <p style="margin-bottom: 12px; font-size: 0.9rem;">حابب تتصفح أحدث العطور والعروض؟</p>
-                <a href="index.html" class="visit-store-btn" style="width: 100%; justify-content: center;">تصفح متجر Percent Perfume</a>
+                <p style="margin-bottom: 12px; font-size: 0.85rem;">حابب تتصفح أحدث العطور والعروض؟</p>
+                <a href="index.html" class="visit-store-btn" style="width: 100%; justify-content: center;">
+                    <i class="fas fa-external-link-alt"></i><span>تصفح متجر Percent Perfume</span>
+                </a>
             </div>
         </div>
     </main>
 
     <script src="config.js"></script>
     <script>
-        // ضع بيانات Supabase الخاصة بك هنا (أو تأكد أنها معرفة في config.js)
-        const SUPABASE_URL = window.SUPABASE_URL || 'YOUR_SUPABASE_URL';
-        const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || 'YOUR_SUPABASE_ANON_KEY';
-        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const cfg = window.PERCENT_CONFIG;
+        const sbClient = supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_KEY);
 
         document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            
             const btn = document.getElementById('submitBtn');
             const statusMsg = document.getElementById('statusMsg');
-            
+
             const rating = document.querySelector('input[name="rating"]:checked').value;
             const customerName = document.getElementById('customerName').value.trim();
             const customerPhone = document.getElementById('customerPhone').value.trim();
             const customerMessage = document.getElementById('customerMessage').value.trim();
 
             btn.disabled = true;
-            btn.textContent = 'جاري الإرسال...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
             statusMsg.style.display = 'none';
 
             try {
-                const { error } = await supabaseClient
+                const { error } = await sbClient
                     .from('customer_feedback')
                     .insert([{
                         customer_name: customerName,
                         phone: customerPhone || null,
-                        rating: parseInt(rating),
+                        rating: parseInt(rating, 10),
                         message: customerMessage
                     }]);
 
@@ -345,7 +312,7 @@
                 statusMsg.style.display = 'block';
             } finally {
                 btn.disabled = false;
-                btn.textContent = 'إرسال الرأي';
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> إرسال الرأي';
             }
         });
     </script>
