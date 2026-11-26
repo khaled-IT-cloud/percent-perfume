@@ -1200,6 +1200,7 @@ html[dir="ltr"] .sidebar{border-inline-end:none;border-inline-start:1px solid rg
         <button class="nav-btn" data-section="loyalty"><i class="fas fa-crown"></i><span>نادي الولاء</span><span class="nav-badge" id="loyaltyNavBadge"></span></button>
         <button class="nav-btn" data-section="coupons"><i class="fas fa-ticket"></i><span>الكوبونات</span><span class="nav-badge" id="couponsNavBadge"></span></button>
         <button class="nav-btn" data-section="reviews"><i class="fas fa-star"></i><span>التقييمات</span><span class="nav-badge" id="reviewsNavBadge"></span></button>
+         <button class="nav-btn" data-section="feedback"><i class="fas fa-comment-dots"></i><span>آراء العملاء</span><span class="nav-badge" id="feedbackNavBadge"></span></button>
         <button class="nav-btn" data-section="subscribers"><i class="fas fa-envelope"></i><span>المشتركون</span><span class="nav-badge" id="subsNavBadge"></span></button>
         <button class="nav-btn" data-section="views"><i class="fas fa-chart-simple"></i><span>المشاهدات</span></button>
         <button class="nav-btn" data-section="customers"><i class="fas fa-users"></i><span>العملاء</span></button>
@@ -1394,7 +1395,23 @@ html[dir="ltr"] .sidebar{border-inline-end:none;border-inline-start:1px solid rg
           </div>
         </div>
       </section>
-
+<!-- CUSTOMER FEEDBACK -->
+      <section class="admin-section" data-section="feedback">
+        <div class="card">
+          <div class="filters-bar">
+            <div class="search-field"><i class="fas fa-search"></i><input type="text" id="fbSearch" placeholder="ابحث بالاسم، الرقم، أو نص الرأي..."></div>
+            <button class="export-btn" id="fbRefreshBtn"><i class="fas fa-sync-alt"></i><span>تحديث</span></button>
+            <a href="feedback.html" target="_blank" class="btn-sm btn-navy"><i class="fas fa-external-link-alt"></i><span>فتح صفحة الآراء</span></a>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-wrap"><table class="data-table">
+              <thead><tr><th>العميل</th><th>الهاتف</th><th>التقييم</th><th>الرأي</th><th>التاريخ</th><th></th></tr></thead>
+              <tbody id="fbBody"></tbody>
+            </table></div>
+            <div id="fbEmpty"></div>
+          </div>
+        </div>
+      </section>
       <!-- SUBSCRIBERS -->
       <section class="admin-section" data-section="subscribers">
         <div class="card">
