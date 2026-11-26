@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رأيك يهمنا | Percent Perfume</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --card-bg: #141414;
+            --gold: #d4af37;
+            --gold-hover: #f3ce5e;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: #262626;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .top-bar {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .brand-logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .brand-logo span {
+            color: var(--gold);
+        }
+
+        .visit-store-btn {
+            background: transparent;
+            color: var(--gold);
+            border: 1.5px solid var(--gold);
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .visit-store-btn:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* قسم الفيديو */
+        .video-wrapper {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+            aspect-ratio: 9/16;
+            object-fit: cover;
+            max-height: 520px;
+        }
+
+        /* قسم الفورم */
+        .feedback-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .feedback-card h1 {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            color: var(--gold);
+        }
+
+        .feedback-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            background: #1f1f1f;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 12px 15px;
+            color: #fff;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        /* تقييم النجوم */
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            font-size: 2rem;
+            color: #444;
+            cursor: pointer;
+            transition: color 0.2s;
+            margin: 0;
+        }
+
+        .star-rating input:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: var(--gold);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--gold);
+            color: #000;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: var(--gold-hover);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .status-msg {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .status-success {
+            background: rgba(39, 174, 96, 0.2);
+            color: #2ecc71;
+            border: 1px solid #2ecc71;
+        }
+
+        .status-error {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+        }
+
+        .bottom-cta {
+            margin-top: 25px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-bar">
+        <a href="index.html" class="brand-logo">PERCENT <span>PERFUME</span></a>
+        <a href="index.html" class="visit-store-btn">عرض الموقع 🛍️</a>
+    </header>
+
+    <main class="container">
+        <!-- الفيديو الترويجي -->
+        <div class="video-wrapper">
+            <video src="assets/feedback-promo.mp4" autoplay loop muted playsinline controls></video>
+        </div>
+
+        <!-- نموذج التقييم -->
+        <div class="feedback-card">
+            <h1>كُلُّ رَشَّةٍ... حِكَايةٌ ✨</h1>
+            <p>تجربتك مع عطورنا بتهمنا كثير! شاركنا رأيك وتقييمك بكل صراحة.</p>
+
+            <form id="feedbackForm">
+                <div class="form-group">
+                    <label>تقييمك للتجربة *</label>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating" value="5" checked />
+                        <label for="star5" title="5 نجوم">★</label>
+                        <input type="radio" id="star4" name="rating" value="4" />
+                        <label for="star4" title="4 نجوم">★</label>
+                        <input type="radio" id="star3" name="rating" value="3" />
+                        <label for="star3" title="3 نجوم">★</label>
+                        <input type="radio" id="star2" name="rating" value="2" />
+                        <label for="star2" title="نجمتان">★</label>
+                        <input type="radio" id="star1" name="rating" value="1" />
+                        <label for="star1" title="نجمة واحدة">★</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="customerName">الاسم الكريم *</label>
+                    <input type="text" id="customerName" class="form-control" placeholder="اكتب اسمك هنا..." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="customerPhone">رقم الهاتف (اختياري)</label>
+                    <input type="tel" id="customerPhone" class="form-control" placeholder="079XXXXXXX" dir="ltr" style="text-align: right;">
+                </div>
+
+                <div class="form-group">
+                    <label for="customerMessage">رأيك وتجربتك *</label>
+                    <textarea id="customerMessage" class="form-control" rows="4" placeholder="احكيلنا عن العطر أو التغليف أو تجربتك معنا..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">إرسال الرأي</button>
+                <div id="statusMsg" class="status-msg"></div>
+            </form>
+
+            <div class="bottom-cta">
+                <p style="margin-bottom: 12px; font-size: 0.9rem;">حابب تتصفح أحدث العطور والعروض؟</p>
+                <a href="index.html" class="visit-store-btn" style="width: 100%; justify-content: center;">تصفح متجر Percent Perfume</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="config.js"></script>
+    <script>
+        // ضع بيانات Supabase الخاصة بك هنا (أو تأكد أنها معرفة في config.js)
+        const SUPABASE_URL = window.SUPABASE_URL || 'YOUR_SUPABASE_URL';
+        const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || 'YOUR_SUPABASE_ANON_KEY';
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const btn = document.getElementById('submitBtn');
+            const statusMsg = document.getElementById('statusMsg');
+            
+            const rating = document.querySelector('input[name="rating"]:checked').value;
+            const customerName = document.getElementById('customerName').value.trim();
+            const customerPhone = document.getElementById('customerPhone').value.trim();
+            const customerMessage = document.getElementById('customerMessage').value.trim();
+
+            btn.disabled = true;
+            btn.textContent = 'جاري الإرسال...';
+            statusMsg.style.display = 'none';
+
+            try {
+                const { error } = await supabaseClient
+                    .from('customer_feedback')
+                    .insert([{
+                        customer_name: customerName,
+                        phone: customerPhone || null,
+                        rating: parseInt(rating),
+                        message: customerMessage
+                    }]);
+
+                if (error) throw error;
+
+                statusMsg.textContent = 'شكراً لك! تم استلام رأيك بنجاح 💛';
+                statusMsg.className = 'status-msg status-success';
+                statusMsg.style.display = 'block';
+                document.getElementById('feedbackForm').reset();
+            } catch (err) {
+                console.error(err);
+                statusMsg.textContent = 'حدث خطأ أثناء الإرسال، يرجى المحاولة مرة أخرى.';
+                statusMsg.className = 'status-msg status-error';
+                statusMsg.style.display = 'block';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'إرسال الرأي';
+            }
+        });
+    </script>
+</body>
+</html>
